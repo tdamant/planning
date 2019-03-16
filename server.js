@@ -4,7 +4,7 @@ const port = process.env.PORT;
 
 
 app.get("/", (req, res) => {
-    res.send("hello world!");
+    res.send("Continous deployment!");
 });
 
 app.listen(port, () => console.log(`Planning app listening here: ${port}!`));
