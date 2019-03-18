@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT;
 const example = require("./routes/example.js");
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 app.get("/", (req, res) => {
@@ -16,5 +18,9 @@ app.use('/example', example);
 
 app.use(express.static(__dirname + '/views'));
 
-
 app.listen(port, () => console.log(`Planning app listening here: ${port}!`));
+
+
+
+
+
