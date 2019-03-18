@@ -10,31 +10,17 @@ describe('New Trip', () => {
     it('page can fill form with 3 attendees', async () => {
         await expect(page).toFillForm('form[name="addTrip"]', {
             tripName: 'Trip name',
-            description: 'Trip description',
-            attendee1: 'test1@test.com',
-            attendee2: 'test2@test.com',
-            attendee3: 'test3@test.com'
+            description: 'Trip description'
         });
     });
 
     it('can submit form with 3 attendees', async () => {
         await expect(page).toFillForm('form[name="addTrip"]', {
             tripName: 'Unique Trip name',
-            description: 'Trip description',
-            attendee1: 'test1@test.com',
-            attendee2: 'test2@test.com',
-            attendee3: 'test3@test.com'
+            description: 'Trip description'
         });
         await page.click('#submit');
         await page.waitForNavigation({'waitUntil': 'networkidle0'});
         await expect(page).toMatch('Unique Trip name')
     });
-
-    // it('can submit form with 1 attendee1', async () => {
-    //     await expect(page).toFillForm('form[name="addTrip"]', {
-    //         tripName: 'Trip name',
-    //         description: 'Trip description',
-    //         attendee1: 'test1@test.com',
-    //     });
-    // });
 });

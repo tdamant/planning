@@ -5,7 +5,6 @@ class Example {
     static async getData() {
         let result = await connection.pool.query("select * from examples");
         return result.rows
-
     }
 }
 
