@@ -9,11 +9,18 @@
 <body>
     <h1>Set up your trip</h1>
         <form name="addTrip">
-            Name: <input type="text" name="tripName" placeholder="My fun trip" required><br>
-            Description: <textarea type="text" name="description" placeholder="What do you have in mind?" rows="5" cols ="60" required></textarea><br>
-            Attendees: <input type="email" name="attendee1" placeholder="email" required><br>
+            Name: <input type="text" id="tripName" name="tripName" placeholder="My fun trip" required><br>
+            Description: <textarea type="text" id="description" name="description" placeholder="What do you have in mind?" rows="5" cols ="60" required></textarea><br>
+            Attendees: <input type="email" id="attendee1" name="attendee1" placeholder="email" required><br>
             <input type="email" name="attendee2" placeholder="email"><br>
             <input type="email" name="attendee3" placeholder="email"><br>
+            <br>
+            <label for="start">Provisional start date:</label>
+              <input type="date" id="tripStart" name="tripStart">
+            <br>
+            <label for="end">Provisional end date:</label>
+              <input type="date" id="tripEnd" name="tripEnd">
+            <br>
             <input type="submit" id="submit" value="Enter">
         </form>
     </body>

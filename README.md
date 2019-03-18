@@ -1,5 +1,5 @@
 
-Create initial test DB: 
+Create initial test DB:
 -----
 ```
 isabel=# CREATE DATABASE planning;
@@ -21,4 +21,19 @@ planning=# select * from examples;
 (0 rows)
 
 planning=# \q
+```
+Create trips table:
+```
+planning=# CREATE TABLE trips (id SERIAL PRIMARY KEY, name VARCHAR(60), description VARCHAR, attendee1 VARCHAR, startdate TIMESTAMP, enddate TIMESTAMP);
+CREATE TABLE
+
+planning=# \dt
+         List of relations
+ Schema |   Name   | Type  | Owner  
+--------+----------+-------+--------
+ public | examples | table | szilvi
+ public | trips    | table | szilvi
+(2 rows)
+
+planning=#
 ```
