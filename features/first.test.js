@@ -4,6 +4,6 @@ describe('hello world', () => {
     });
 
     it('should display hello world on page', async () => {
-        await expect(page).toMatch('Continous deployment!')
+        await expect(page).toMatch('Hello world')
     })
 })
