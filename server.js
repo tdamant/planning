@@ -1,26 +1,34 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const port = process.env.PORT;
-const example = require("./routes/example.js");
-const dotenv = require('dotenv');
+const path = require("path");
+const trips = require("./routes/trips.js");
+
+const dotenv = require("dotenv");
 dotenv.config();
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/views/home.html");
+    res.sendFile(path.resolve(__dirname, "views", "home.html"));
 });
 
 app.get("/sign-up", (req, res) => {
     res.send("Please sign up!");
 });
+app.get("/new-trip", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "new-trip.html"));
+});
 
-app.use('/example', example);
+app.get("/trip", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "trip.html"));
+});
+
+app.use("/trips", trips);
 
 app.use(express.static(__dirname + '/views'));
 
+
 app.listen(port, () => console.log(`Planning app listening here: ${port}!`));
-
-
-
-
-
