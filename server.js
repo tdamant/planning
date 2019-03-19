@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT;
 const path = require("path");
 const trips = require("./routes/trips.js");
+const stages = require("./routes/stages.js");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -27,6 +28,7 @@ app.get("/trip", (req, res) => {
 });
 
 app.use("/trips", trips);
+app.use("/stages", stages);
 
 app.use(express.static(__dirname + '/views'));
 
