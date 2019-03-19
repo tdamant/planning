@@ -6,7 +6,7 @@ const path = require("path");
 const trips = require("./routes/trips.js");
 const users = require("./routes/users.js");
 var cookieParser = require("cookie-parser");
-
+const stages = require("./routes/stages.js");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -41,6 +41,7 @@ app.get("/trip", (req, res) => {
 
 app.use("/trips", trips);
 app.use("/users", users);
+app.use("/stages", stages);
 
 app.use(express.static(__dirname + '/views'));
 
