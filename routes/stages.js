@@ -4,6 +4,7 @@ const stagesController = require("../controllers/stages.js");
 
 
 router.post("/create", stagesController.saveStageToDB);
+router.get("/:tripId", stagesController.getStagesByTripId);
 
 
 module.exports = router;
