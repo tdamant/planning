@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <title>Log In</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="loginInterface.js"></script>
 </head>
 <body>
-<form action="/users/authenticate" method="post" name="logIn">
+<form id="logIn" action="/users/authenticate" method="post" name="logIn">
     Log In:
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="password" placeholder="Password">

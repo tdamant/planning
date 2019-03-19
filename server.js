@@ -14,32 +14,36 @@ dotenv.config();
 app.use(cookieParser());
 
 
-// app.all("/trip", (req, res) => {
-//     console.log(req.cookies.user);
-//     if (!req.cookies.user) {
-//         res.redirect("/users/log_in")
-//     }
-//     else {
-//         res.send("your signed in")
-//     }
-// });
+app.all("/trip", (req, res) => {
+    if (!req.cookies.user) {
+        res.redirect("/log_in?fromUrl=" +req.originalUrl)
+    } else {
+        res.sendFile(path.resolve(__dirname, "views", "trip.html"))
+    }
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    console.log(req.headers['Referrers']);
-    console.log(req.headers);
     res.sendFile(path.resolve(__dirname, "views", "home.html"));
 });
+
+app.get("/log_in", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "logIn.html"))
+})
+
+app.get("/sign_up", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "signUp.html"))
+})
 
 app.get("/new-trip", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "new-trip.html"));
 });
 
-app.get("/trip", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "trip.html"));
-});
+// app.get("/trip", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "views", "trip.html"));
+// });
 
 app.use("/trips", trips);
 app.use("/users", users);
