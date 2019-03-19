@@ -31,19 +31,19 @@ app.get("/", (req, res) => {
 
 app.get("/log_in", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "logIn.html"))
-})
+});
 
 app.get("/sign_up", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "signUp.html"))
-})
-
-app.get("/new-trip", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "new-trip.html"));
 });
 
-// app.get("/trip", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "views", "trip.html"));
-// });
+app.get("/new-trip", (req, res) => {
+    if (!req.cookies.user) {
+        res.redirect("/log_in?fromUrl=" +req.originalUrl)
+    } else {
+        res.sendFile(path.resolve(__dirname, "views", "new-trip.html"));
+    }
+});
 
 app.use("/trips", trips);
 app.use("/users", users);

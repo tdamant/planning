@@ -7,8 +7,8 @@ class User {
     }
 
     static async checkUser(email, password) {
-        let result = await connection.pool.query(`SELECT password FROM users WHERE email = '${email}'`)
-        return result.rows.length === 0 ? false : result.rows[0].password === password
+        let result = await connection.pool.query(`SELECT id FROM users WHERE email = '${email}' and password = '${password}'`)
+        return result.rows.length === 0 ? false : result.rows[0]
     }
 }
 

@@ -2,6 +2,23 @@ const sleep = require('sleep')
 
 describe('New Stage', () => {
     beforeAll(async () => {
+        var cookie = [
+            {
+                "domain": "localhost",
+                "expirationDate": 1597288045,
+                "hostOnly": false,
+                "httpOnly": true,
+                "name": "user",
+                "path": "/",
+                "sameSite": "no_restriction",
+                "secure": false,
+                "session": false,
+                "storeId": "0",
+                "value": "1",
+                "id": 1
+            }
+        ];
+        await page.setCookie(...cookie);
         await page.goto('http://localhost:5000/new-trip');
         await expect(page).toFillForm('form[name="addTrip"]', {
             tripName: 'Trip-name',

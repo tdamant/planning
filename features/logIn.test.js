@@ -7,7 +7,7 @@ describe('Login', () => {
         await connection.pool.query(`INSERT INTO users (first_name, last_name, email, phone_number, password) 
         VALUES ('first', 'last', 'email@email.com', '0000', 'password')`);
         sleep.sleep(1);
-        await page.goto('http://localhost:5000/users/log_in');
+        await page.goto('http://localhost:5000/new-trip');
     });
 
     it('should display page header', async () => {
@@ -20,7 +20,6 @@ describe('Login', () => {
             password: 'password'
         });
         await page.click('#submit');
-        await page.waitForNavigation({'waitUntil': 'networkidle0'});
-        await expect(page).toMatch('Successfully logged in');
+        await expect(page).toMatch('Set up your trip');
     })
 });

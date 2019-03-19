@@ -14,7 +14,7 @@ Create trips table:
 ```
 \c planning;
 
-CREATE TABLE trips (id SERIAL PRIMARY KEY, name VARCHAR(60), description VARCHAR);
+CREATE TABLE trips (id SERIAL PRIMARY KEY, name VARCHAR(60), description VARCHAR, organiser INTEGER);
 
 ```
 Create stages and user tables:

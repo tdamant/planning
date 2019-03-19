@@ -21,7 +21,7 @@ $(document).ready(async function() {
     const tripObject = await fetch(`/trips/${tripName}`);
     const trip = await tripObject.json();
 
-    let stagesObject = await fetch(`/stages/${trip.id}`)
+    let stagesObject = await fetch(`/stages/${trip.id}`);
     const stages = await stagesObject.json();
 
     formatTripOverview();

@@ -7,11 +7,10 @@ exports.addUser = (req, res) => {
 };
 
 exports.checkUser = async (req, res) => {
-    var cookies = new Cookies(req, res);
-    console.log(req.body)
+    var cookies = new Cookies(req, res,{httpOnly: false});
     let response = await usersModel.checkUser(req.body.email, req.body.password);
     if (response) {
-        cookies.set('user', "tom");
+        cookies.set('user', `${response.id}`);
         res.redirect(req.body.fromUrl)
     } else {
         res.send("Could not find user");

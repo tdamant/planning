@@ -17,7 +17,7 @@ describe("users", () => {
 
     it("can authenticate a user's credentials", async () => {
         let result = await User.checkUser('tomdamant@hotmail.com', 'strongpassword');
-        expect(result).toEqual(true);
+        expect(result.id).toEqual(1);
     });
 
     it("wont authenticate incorect password", async() => {

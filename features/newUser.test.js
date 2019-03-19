@@ -1,13 +1,14 @@
 var sleep = require('sleep');
 const connection = require("../database/connection");
+// const puppeteer = require("puppeteer");
 
 
 
 describe('New User', () => {
     beforeAll(async () => {
-        await connection.pool.query('TRUNCATE TABLE users')
+        await connection.pool.query('TRUNCATE TABLE users');
         sleep.sleep(1);
-        await page.goto('http://localhost:5000/users/sign_up')
+        await page.goto('http://localhost:5000/sign_up')
     });
 
     it('should display page header', async () => {
@@ -23,7 +24,7 @@ describe('New User', () => {
             password: 'password'
         });
         await page.click('#submit');
-        await page.waitForNavigation({'waitUntil': 'networkidle0'});
+        sleep.sleep(1);
         await expect(page).toMatch('You signed up!');
     })
 

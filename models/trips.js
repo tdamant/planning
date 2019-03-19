@@ -2,8 +2,8 @@ const connection = require("../database/connection");
 
 
 class Trips {
-  static async saveToDB(tripName, description) {
-        await connection.pool.query(`INSERT INTO trips (name, description) VALUES ('${tripName}', '${description}')`);
+  static async saveToDB(tripName, description, organiserID) {
+        await connection.pool.query(`INSERT INTO trips (name, description, organiser) VALUES ('${tripName}', '${description}', '${organiserID}')`);
     };
 
   static async getByName(name) {
