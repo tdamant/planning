@@ -5,9 +5,24 @@ const port = process.env.PORT;
 const path = require("path");
 const trips = require("./routes/trips.js");
 const users = require("./routes/users.js");
+var cookieParser = require("cookie-parser");
+
 
 const dotenv = require("dotenv");
 dotenv.config();
+
+app.use(cookieParser());
+
+
+// app.all("/trip", (req, res) => {
+//     console.log(req.cookies.user);
+//     if (!req.cookies.user) {
+//         res.redirect("/users/log_in")
+//     }
+//     else {
+//         res.send("your signed in")
+//     }
+// });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

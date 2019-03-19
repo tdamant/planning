@@ -2,7 +2,7 @@ const User = require("../lib/users.js");
 const connection = require("../../database/connection");
 
 describe("users", () => {
-    beforeEach( async() => {
+    beforeAll( async() => {
         await connection.pool.query("TRUNCATE TABLE stages, users RESTART IDENTITY")
     });
 
@@ -14,4 +14,19 @@ describe("users", () => {
         expect(result.rows[0].first_name).toEqual("Tom");
         expect(result.rows[0].password).toEqual('strongpassword');
     });
+
+    it("can authenticate a user's credentials", async () => {
+        let result = await User.checkUser('tomdamant@hotmail.com', 'strongpassword');
+        expect(result).toEqual(true);
+    });
+
+    it("wont authenticate incorect password", async() => {
+        let result = await User.checkUser('tomdamant@hotmail.com', "wrongpassword");
+        expect(result).toEqual(false)
+    });
+
+    it("wont authenticate incorect email", async() => {
+        let result = await User.checkUser('different@hotmail.com', "strongpassword");
+        expect(result).toEqual(false)
+    })
 });

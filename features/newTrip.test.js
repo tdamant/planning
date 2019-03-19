@@ -1,5 +1,9 @@
+var sleep = require('sleep');
+
+
 describe('New Trip', () => {
     beforeAll(async () => {
+        sleep.sleep(1);
         await page.goto('http://localhost:5000/new-trip')
     });
 
