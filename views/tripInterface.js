@@ -2,6 +2,10 @@ $(document).ready(async function() {
     const formatTripOverview = async() => {
         $('#trip-title').prepend(`${trip.name}`);
         $('#trip-description').prepend(`${trip.description}`)
+        console.log(stages)
+        if(stages.length > 0) {
+          stages.forEach(stage => {$('#stages-list').append(`${stage.name} <br>`)})
+      }
     };
 
     $('#submit').click(function(event) {
@@ -13,14 +17,13 @@ $(document).ready(async function() {
         location.reload();
     });
 
-    console.log("hello")
     let tripName = localStorage.getItem("tripName");
-    console.log(tripName)
     const tripObject = await fetch(`/trips/${tripName}`);
     const trip = await tripObject.json();
-    console.log(trip)
+
+    let stagesObject = await fetch(`/stages/${trip.id}`)
+    const stages = await stagesObject.json();
+
     formatTripOverview();
-    const stagesObject = await fetch(`/stages/${trip.id}`)
-    if (stagesObject) { const stages = await stagesObject.json()};
 
 });
