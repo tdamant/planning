@@ -5,11 +5,13 @@
     <title></title>
 </head>
 <body>
-<form action="/user/create" method="post"></form>
-    Please Sign up!<br>
+<form action="/users" method="post" name="signUp" >
+    Sign Up:<br>
     <input type="text" name="firstName" placeholder="First Name">
     <input type="text" name="lastName" placeholder="Last Name">
-    <input type="text" name="email" placeholder="email">
-    <input type="text" name="phoneNumber" placeholder="Phone number">
-    <input type="submit" value="Submit">
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="phoneNumber" placeholder="Phone Number">
+    <input type="text" name="password" placeholder="Password">
+    <input id="submit" type="submit" value="Submit">
+</form>
 </html>

@@ -25,3 +25,9 @@ CREATE TABLE stages (id SERIAL, name VARCHAR, content VARCHAR, due_date DATE, ev
 
 CREATE TABLE users (id SERIAL, name VARCHAR, email VARCHAR, phone_number VARCHAR);
 ```
+
+Create users table:
+
+```
+CREATE TABLE users (id SERIAL PRIMARY KEY, first_name VARCHAR, last_name VARCHAR, email VARCHAR, phone_number VARCHAR, password VARCHAR);
+```
