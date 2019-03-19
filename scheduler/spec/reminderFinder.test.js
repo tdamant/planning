@@ -4,7 +4,6 @@ const connection = require("../../database/connection");
 const fakeClientClass = require ("./fakeTextSender.js");
 const fakeClient = new fakeClientClass();
 
-
 describe("getStagesDueTomorrow", () => {
     it("return list of all stages due tomorrow", async () => {
         var today = new Date();
@@ -24,4 +23,4 @@ describe("textCoordinator", () => {
        await ReminderFinder.textCoordinator(fakeClient);
         expect(fakeClient.messages.sent[0].body).toEqual("please confirm your attendance")
     })
-})
+});

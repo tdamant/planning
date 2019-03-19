@@ -5,7 +5,7 @@ const connection = require("../../database/connection");
 describe("stage", () => {
 
     beforeEach( async() => {
-        await connection.pool.query("TRUNCATE TABLE stages RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages RESTART IDENTITY")
     });
 
     it("can add stages", async () => {
@@ -15,7 +15,7 @@ describe("stage", () => {
         expect(result.rows[0].id).toEqual(1);
         expect(result.rows[0].name).toEqual("New stage");
         expect(result.rows[0].content).toEqual('please confirm your attendance');
-    })
+    });
 
     it("can get info about a stage from the database", async () => {
         await Stage.addStage("New stage", "please confirm your attendance", '03-19-2018', 1);
