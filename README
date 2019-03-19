@@ -1,2 +1,0 @@
-create table stages  (id SERIAL, name VARCHAR, content VARCHAR, due_date DATE, event_id INTEGER);
-create table users (id SERIAL, name VARCHAR, email VARCHAR, phone_number VARCHAR);

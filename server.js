@@ -28,6 +28,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
+    console.log(req.headers['Referrers']);
+    console.log(req.headers);
+    console.log(req);
     res.sendFile(path.resolve(__dirname, "views", "home.html"));
 });
 
