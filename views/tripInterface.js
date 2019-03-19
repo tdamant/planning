@@ -1,6 +1,7 @@
 $(document).ready(async function() {
     const formatTripOverview = async() => {
-        $('#trip-title').prepend(`${trip.name}`)
+        $('#trip-title').prepend(`${trip.name}`);
+        $('#trip-description').prepend(`${trip.description}`)
     };
 
     let tripName = document.location.search;
