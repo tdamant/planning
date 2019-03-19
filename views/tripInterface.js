@@ -4,10 +4,16 @@ $(document).ready(async function() {
         $('#trip-description').prepend(`${trip.description}`)
     };
 
-    let tripName = document.location.search;
-    tripName = tripName.substring(1, tripName.length);
+    $('#submit').click(function(event) {
+        event.preventDefault();
+        let stageName = $('#stageName').val();
+        let content = $('#stageContent').val();
+        let due_date = $('#stageDueDate').val();
+        $.post("/stages/create", {stageName: stageName, content: content, due_date: due_date, trip_id: trip.id });
+    });
+
+    let tripName = localStorage.getItem("tripName");
     const tripObject = await fetch(`/trips/${tripName}`);
     const trip = await tripObject.json();
-    console.log(trip);
     formatTripOverview();
 });
