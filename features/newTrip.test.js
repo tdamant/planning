@@ -28,6 +28,7 @@ describe('New Trip', () => {
         await page.setCookie(...cookie);
         await page.goto('http://localhost:5000/new-trip')
     });
+    
 
     it('should display page header', async () => {
         await expect(page).toMatch('Set up your trip')
@@ -46,8 +47,7 @@ describe('New Trip', () => {
             description: 'Trip description'
         });
         await page.click('#submit');
-        // await page.waitForNavigation({'waitUntil': 'networkidle0'});
-        await page.screenshot({path: "seerer.png"});
+        await page.waitForNavigation({'waitUntil': 'networkidle0'});
         await expect(page).toMatch('Unique Trip name');
         await expect(page).toMatch('Trip description')
     });

@@ -1,16 +1,16 @@
 $(document).ready(async function() {
     const formatTripOverview = async() => {
-        $('#trip-title').prepend(`${trip.name}`);
-        $('#trip-description').prepend(`${trip.description}`);
+        $('#trip-title').prepend(`${data.trip.name}`);
+        $('#trip-description').prepend(`${data.trip.description}`);
 
           const showStages = () => {
-              if(stages.length > 0) {
-                  stages.forEach(stage => {$('#stages-list').append(`${stage.name} <br>`)})
+              if(data.stages.length > 0) {
+                  data.stages.forEach(stage => {$('#stages-list').append(`${stage.name} <br>`)})
               }
           };
 
           const showAttendees = () => {
-              usersOnTrip.forEach( user => {
+              data.usersOnTrip.forEach( user => {
                   $('#attendees-list').append( `${user.first_name} ${user.last_name}`)
               })
           };
@@ -24,21 +24,44 @@ $(document).ready(async function() {
         let stageName = $('#stageName').val();
         let content = $('#stageContent').val();
         let due_date = $('#stageDueDate').val();
-        $.post("/stages/create", {stageName: stageName, content: content, due_date: due_date, trip_id: trip.id });
+        $.post("/stages/create", {stageName: stageName, content: content, due_date: due_date, trip_id: data.trip.id });
         location.reload();
     });
 
-    let tripName = await localStorage.getItem("tripName");
-    const tripObject = await fetch(`/trips/${tripName}`);
-    console.log(tripObject);
-    const trip = await tripObject.json();
+    const fetchData = async () => {
+        let tripId = location.search.substr(1);
+        let tripResponse = await fetch(`/trips/${tripId}`);
+        let trip = await tripResponse.json();
+        console.log(tripId);
+        let stagesObject = await fetch(`/stages/${tripId}`);
+        let stages = await stagesObject.json();
+        let usersOnTripResponse = await fetch(`/trips_users/${tripId}`);
+        let usersOnTrip = await usersOnTripResponse.json();
+        console.log(usersOnTrip);
+        let currentUser = await fetch ("/whoami");
+        let currentUserId = await currentUser.json();
+        let response =
+        {
+            trip: trip,
+            stages: stages,
+            usersOnTrip: usersOnTrip,
+            currentUserId: currentUserId
 
-    let stagesObject = await fetch(`/stages/${trip.id}`);
-    const stages = await stagesObject.json();
+        };
 
-    let usersOnTripResponse = await fetch(`/trips_users/${trip.id}`);
-    let usersOnTrip = await usersOnTripResponse.json();
-    console.log(usersOnTrip);
+        return response
+    };
+
+    let data = await fetchData();
+
+    const isUserOnTrip = () => {
+        return data.usersOnTrip.filter((user) => {
+            return user.id === data.currentUserId
+        }).length > 0
+    };
+
+    let isOn = isUserOnTrip();
+    console.log(isOn);
 
     formatTripOverview();
 

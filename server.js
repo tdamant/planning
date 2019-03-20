@@ -18,7 +18,8 @@ app.use(cookieParser());
 app.all("/trip", (req, res) => {
     if (!req.cookies.user) {
         res.redirect("/log_in?fromUrl=" +req.originalUrl)
-    } else {
+    }
+    else {
         res.sendFile(path.resolve(__dirname, "views", "trip.html"))
     }
 });
@@ -28,6 +29,10 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "home.html"));
+});
+
+app.get("/whoami", (req, res) => {
+    res.send(req.cookies.user)
 });
 
 app.get("/log_in", (req, res) => {

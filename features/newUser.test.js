@@ -1,8 +1,5 @@
 var sleep = require('sleep');
 const connection = require("../database/connection");
-// const puppeteer = require("puppeteer");
-
-
 
 describe('New User', () => {
     beforeAll(async () => {

@@ -4,7 +4,7 @@ const tripsController = require("../controllers/trips.js");
 
 
 router.post("/create", tripsController.saveTripToDB);
-router.get("/:name", tripsController.getByName);
+router.get("/:id", tripsController.getById);
 
 
 module.exports = router;

@@ -3,13 +3,13 @@ const Users = require("../models/lib/users.js");
 
 exports.getTripUsers = async (req, res) => {
     let tripUsers = await Trips.getTripUsers(req.params.tripId);
-    let usernames = await returnUserNames(tripUsers);
-    res.send(usernames);
+    let users = await returnUsers(tripUsers);
+    res.send(users);
 }
 
 
-const returnUserNames = async(tripUsers) => {
+const returnUsers = async(tripUsers) => {
     let tripUserIds = [];
-    tripUsers.forEach(tripUser => { tripUserIds.push(tripUser.id) });
-    return await Users.getNames(tripUserIds);
+    tripUsers.forEach(tripUser => { tripUserIds.push(tripUser.user_id) });
+    return await Users.getUsers(tripUserIds);
 }
