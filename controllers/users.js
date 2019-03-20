@@ -9,15 +9,17 @@ exports.addUser = (req, res) => {
 
 exports.checkUser = async (req, res) => {
     var cookies = new Cookies(req, res,{httpOnly: false});
+    console.log(req.query);
     let response = await usersModel.checkUser(req.body.email, req.body.password);
     if (response) {
         cookies.set('user', `${response.id}`);
         if (req.body.fromUrl) {
           res.redirect(req.body.fromUrl)
         } else {
-          res.send("success") // here we'll send them to the home page
+          // res.json({success: true});
+          res.send('success')
         }
     } else {
-        res.send("Could not find user"); // here we'll have an alert 
+        res.status(500).send('Something broke!')
     };
 };
