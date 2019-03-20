@@ -5,7 +5,7 @@
     <title>Planning App</title>
     <link rel="stylesheet" href="css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
   </head>
   <body>
     <div class="greyBox">
@@ -29,32 +29,39 @@
         <div id="signInForm">
           <h1>Sign In</h1>
 
-          <label for="email">Email:</label>
-          <input type="email" name="email" />
+          <form id="logIn" action="/users/authenticate" method="post" >
+            <label for="email">Email:</label>
+            <input type="email" name="email" />
 
-          <label for="password">Password:</label>
-          <input type="password" name="password" />
+            <label for="password">Password:</label>
+            <input type="password" name="password" />
 
-          <button class="ellipse">Sign In</button>
+            <button class="ellipse" type="submit" id="logInButton">Sign In</button>
+          </form>
+
         </div>
         <div id="signUpForm" style="display: none;">
           <h1>Sign Up</h1>
-          <label for="firstname">First Name:</label>
-          <input type="text" name="firstname" />
 
-          <label for="lastname">Last Name:</label>
-          <input type="text" name="lastname" />
+          <form action="/users" method="post" name="signUp" >
+            <label for="firstname">First Name:</label>
+            <input type="text" name="firstName" />
 
-          <label for="email">Email:</label>
-          <input type="email" name="email" />
+            <label for="lastname">Last Name:</label>
+            <input type="text" name="lastName" />
 
-          <label for="phonenumber">Phone Number:</label>
-          <input type="number" name="phonenumber" \>
+            <label for="email">Email:</label>
+            <input type="email" name="email" />
 
-          <label for="password">Password:</label>
-          <input type="password" name="password" />
+            <label for="phonenumber">Phone Number:</label>
+            <input type="number" name="phoneNumber" \>
 
-          <button class="ellipse">Sign Up</button>
+            <label for="password">Password:</label>
+            <input type="password" name="password" />
+
+            <button class="ellipse" type="submit">Sign Up</button>
+          </form>
+
         </div>
       </div>
     </div>

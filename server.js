@@ -17,10 +17,9 @@ app.use(cookieParser());
 
 app.all("/trip", (req, res) => {
     if (!req.cookies.user) {
-        res.redirect("/log_in?fromUrl=" +req.originalUrl)
-    }
-    else {
-        res.sendFile(path.resolve(__dirname, "views", "trip.html"))
+        res.redirect("/?fromUrl=" +req.originalUrl)
+    } else {
+        res.sendFile(path.resolve(__dirname, "views", "trip.html")) // go to their original URL!
     }
 });
 
