@@ -1,5 +1,7 @@
 const User = require("../lib/users.js");
 const connection = require("../../database/connection");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 describe("users", () => {
     beforeAll( async() => {
@@ -9,15 +11,16 @@ describe("users", () => {
     it("can add users", async () => {
         await User.addUser("Tom", "Damant", "tomdamant@hotmail.com", "07588468084",  "strongpassword");
         const result = await connection.pool.query("select * from users");
+        let pwordCompare = await bcrypt.compare("strongpassword", result.rows[0].password );
         expect(result.rows.length).toEqual(1);
-        expect(result.rows[0].id).toEqual(1);
+        expect(pwordCompare).toEqual(true);
         expect(result.rows[0].first_name).toEqual("Tom");
-        expect(result.rows[0].password).toEqual('strongpassword');
+        expect(result.rows[0].id).toEqual(1);
     });
 
     it("can authenticate a user's credentials", async () => {
         let result = await User.checkUser('tomdamant@hotmail.com', 'strongpassword');
-        expect(result).toEqual(true);
+        expect(result.id).toEqual(1);
     });
 
     it("wont authenticate incorect password", async() => {
