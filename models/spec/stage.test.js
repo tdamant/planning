@@ -5,7 +5,7 @@ const connection = require("../../database/connection");
 describe("stage", () => {
 
     beforeEach( async() => {
-        await connection.pool.query("TRUNCATE TABLE stages RESTART IDENTITY")
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users RESTART IDENTITY");
     });
 
     it("can add stages", async () => {
