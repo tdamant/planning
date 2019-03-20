@@ -9,7 +9,7 @@ describe("getStagesDueTomorrow", () => {
         var today = new Date();
         var tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
         var tomorrowDate = `0${tomorrow.getMonth()+1}-${tomorrow.getDate()}-${tomorrow.getFullYear()}`;
-        await connection.pool.query("TRUNCATE TABLE stages RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
         await Stage.addStage("First Stage", "please confirm your attendance", tomorrowDate, 1);
         await Stage.addStage("Second Stage", "please confirm your attendance", '05-09-2020', 1);
         let result = await ReminderFinder.getStagesDueTomorrow(tomorrowDate);

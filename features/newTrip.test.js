@@ -6,7 +6,7 @@ const User = require("../models/lib/users.js");
 
 describe('New Trip', () => {
     beforeAll(async () => {
-        await connection.pool.query("TRUNCATE TABLE stages, users, trips, trips_users RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
         await User.addUser("Tom", "Damant", "tomdamant@hotmail.com", "07588468084",  "strongpassword");
         sleep.sleep(1);
         var cookie = [

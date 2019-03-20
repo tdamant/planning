@@ -17,7 +17,7 @@ $(document).ready(async function() {
 
           const formatForTripMembers = () => {
               if(isOn) { $('#join').hide() }
-          }
+          };
 
         showStages();
         showAttendees();
@@ -48,15 +48,13 @@ $(document).ready(async function() {
         let usersOnTrip = await usersOnTripResponse.json();
         let currentUser = await fetch ("/whoami");
         let currentUserId = await currentUser.json();
-        let response =
-        {
+        return {
             trip: trip,
             stages: stages,
             usersOnTrip: usersOnTrip,
             currentUserId: currentUserId
         };
 
-        return response
     };
 
     let data = await fetchData();

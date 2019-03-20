@@ -3,7 +3,7 @@ const connection = require("../database/connection");
 
 describe('New User', () => {
     beforeAll(async () => {
-        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
         sleep.sleep(1);
         await page.goto('http://localhost:5000/sign_up')
     });
