@@ -21,6 +21,13 @@ class User {
         }
 
     }
+
+    static async getNames(idArray) {
+        let ids = idArray.join("','")
+        console.log(ids)
+        let results = await connection.pool.query(`SELECT first_name, last_name FROM users WHERE id in (${ids}) `)
+        return results.rows
+    }
 }
 
 module.exports = User;

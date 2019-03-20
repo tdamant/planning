@@ -6,7 +6,7 @@ const connection = require("../database/connection");
 
 describe('New User', () => {
     beforeAll(async () => {
-        await connection.pool.query('TRUNCATE TABLE users');
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users RESTART IDENTITY");
         sleep.sleep(1);
         await page.goto('http://localhost:5000/sign_up')
     });
@@ -24,7 +24,7 @@ describe('New User', () => {
             password: 'password'
         });
         await page.click('#submit');
-        sleep.sleep(1);
+        await page.waitForNavigation({'waitUntil': 'networkidle0'});
         await expect(page).toMatch('You signed up!');
     })
 
