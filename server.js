@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "home.html"));
+    res.sendFile(path.resolve(__dirname, "views", "index.html"));
 });
 
 app.get("/whoami", (req, res) => {
