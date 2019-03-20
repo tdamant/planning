@@ -5,6 +5,7 @@ const port = process.env.PORT;
 const path = require("path");
 const trips = require("./routes/trips.js");
 const users = require("./routes/users.js");
+const tripsUsers = require("./routes/tripsUsers.js");
 var cookieParser = require("cookie-parser");
 const stages = require("./routes/stages.js");
 
@@ -17,7 +18,8 @@ app.use(cookieParser());
 app.all("/trip", (req, res) => {
     if (!req.cookies.user) {
         res.redirect("/log_in?fromUrl=" +req.originalUrl)
-    } else {
+    }
+    else {
         res.sendFile(path.resolve(__dirname, "views", "trip.html"))
     }
 });
@@ -27,6 +29,10 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "home.html"));
+});
+
+app.get("/whoami", (req, res) => {
+    res.send(req.cookies.user)
 });
 
 app.get("/log_in", (req, res) => {
@@ -48,6 +54,7 @@ app.get("/new-trip", (req, res) => {
 app.use("/trips", trips);
 app.use("/users", users);
 app.use("/stages", stages);
+app.use("/trips_users", tripsUsers);
 
 app.use(express.static(__dirname + '/views'));
 

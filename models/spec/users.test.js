@@ -5,7 +5,7 @@ const saltRounds = 10;
 
 describe("users", () => {
     beforeAll( async() => {
-        await connection.pool.query("TRUNCATE TABLE stages, users RESTART IDENTITY")
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users RESTART IDENTITY");
     });
 
     it("can add users", async () => {

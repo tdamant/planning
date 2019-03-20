@@ -29,7 +29,7 @@ describe('New Stage', () => {
         });
         await page.click('#submit');
 
-        await page.waitForNavigation({'waitUntil': 'networkidle0'});
+        await page.waitForNavigation();
     });
 
     it('can submit form, load relevant trip page with name and description', async () => {
