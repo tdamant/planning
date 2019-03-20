@@ -17,6 +17,10 @@ class Trips {
       let result = await connection.pool.query(`SELECT * FROM trips_users where trip_id = '${tripId}'`);
       return result.rows
   }
+
+  static async addUserToTrip(tripId, userId) {
+      await connection.pool.query(`INSERT into trips_users (trip_id, user_id) VALUES ('${tripId}', '${userId}')`);
+  }
 }
 
 module.exports = Trips;

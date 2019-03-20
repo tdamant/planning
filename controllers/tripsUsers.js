@@ -13,3 +13,8 @@ const returnUsers = async(tripUsers) => {
     tripUsers.forEach(tripUser => { tripUserIds.push(tripUser.user_id) });
     return await Users.getUsers(tripUserIds);
 }
+
+exports.createTripUser = async(req, res) => {
+    await Trips.addUserToTrip(req.body.tripId, req.cookies.user)
+    res.send("complete");
+}
