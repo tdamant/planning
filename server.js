@@ -30,13 +30,21 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "index.html"));
 });
 
+app.get("/home", (req, res) => {
+    if (!req.cookies.user) {
+        res.redirect("/?fromUrl=" +req.originalUrl)
+    } else {
+        res.sendFile(path.resolve(__dirname, "views", "home.html"));
+    }
+});
+
 app.get("/whoami", (req, res) => {
     res.send(req.cookies.user)
 });
 
 app.get("/new-trip", (req, res) => {
     if (!req.cookies.user) {
-        res.redirect("/log_in?fromUrl=" +req.originalUrl)
+        res.redirect("/?fromUrl=" +req.originalUrl)
     } else {
         res.sendFile(path.resolve(__dirname, "views", "new-trip.html"));
     }
