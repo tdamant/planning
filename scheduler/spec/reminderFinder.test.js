@@ -22,27 +22,39 @@ describe("Text", function() {
         await Trip.addUserToTrip(1, 2);
         await Trip.addUserToTrip(1, 3);
         await Stage.addStage("First Stage", "please confirm your attendance", tomorrowDate, 1);
-        await Stage.addStage("Second Stage", "please confirm your attendance", '05-09-2020', 1);
+        await Stage.addStage("Second Stage", "another task", '05-09-2020', 1);
         await StagesUsers.addStageToUsers( 1 , 1);
         await StagesUsers.addStageToUsers( 2 , 1);
     });
 
     describe("getStagesDueTomorrow", () => {
 
-        // it("return list of all stages due tomorrow", async () => {
-        //     let result = await ReminderFinder.getStagesDueTomorrow(tomorrowDate);
-        //     expect(result.length).toEqual(1);
-        //     expect(result[0].name).toEqual("First Stage")
-        // });
+        it("return list of all stages due tomorrow", async () => {
+            let result = await ReminderFinder.getStagesDueTomorrow(tomorrowDate);
+            expect(result.length).toEqual(1);
+            expect(result[0].name).toEqual("First Stage")
+        });
     });
-
     describe("textCoordinator", () => {
-
         it("sends texts to appropriate events", async () => {
            await ReminderFinder.textCoordinator(fakeClient);
-           expect(fakeClient.messages.sent.length).toEqual(3);
-
+           expect(fakeClient.messages.sent).toEqual([
+               {
+                   to: '111',
+                   from: process.env.TWILIO_NUMBER,
+                    body: "please confirm your attendance"
+               },
+               {
+                   to: '222',
+                   from: process.env.TWILIO_NUMBER,
+                    body: "please confirm your attendance"
+               },
+               {
+                   to: '333',
+                   from: process.env.TWILIO_NUMBER,
+                    body: "please confirm your attendance"
+               }
+           ]);
         })
     });
-
-})
+});
