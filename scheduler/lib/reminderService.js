@@ -36,6 +36,7 @@ let ReminderFinder = {
 
     textCoordinator: async(fakeClient=null) =>  {
         let stages =  await ReminderFinder.getStagesDueTomorrow();
+        // console.log(stages); - WORKING
         var textsToSend = [];
         async function asyncForEach(array, callback) {
             for (let index = 0; index < array.length; index++) {
@@ -44,9 +45,14 @@ let ReminderFinder = {
         };
         await asyncForEach(stages, async(stage) => {
             let textArray = await ReminderFinder.getUsersOnStage(stage);
-            textsToSend = [ ... textArray];
+            // textsToSend = [ ... textArray];
+            textsToSend.push(textArray);
         });
-        await asyncForEach ( textsToSend,async (text) => {
+        function flatten(arr) {
+            return [].concat(...arr)
+        }
+        let flatTextsToSend = flatten(textsToSend);
+        await asyncForEach ( flatTextsToSend,async (text) => {
             await textSender.sendText(text.userNumber, text.stageContent, fakeClient)
         });
     }
