@@ -1,3 +1,5 @@
+// test controller functions as integration test
+
 ReminderFinder = require("../lib/reminderService.js");
 const Stage = require("../../models/lib/stage.js");
 const StagesUsers = require("../../models/lib/stagesUsers.js");
@@ -55,6 +57,45 @@ describe("Text", function() {
                     body: "please confirm your attendance"
                }
            ]);
+        });
+        it("sends texts when new stages added", async () => {
+            await Stage.addStage("Third stage", "pay me", tomorrowDate, 1);
+            await StagesUsers.addStageToUsers(3, 1);
+            await ReminderFinder.textCoordinator(fakeClient);
+            console.log("hello");
+            expect(fakeClient.messages.sent).toEqual([
+                {
+                    to: '111',
+                    from: process.env.TWILIO_NUMBER,
+                    body: "please confirm your attendance"
+                },
+                {
+                    to: '222',
+                    from: process.env.TWILIO_NUMBER,
+                    body: "please confirm your attendance"
+                },
+                {
+                    to: '333',
+                    from: process.env.TWILIO_NUMBER,
+                    body: "please confirm your attendance"
+                },
+                {
+                    to: '111',
+                    from: process.env.TWILIO_NUMBER,
+                    body: "pay me"
+                },
+                {
+                    to: '222',
+                    from: process.env.TWILIO_NUMBER,
+                    body: "pay me"
+                },
+                {
+                    to: '333',
+                    from: process.env.TWILIO_NUMBER,
+                    body: "pay me"
+                }
+            ])
+
         })
     });
 });

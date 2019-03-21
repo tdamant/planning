@@ -8,4 +8,4 @@ exports.saveStageToDB = async (req, res) => {
 exports.getStagesByTripId = async (req, res) => {
   var stages = await stagesModel.getStagesByTripId(req.params.tripId)
   res.send(stages);
-}
+};
