@@ -16,7 +16,10 @@ exports.sendText = (to, message, fakeClient) => {
             body: message,
         },
         (err, message) => {
-            console.log(message.sid);
+            if (err) {
+                console.log(err)
+            }
+            console.log(message);
         }
     );
 };

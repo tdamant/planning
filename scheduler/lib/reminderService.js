@@ -46,12 +46,10 @@ let ReminderFinder = {
             let textArray = await ReminderFinder.getUsersOnStage(stage);
             textsToSend = [ ... textArray];
         });
-        textsToSend.forEach( (text) => {
-            textSender.sendText(text.userNumber, text.stageContent, fakeClient)
+        await asyncForEach ( textsToSend,async (text) => {
+            await textSender.sendText(text.userNumber, text.stageContent, fakeClient)
         });
     }
 };
-
-// ReminderFinder.textCoordinator();
 
 module.exports = ReminderFinder;
