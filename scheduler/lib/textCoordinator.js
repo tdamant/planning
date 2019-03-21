@@ -1,1 +1,0 @@
-const textSender = require('./textSender.js');
