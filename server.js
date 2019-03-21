@@ -34,14 +34,6 @@ app.get("/whoami", (req, res) => {
     res.send(req.cookies.user)
 });
 
-app.get("/log_in", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "logIn.html"))
-});
-
-app.get("/sign_up", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "signUp.html"))
-});
-
 app.get("/new-trip", (req, res) => {
     if (!req.cookies.user) {
         res.redirect("/log_in?fromUrl=" +req.originalUrl)

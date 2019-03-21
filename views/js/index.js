@@ -1,14 +1,17 @@
+
 $(document).ready(function(){
 
   $('#logInButton').on("click", async (event) => {
     event.preventDefault();
-    var urlParams = await new URLSearchParams(location.search);
-    var fromUrl = await urlParams.get('fromUrl');
-    if (fromUrl) {
-        $('#logIn').append('<input type="hidden" name="fromUrl" value="' + fromUrl + '">')
-    }
-    $( "#logIn" ).submit();
+    var originalUrl = await  getOriginalUrl();
+    var userEmail = $("[name='email']").val();
+    var userPassword = $("[name='password']").val()
+    let response = $.post("/users/authenticate", {email: userEmail, password: userPassword, originalUrl: originalUrl}, function(response){
+      console.log(response);
+      response === "successfully authenticated" ? redirectUser(originalUrl) : alert('Incorrect email or password');
+      });
   })
+
 
   $('#signUp').on("click", function() {
     $('#signInForm').fadeOut("fast");
@@ -21,5 +24,14 @@ $(document).ready(function(){
     $('.whiteBox').css("left", "50%");
   });
 
-
 });
+
+getOriginalUrl = async () => {
+  var urlParams = await new URLSearchParams(location.search);
+  var fromUrl = await urlParams.get('fromUrl');
+  return fromUrl;
+};
+
+redirectUser = function (originalUrl) {
+  originalUrl ? $(location).attr('href', originalUrl) : $(location).attr('href', '/new-trip')
+};
