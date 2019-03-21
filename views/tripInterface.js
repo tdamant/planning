@@ -15,8 +15,13 @@ $(document).ready(async function() {
               })
           };
 
+          const formatForTripMembers = () => {
+              if(isOn) { $('#join').hide() }
+          };
+
         showStages();
         showAttendees();
+        formatForTripMembers();
     };
 
     $('#submit').click(function(event) {
@@ -28,28 +33,28 @@ $(document).ready(async function() {
         location.reload();
     });
 
+    $('#join').click( async function() {
+        await $.post("/trips_users/create", {tripId: data.trip.id});
+        location.reload();
+    });
+
     const fetchData = async () => {
         let tripId = location.search.substr(1);
         let tripResponse = await fetch(`/trips/${tripId}`);
         let trip = await tripResponse.json();
-        console.log(tripId);
         let stagesObject = await fetch(`/stages/${tripId}`);
         let stages = await stagesObject.json();
         let usersOnTripResponse = await fetch(`/trips_users/${tripId}`);
         let usersOnTrip = await usersOnTripResponse.json();
-        console.log(usersOnTrip);
         let currentUser = await fetch ("/whoami");
         let currentUserId = await currentUser.json();
-        let response =
-        {
+        return {
             trip: trip,
             stages: stages,
             usersOnTrip: usersOnTrip,
             currentUserId: currentUserId
-
         };
 
-        return response
     };
 
     let data = await fetchData();

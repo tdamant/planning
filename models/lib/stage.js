@@ -11,7 +11,8 @@ class Stage {
     };
 
     static async addStage(name, content, dueDate, eventId) {
-        await connection.pool.query(`INSERT INTO stages (name, content, due_date, event_id) VALUES ('${name}', '${content}', '${dueDate}', '${eventId}') `)
+        let ids = await connection.pool.query(`INSERT INTO stages (name, content, due_date, event_id) VALUES ('${name}', '${content}', '${dueDate}', '${eventId}') returning id`)
+        return ids.rows[0].id
     }
 
     static async getStages(date) {
