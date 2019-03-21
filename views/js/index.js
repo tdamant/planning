@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
   $('#logInButton').on("click", async (event) => {
@@ -5,14 +6,12 @@ $(document).ready(function(){
     var originalUrl = await  getOriginalUrl();
     var userEmail = $("[name='email']").val();
     var userPassword = $("[name='password']").val()
-    let response = $.post("/users/authenticate", {email: userEmail, password: userPassword, originalUrl: originalUrl})
-    var parsed = JSON.parse(response)
-    console.log(response);
-    console.log(originalUrl);
-    console.log(parsed);
-    response.responseText === "failed to authenticate" ? alert('Incorrect email or password') : redirectUser(originalUrl);
-
+    let response = $.post("/users/authenticate", {email: userEmail, password: userPassword, originalUrl: originalUrl}, function(response){
+      console.log(response);
+      response === "successfully authenticated" ? redirectUser(originalUrl) : alert('Incorrect email or password');
+      });
   })
+
 
   $('#signUp').on("click", function() {
     $('#signInForm').fadeOut("fast");
@@ -34,5 +33,5 @@ getOriginalUrl = async () => {
 };
 
 redirectUser = function (originalUrl) {
-  originalUrl ? redirect('/'+ originalUrl) : redirect('/new-trip')
+  originalUrl ? $(location).attr('href', originalUrl) : $(location).attr('href', '/new-trip')
 };
