@@ -16,10 +16,23 @@ exports.checkUser = async (req, res) => {
         if (req.body.fromUrl) {
           res.redirect(req.body.fromUrl)
         } else {
-          // res.json({success: true});
-          res.send('success')
+          res.redirect('/new-trip')
+          // res.send('success')
         }
-    } else {
-        res.status(500).send('Something broke!')
+    // } else {
+    //     res.status(401).send('Something broke!')
+    };
+    if (!cookies) {
+      res.statusCode(401).send('Something broke!');
     };
 };
+
+// exports.checkUser = async (req, res) => {
+//     var cookies = new Cookies(req, res,{httpOnly: false});
+//     let response = await usersModel.checkUser(req.body.email, req.body.password);
+//     if (response) {
+//         cookies.set('user', `${response.id}`);
+//         res.redirect(req.body.fromUrl)
+//     } else {
+//         res.send("Could not find user");
+//     };

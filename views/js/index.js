@@ -7,6 +7,9 @@ $(document).ready(function(){
     if (fromUrl) {
         $('#logIn').append('<input type="hidden" name="fromUrl" value="' + fromUrl + '">')
     }
+
+    $( "#logIn" ).submit();
+
     let email = $("[name='email']").val()
     console.log(email);
     let password = $("[name='password']").val()
@@ -18,10 +21,11 @@ $(document).ready(function(){
       success: function (result) {
         console.log(result) // redirect to home
       },
-      error: () => {
+      error: (error) => {
         console.log("oh no") // pop up withj alert
+        alert("Something went wrong.");
       }
-    })
+    });
   })
 
   $('#signUp').on("click", function() {
@@ -36,13 +40,3 @@ $(document).ready(function(){
   });
 
 });
-
-// $('#logInButton').on("click", async (event) => {
-//   event.preventDefault();
-//   var urlParams = await new URLSearchParams(location.search);
-//   var fromUrl = await urlParams.get('fromUrl');
-//   if (fromUrl) {
-//       $('#logIn').append('<input type="hidden" name="fromUrl" value="' + fromUrl + '">')
-//   }
-//   $( "#logIn" ).submit();
-// })
