@@ -15,7 +15,7 @@ button {
 
   /* pink to orange */
   background: #ee0979;
-  background: linear-gradient(to right, #ee0979, #ff6a00);
+  background: linear-gradient(to right, #ee0979, #f4b11c);
 
   vertical-align: top;
 }
