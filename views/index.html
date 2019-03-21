@@ -29,21 +29,22 @@
         <div id="signInForm">
           <h1>Sign In</h1>
 
-          <form id="logIn" action="/users/authenticate" method="post" >
+          <form id="logIn" >
             <label for="email">Email:</label>
             <input type="email" name="email" />
 
             <label for="password">Password:</label>
             <input type="password" name="password" />
 
-            <button class="ellipse" type="submit" id="logInButton">Sign In</button>
+            <input type="submit" value="submit" id="logInButton"/>
+            <!-- <button class="ellipse" id="logInButton">Sign In</button> -->
           </form>
 
         </div>
         <div id="signUpForm" style="display: none;">
           <h1>Sign Up</h1>
 
-          <form action="/users" method="post" name="signUp" >
+          <form action="/users/create" method="post" name="signUp" >
             <label for="firstname">First Name:</label>
             <input type="text" name="firstName" />
 

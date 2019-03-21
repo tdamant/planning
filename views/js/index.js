@@ -2,30 +2,16 @@ $(document).ready(function(){
 
   $('#logInButton').on("click", async (event) => {
     event.preventDefault();
-    var urlParams = await new URLSearchParams(location.search);
-    var fromUrl = await urlParams.get('fromUrl');
-    if (fromUrl) {
-        $('#logIn').append('<input type="hidden" name="fromUrl" value="' + fromUrl + '">')
-    }
+    var originalUrl = await  getOriginalUrl();
+    var userEmail = $("[name='email']").val();
+    var userPassword = $("[name='password']").val()
+    let response = $.post("/users/authenticate", {email: userEmail, password: userPassword, originalUrl: originalUrl})
+    var parsed = JSON.parse(response)
+    console.log(response);
+    console.log(originalUrl);
+    console.log(parsed);
+    response.responseText === "failed to authenticate" ? alert('Incorrect email or password') : redirectUser(originalUrl);
 
-    $( "#logIn" ).submit();
-
-    let email = $("[name='email']").val()
-    console.log(email);
-    let password = $("[name='password']").val()
-    console.log(password);
-
-    await $.ajax({
-      url: "/users/authenticate?email="+email+"&password="+password,
-      method: "POST",
-      success: function (result) {
-        console.log(result) // redirect to home
-      },
-      error: (error) => {
-        console.log("oh no") // pop up withj alert
-        alert("Something went wrong.");
-      }
-    });
   })
 
   $('#signUp').on("click", function() {
@@ -40,3 +26,13 @@ $(document).ready(function(){
   });
 
 });
+
+getOriginalUrl = async () => {
+  var urlParams = await new URLSearchParams(location.search);
+  var fromUrl = await urlParams.get('fromUrl');
+  return fromUrl;
+};
+
+redirectUser = function (originalUrl) {
+  originalUrl ? redirect('/'+ originalUrl) : redirect('/new-trip')
+};
