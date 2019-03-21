@@ -100,7 +100,7 @@ button:hover {
     text-align: center;
 }
 
-.whiteBox #signInForm, .whiteBox #signUpForm {
+.whiteBox #logInForm, .whiteBox #signUpForm {
     border: 3px double #1d654b;
     padding: 20px;
 }
