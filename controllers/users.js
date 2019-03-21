@@ -1,15 +1,21 @@
 const usersModel = require("../models/lib/users.js");
 const Cookies = require('cookies');
 
-exports.addUser = (req, res) => {
+exports.addUser = async (req, res) => {
+  var cookies = new Cookies(req, res,{httpOnly: false});
+  let existsInDb = await usersModel.authSignUp(req.body.email);
+  if (existsInDb) {
+    res.send('user already exists')
+  } else {
+    cookies.set('user', `${existsInDb.id}`);
     usersModel.addUser(req.body.firstName, req.body.lastName, req.body.email, req.body.phoneNumber, req.body.password);
-    // set the cookie here so they are logged in to session
-    res.send("You signed up!") // here we'll send them to the home page ortheir original Url?
+    res.send('succesfully saved to db')
+  };
 };
 
-exports.checkUser = async (req, res) => {
+exports.authLogin = async (req, res) => {
   var cookies = new Cookies(req, res,{httpOnly: false});
-  let response = await usersModel.checkUser(req.body.email, req.body.password);
+  let response = await usersModel.authLogin(req.body.email, req.body.password);
   if (response) {
       cookies.set('user', `${response.id}`);
       res.send('successfully authenticated')

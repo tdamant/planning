@@ -1,26 +1,47 @@
 
 $(document).ready(function(){
 
-  $('#logInButton').on("click", async (event) => {
-    event.preventDefault();
+  $('#logInButton').on("click", async () => {
     var originalUrl = await  getOriginalUrl();
     var userEmail = $("[name='email']").val();
     var userPassword = $("[name='password']").val()
-    let response = $.post("/users/authenticate", {email: userEmail, password: userPassword, originalUrl: originalUrl}, function(response){
-      console.log(response);
+    let response = $.post("/users/authenticate", {
+      email: userEmail,
+      password: userPassword,
+      originalUrl: originalUrl},
+      function (response) {
       response === "successfully authenticated" ? redirectUser(originalUrl) : alert('Incorrect email or password');
+      });
+  })
+
+  $('#signUpButton').on("click", async () => {
+    var originalUrl = await  getOriginalUrl();
+    var userFirstName = $("[name='signInEmail']").val();
+    var userLastName = $("[name='signInEmail']").val();
+    var userEmail = $("[name='signInEmail']").val();
+    var userPhone = $("[name='signInEmail']").val();
+    var userPassword = $("[name='signInPassword']").val()
+    let response = $.post("/users/create", {
+      firstName: userFirstName,
+      lastName: userLastName,
+      email: userEmail,
+      phoneNumber: userPhone,
+      password: userPassword,
+      originalUrl: originalUrl},
+      function (response) {
+      response === "user already exists" ? alert('This email address is already in use.') : redirectUser(originalUrl);
       });
   })
 
 
   $('#signUp').on("click", function() {
-    $('#signInForm').fadeOut("fast");
+    $('#logInForm').fadeOut("fast");
     $('#signUpForm').delay("slow").fadeIn("fast");
     $('.whiteBox').css("left", "25%");
   });
   $('#signIn').on("click", function(){
     $('#signUpForm').fadeOut("fast");
-    $('#signInForm').delay("slow").fadeIn("fast");
+    $('#logInForm').delay("slow").fadeIn("fast");
     $('.whiteBox').css("left", "50%");
   });
 

@@ -26,25 +26,21 @@
     </div>
     <div class="whiteBox">
       <div class="container">
-        <div id="signInForm">
+        <div id="logInForm">
           <h1>Sign In</h1>
 
-          <form id="logIn" >
             <label for="email">Email:</label>
             <input type="email" name="email" />
 
             <label for="password">Password:</label>
             <input type="password" name="password" />
 
-            <input type="submit" value="submit" id="logInButton"/>
-            <!-- <button class="ellipse" id="logInButton">Sign In</button> -->
-          </form>
+            <button class="ellipse" id="logInButton">Sign In</button>
 
         </div>
         <div id="signUpForm" style="display: none;">
           <h1>Sign Up</h1>
 
-          <form action="/users/create" method="post" name="signUp" >
             <label for="firstname">First Name:</label>
             <input type="text" name="firstName" />
 
@@ -52,16 +48,15 @@
             <input type="text" name="lastName" />
 
             <label for="email">Email:</label>
-            <input type="email" name="email" />
+            <input type="email" name="signInEmail" />
 
             <label for="phonenumber">Phone Number:</label>
             <input type="number" name="phoneNumber" \>
 
             <label for="password">Password:</label>
-            <input type="password" name="password" />
+            <input type="password" name="signInPassword" />
 
-            <button class="ellipse" type="submit">Sign Up</button>
-          </form>
+            <button class="ellipse" id="signUpButton">Sign Up</button>
 
         </div>
       </div>
