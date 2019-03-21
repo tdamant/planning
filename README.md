@@ -21,7 +21,7 @@ Create stages and user tables:
 ```
 \c planning;
 
-CREATE TABLE stages (id SERIAL, name VARCHAR, content VARCHAR, due_date DATE, event_id INTEGER);
+CREATE TABLE stages (id SERIAL PRIMARY KEY, name VARCHAR, content VARCHAR, due_date DATE, event_id INTEGER);
 
 CREATE TABLE users (id SERIAL, name VARCHAR, email VARCHAR, phone_number VARCHAR);
 ```
@@ -36,4 +36,10 @@ Create trips_users table:
 
 ```
 create table trips_users (id SERIAL PRIMARY KEY, trip_id INTEGER REFERENCES trips (id), user_id INTEGER REFERENCES users (id));
+```
+
+Create stages_users table:
+
+```
+CREATE TABLE stages_users (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), stage_id INTEGER REFERENCES stages (id));
 ```

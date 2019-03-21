@@ -1,7 +1,9 @@
-const sleep = require('sleep')
+const sleep = require('sleep');
+const connection = require("../database/connection");
 
 describe('New Stage', () => {
     beforeAll(async () => {
+        // await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
         var cookie = [
             {
                 "domain": "localhost",

@@ -23,8 +23,13 @@ class User {
     }
 
     static async getUsers(idArray) {
-        let ids = idArray.join("','");
-        let results = await connection.pool.query(`SELECT id, first_name, last_name FROM users WHERE id in (${ids}) `);
+        let ids = idArray.join(",");
+        let results = await connection.pool.query(`SELECT id, first_name, last_name, phone_number FROM users WHERE id in (${ids}) `);
+        return results.rows
+    }
+
+    static async getUsersByTripId(tripId) {
+        let results = await connection.pool.query(`SELECT user_id FROM trips_users WHERE trip_id = '${tripId}' `);
         return results.rows
     }
 }
