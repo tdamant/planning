@@ -7,8 +7,8 @@ exports.addUser = async (req, res) => {
   if (existsInDb) {
     res.send('user already exists')
   } else {
-    cookies.set('user', `${existsInDb.id}`);
-    usersModel.addUser(req.body.firstName, req.body.lastName, req.body.email, req.body.phoneNumber, req.body.password);
+    let user = await usersModel.addUser(req.body.firstName, req.body.lastName, req.body.email, req.body.phoneNumber, req.body.password);
+    cookies.set('user', `${user.id}`);
     res.send('succesfully saved to db')
   };
 };
