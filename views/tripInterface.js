@@ -1,7 +1,10 @@
 $(document).ready(async function() {
     const formatTripOverview = async() => {
         $('#trip-title').prepend(`${data.trip.name}`);
-        $('#trip-description').prepend(`${data.trip.description}`);
+
+        let description = data.trip.description;
+        let cleanDescription = description.replace(/\\/, "'")
+        $('#trip-description').prepend(`${cleanDescription}`);
 
           const showStages = () => {
               if(data.stages.length > 0) {

@@ -16,10 +16,10 @@ $(document).ready(function(){
 
   $('#signUpButton').on("click", async () => {
     var originalUrl = await  getOriginalUrl();
-    var userFirstName = $("[name='signInEmail']").val();
-    var userLastName = $("[name='signInEmail']").val();
+    var userFirstName = $("[name='firstName']").val();
+    var userLastName = $("[name='lastName']").val();
     var userEmail = $("[name='signInEmail']").val();
-    var userPhone = $("[name='signInEmail']").val();
+    var userPhone = $("[name='phoneNumber']").val();
     var userPassword = $("[name='signInPassword']").val()
     let response = $.post("/users/create", {
       firstName: userFirstName,
