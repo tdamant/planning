@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-  $('#logInButton').on("click", async () => {
+  $('#logInButton').on("click", async (event) => {
+    event.preventDefault();
     var originalUrl = await  getOriginalUrl();
     var userEmail = $("[name='email']").val();
     var userPassword = $("[name='password']").val()
@@ -13,7 +14,8 @@ $(document).ready(function(){
       });
   })
 
-  $('#signUpButton').on("click", async () => {
+  $('#signUpButton').on("click", async (event) => {
+    event.preventDefault();
     var originalUrl = await  getOriginalUrl();
     var userFirstName = $("[name='firstName']").val();
     var userLastName = $("[name='lastName']").val();
@@ -34,13 +36,14 @@ $(document).ready(function(){
 
 
   $('#signUp').on("click", function() {
-    $('#logInForm').fadeOut("fast");
-    $('#signUpForm').delay("slow").fadeIn("fast");
+    $('#logInDiv').fadeOut("fast");
+    $('#signUpDiv').delay("slow").fadeIn("fast");
     $('.whiteBox').css("left", "25%");
   });
+
   $('#signIn').on("click", function(){
-    $('#signUpForm').fadeOut("fast");
-    $('#logInForm').delay("slow").fadeIn("fast");
+    $('#signUpDiv').fadeOut("fast");
+    $('#logInDiv').delay("slow").fadeIn("fast");
     $('.whiteBox').css("left", "50%");
   });
 

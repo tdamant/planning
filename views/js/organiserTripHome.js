@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
-  // $('#next').on("click", function() {
-  //   $(location).attr('href', '/organiserTripHome')
-  // });
+  $('#addStage').on("click", function() {
+    $('#stageCreator').show("fast");
+  });
+
+  $('#saveStage').on("click", function() {
+    $('#stageCreator').hide("fast");
+  });
 
 });

@@ -19,17 +19,17 @@ describe("users", () => {
     });
 
     it("can authenticate a user's credentials", async () => {
-        let result = await User.checkUser('tomdamant@hotmail.com', 'strongpassword');
+        let result = await User.authLogin('tomdamant@hotmail.com', 'strongpassword');
         expect(result.id).toEqual(1);
     });
 
-    it("wont authenticate incorect password", async() => {
-        let result = await User.checkUser('tomdamant@hotmail.com', "wrongpassword");
+    it("wont authenticate incorrect password", async() => {
+        let result = await User.authLogin('tomdamant@hotmail.com', "wrongpassword");
         expect(result).toEqual(false)
     });
 
-    it("wont authenticate incorect email", async() => {
-        let result = await User.checkUser('different@hotmail.com', "strongpassword");
+    it("wont authenticate incorrect email", async() => {
+        let result = await User.authLogin('different@hotmail.com', "strongpassword");
         expect(result).toEqual(false)
     })
 });

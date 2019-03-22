@@ -25,25 +25,27 @@
         </div>
       </div>
     </div>
+
     <div class="whiteBox">
       <div class="container">
-        <div id="logInForm">
+        <div id="logInDiv">
           <h1>Sign In</h1>
-
+          <form name="logInForm">
             <label for="email">Email:</label>
             <input type="email" name="email" />
 
             <label for="password">Password:</label>
             <input type="password" name="password" />
 
-            <button class="ellipse" id="logInButton">Sign In</button>
-
+            <input type="submit" class="ellipse" id="logInButton" value="Sign In"/>
+          </form>
         </div>
-        <div id="signUpForm" style="display: none;">
-          <h1>Sign Up</h1>
+        <div id="signUpDiv" style="display: none;">
 
+          <h1>Sign Up</h1>
+          <form name="signUpForm">
             <label for="firstname">First Name:</label>
-            <input type="text" name="firstName" />
+            <input type="text" name="firstName" id="firstName" />
 
             <label for="lastname">Last Name:</label>
             <input type="text" name="lastName" />
@@ -52,15 +54,14 @@
             <input type="email" name="signInEmail" />
 
             <label for="phonenumber">Phone Number:</label>
-            <input type="number" name="phoneNumber" \>
+            <input type="number" name="phoneNumber"  />
 
             <label for="password">Password:</label>
             <input type="password" name="signInPassword" />
 
-            <button class="ellipse" id="signUpButton">Sign Up</button>
-
+            <input type="submit" class="ellipse" id="signUpButton" value="Sign Up"/>
+          </form>
         </div>
       </div>
-    </div>
   </body>
 </html>
