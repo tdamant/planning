@@ -1,5 +1,9 @@
 $(document).ready(async function() {
 
+    const cleanStringForDb = function(string) {
+        return string.replace(/'/g , "\\");
+    };
+
     const cleanDbString = function(string) {
         return string.replace(/\\/, "'")
     };
@@ -11,11 +15,15 @@ $(document).ready(async function() {
 
         let dbDescription = data.trip.description;
         let description = cleanDbString(dbDescription);
+
         $('#trip-description').prepend(`${description}`);
 
           const showStages = () => {
               if(data.stages.length > 0) {
-                  data.stages.forEach(stage => {$('#stages-list').append(`${stage.name} <br>`)})
+                  data.stages.forEach(stage => {
+                      let cleanStageDescription = cleanDbString(stage.content);
+                      $('#stages-list').append(`${stage.name} - ${cleanStageDescription} <br>`)
+                  })
               }
           };
 
@@ -38,8 +46,10 @@ $(document).ready(async function() {
         event.preventDefault();
         let stageName = $('#stageName').val();
         let content = $('#stageContent').val();
+        console.log(content)
+        let cleanContent = cleanStringForDb(content);
         let due_date = $('#stageDueDate').val();
-        $.post("/stages/create", {stageName: stageName, content: content, due_date: due_date, trip_id: data.trip.id });
+        $.post("/stages/create", {stageName: stageName, content: cleanContent, due_date: due_date, trip_id: data.trip.id });
         location.reload();
     });
 
