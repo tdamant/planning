@@ -26,7 +26,7 @@ describe('New Trip', () => {
             }
         ];
         await page.setCookie(...cookie);
-        await page.goto('http://localhost:5000/new-trip')
+        await page.goto('http://localhost:5000/newTrip')
     });
 
 
