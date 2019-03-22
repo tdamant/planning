@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $('#next').on("click", function() {
-    $(location).attr('href', '/tripHomeExample')
+    $(location).attr('href', '/organiserTripHome')
   });
 
 });
