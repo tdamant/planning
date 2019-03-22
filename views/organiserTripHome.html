@@ -12,14 +12,20 @@
     <p>Trip name</p>
     <p>Trip description</p><br><br>
 
-    <div style="width:700px;height:200px;background-color:#ffcc00;">
+    <div style="width:700px;height:50px;background-color:#ffcc00;">
      (POLLS) <br> <span> Dates ---- Locations ---- Budget </span>
     </div>
 
     <br><br><br>
 
-    <div style="width:700px;height:100px;background-color:#4286f4;">
-     (Deadlines) <br> <span> Dates ---- Locations ---- Budget </span>
+    <div style="width:700px;height:50px;background-color:#4286f4;">
+       (DEADLINES) <br> <span> Dates ---- Locations ---- Budget </span>
+    </div>
+
+    <br><br><br>
+
+    <div style="width:700px;height:50px;background-color:#f2bfeb;">
+     (ATTENDEES) <br> <span> Confirmed ---- Unconfirmed </span>
     </div>
 
     <br><br><br>
@@ -27,6 +33,23 @@
     What do the guests need to do? <br>
     We'll send them reminders for you, just give us the task details and deadline. <br><br>
     <button id="addStage">Add a task</button>
+
+    <div id="stageCreator" style="display: none;background-color:#ffcc00;">
+      <p>What's this task called (e.g. Book flights): </p>
+      <input type="text" id=""><br>
+      <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
+      <input type="text" id=""><br>
+      <p>What's the deadline:</p>
+      <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
+      <button id="saveStage">Save Reminder</button>
+    </div>
+
+    <br><br><br>
+
+    <div style="width:700px;height:50px;background-color:#4286f4;">
+       Here's all the reminders being sent out already: <br>
+    </div>
+
 
   </body>
 </html>
