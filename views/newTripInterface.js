@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-    const cleanStringForDb = function(string) {
-        return string.replace(/'/g , "\\");
-    };
-
     $('#submit').click( async function(event) {
         event.preventDefault();
         let tripName = $('#tripName').val();

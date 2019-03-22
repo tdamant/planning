@@ -1,13 +1,5 @@
 $(document).ready(async function() {
 
-    const cleanStringForDb = function(string) {
-        return string.replace(/'/g , "\\");
-    };
-
-    const cleanDbString = function(string) {
-        return string.replace(/\\/, "'")
-    };
-
     const formatTripOverview = async() => {
         let dbName = data.trip.name;
         let name = cleanDbString(dbName);
@@ -46,7 +38,6 @@ $(document).ready(async function() {
         event.preventDefault();
         let stageName = $('#stageName').val();
         let content = $('#stageContent').val();
-        console.log(content)
         let cleanContent = cleanStringForDb(content);
         let due_date = $('#stageDueDate').val();
         $.post("/stages/create", {stageName: stageName, content: cleanContent, due_date: due_date, trip_id: data.trip.id });
