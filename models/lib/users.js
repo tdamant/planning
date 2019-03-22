@@ -21,8 +21,9 @@ class User {
 
   static async addUser(firstName, lastName, email, phoneNumber, password) {
       let hashed = await bcrypt.hash(password, saltRounds);
-      await connection.pool.query(`INSERT INTO users (first_name, last_name, email, phone_number, password)
-      VALUES ('${firstName}', '${lastName}', '${email}', '${phoneNumber}', '${hashed}')`)
+      let response = await connection.pool.query(`INSERT INTO users (first_name, last_name, email, phone_number, password)
+      VALUES ('${firstName}', '${lastName}', '${email}', '${phoneNumber}', '${hashed}') returning id`)
+      return response.rows[0]
   };
 
   static async getUsers(idArray) {
