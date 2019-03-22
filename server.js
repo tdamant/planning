@@ -15,11 +15,11 @@ dotenv.config();
 app.use(cookieParser());
 
 
-app.all("/trip", (req, res) => {
+app.all("/trip", (req, res) => { //have this for all pages they land on
     if (!req.cookies.user) {
         res.redirect("/?fromUrl=" +req.originalUrl)
     } else {
-        res.sendFile(path.resolve(__dirname, "views", "trip.html")) // go to their original URL!
+        res.sendFile(path.resolve(__dirname, "views", "tripHome.html")) // go to their original URL!
     }
 });
 
@@ -30,15 +30,35 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "index.html"));
 });
 
+app.get("/home", (req, res) => {
+    if (!req.cookies.user) {
+        res.redirect("/?fromUrl=" +req.originalUrl)
+    } else {
+        res.sendFile(path.resolve(__dirname, "views", "home.html"));
+    }
+});
+
+app.get("/polls", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "polls.html"));
+});
+
+app.get("/guests", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "guests.html"));
+});
+
+app.get("/organiserTripHome", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "organiserTripHome.html"));
+});
+
 app.get("/whoami", (req, res) => {
     res.send(req.cookies.user)
 });
 
-app.get("/new-trip", (req, res) => {
+app.get("/newTrip", (req, res) => {
     if (!req.cookies.user) {
-        res.redirect("/log_in?fromUrl=" +req.originalUrl)
+        res.redirect("/?fromUrl=" +req.originalUrl)
     } else {
-        res.sendFile(path.resolve(__dirname, "views", "new-trip.html"));
+        res.sendFile(path.resolve(__dirname, "views", "newTrip.html"));
     }
 });
 

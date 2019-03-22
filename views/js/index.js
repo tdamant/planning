@@ -54,5 +54,5 @@ getOriginalUrl = async () => {
 };
 
 redirectUser = function (originalUrl) {
-  originalUrl ? $(location).attr('href', originalUrl) : $(location).attr('href', '/new-trip')
+  originalUrl ? $(location).attr('href', originalUrl) : $(location).attr('href', '/home')
 };
