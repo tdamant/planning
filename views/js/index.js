@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
   $('#logInButton').on("click", async (event) => {

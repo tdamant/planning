@@ -23,3 +23,8 @@ exports.authLogin = async (req, res) => {
       res.send('failed to authenticate')
   };
 }
+
+exports.getUser = async (req, res) => {
+  let response = await usersModel.getUsers([req.cookies.user]);
+  res.send(response)
+}

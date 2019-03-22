@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Planning App</title>
+    <!-- <link rel="stylesheet" href="css/main.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/pollsInterface.js"></script>
+  </head>
+  <body align="center" >
+
+    <p>This is where we create polls to find out the preferences of the guests.</p><br><br>
+    <p>Guests will recieve text messages to remind them to fill in the polls.</p>
+
+    <p>You can skip this stage, or build whichever polls you need from the drop down list.</p><br><br>
+
+    <p>What do you and the rest of the guests need to decide on?</p>
+    <select id="polls">
+      <option id="blank"></option>
+      <option id="datesPoll">Dates</option>
+      <option id="locationPoll">Location</option>
+      <option id="budgetPoll">Budget</option>
+    </select><br>
+      <button id="buildPoll">Build Poll</button>
+
+    <br><br><br>
+
+    <div id="pollCreator" style="display: none;background-color:#ffcc00;">
+      Add the options for guests to pick from: <br><br>
+      <input type="text" id=""><br>
+      <input type="text" id=""><br>
+      <input type="text" id=""><br><br>
+      <button>Add another option</button><br>
+      <p>Poll Deadline</p>
+      <input type="text" id="deadline"><br>
+      <button id="savePoll">Save Poll</button>
+    </div>
+
+    <br><br><br><br>
+
+    <button id="next">Invite Guests</button>
+
+  </body>
+</html>
