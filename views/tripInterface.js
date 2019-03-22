@@ -1,10 +1,17 @@
 $(document).ready(async function() {
-    const formatTripOverview = async() => {
-        $('#trip-title').prepend(`${data.trip.name}`);
 
-        let description = data.trip.description;
-        let cleanDescription = description.replace(/\\/, "'")
-        $('#trip-description').prepend(`${cleanDescription}`);
+    const cleanDbString = function(string) {
+        return string.replace(/\\/, "'")
+    };
+
+    const formatTripOverview = async() => {
+        let dbName = data.trip.name;
+        let name = cleanDbString(dbName);
+        $('#trip-title').prepend(`${name}`);
+
+        let dbDescription = data.trip.description;
+        let description = cleanDbString(dbDescription);
+        $('#trip-description').prepend(`${description}`);
 
           const showStages = () => {
               if(data.stages.length > 0) {
