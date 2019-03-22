@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>New Trip</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/home.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="js/newTripInterface.js"></script>
+  <meta charset="UTF-8">
+  <title>New Trip</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script src="js/newTripInterface.js"></script>
 </head>
 <body>
-    <h1>Set up your trip</h1>
-        <div name="addTrip">
-            What would you like to call your trip?: <input type="text" id="tripName" name="tripName" placeholder="My fun trip" required><br>
-            Provide a short description: <br><textarea type="text" id="description" name="description" placeholder="What do you have in mind?" rows="5" cols ="60" required></textarea><br>
-            <br>
-            <input type="submit" id="submit" value="Create">
-        </div>
-    </body>
+  <h1>Set up your trip</h1>
+    <div name="addTrip">
+      <form name="addTrip">
+      <label for="tripName">What would you like to call your trip?</label>
+      <input type="text" id="tripName" name="tripName" placeholder="My fun trip" required><br>
+      <label for="description">Provide a short description:</label>
+      <textarea type="text" id="description" name="description" placeholder="What do you have in mind?" rows="5" cols ="60" required></textarea>
+      <input type="submit" id="submit" value="Create">
+    </form>
+    </div>
+</body>
 </html>
