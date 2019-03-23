@@ -21,20 +21,22 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "index.html"));
 });
 
-app.use(function(req, res, next) {
-    if (!req.cookies.user){
-      return res.redirect('/?fromUrl=' +req.originalUrl);
-    } else {
-      next()
-    }
-});
-
 app.use("/trips", trips);
 app.use("/users", users);
 app.use("/stages", stages);
 app.use("/trips_users", tripsUsers);
 
+app.use(function(req, res, next) {
+    if (!req.cookies.user){
+      res.redirect('/?fromUrl=' +req.originalUrl);
+    } else {
+      next()
+    }
+});
 
+app.get("/home", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "home.html"));
+});
 
 app.get("/polls", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "polls.html"));

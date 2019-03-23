@@ -8,8 +8,9 @@ $(document).ready(function(){
     let response = $.post("/users/authenticate", {
       email: userEmail,
       password: userPassword,
-      originalUrl: originalUrl},
+      originalUrl: originalUrl },
       function (response) {
+        console.log(response);
       response === "successfully authenticated" ? redirectUser(originalUrl) : alert('Incorrect email or password');
       });
   })
@@ -28,7 +29,7 @@ $(document).ready(function(){
       email: userEmail,
       phoneNumber: userPhone,
       password: userPassword,
-      originalUrl: originalUrl},
+      originalUrl: originalUrl },
       function (response) {
       response === "user already exists" ? alert('This email address is already in use.') : redirectUser(originalUrl);
       });
