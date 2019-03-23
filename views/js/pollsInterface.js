@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
   $('#buildPoll').on("click", function() {
-    $('#pollCreator').show("fast");
+    if ($("#polls").val()) {
+      $('#pollCreator').show("fast");
+    } else {
+      alert('Please pick a Poll to create from the drop down list.')
+    };
   });
 
   $('#savePoll').on("click", function() {
@@ -12,9 +16,7 @@ $(document).ready(function() {
           options.push( $( this ).val())
       });
       let deadline = $("#deadline").val();
-      console.log(type+options+deadline+tripId);
-      console.log(options);
-      $.post("/polls/create", {type: type, options: JSON.stringify(options), deadline: deadline, tripId: tripId });
+      $.post("/polls/create", {type: type, options: options.join(','), deadline: deadline, tripId: tripId });
       $('#pollCreator').hide("fast");
   });
 

@@ -18,7 +18,7 @@ CREATE TABLE users (id SERIAL PRIMARY KEY, first_name VARCHAR, last_name VARCHAR
 ```
 Create polls table:
 ```
-CREATE TABLE polls (id SERIAL PRIMARY KEY, type VARCHAR, options VARCHAR ARRAY, deadline DATE, trip_id INTEGER REFERENCES trips (id));
+CREATE TABLE polls (id SERIAL PRIMARY KEY, type VARCHAR, options VARCHAR, deadline DATE, trip_id INTEGER REFERENCES trips (id));
 ```
 
 Create trips_users table:
