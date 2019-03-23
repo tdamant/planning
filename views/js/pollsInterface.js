@@ -1,15 +1,22 @@
 $(document).ready(function() {
 
   $('#buildPoll').on("click", function() {
-    $('#pollCreator').show("fast");
+    if ($("#polls").val()) {
+      $('#pollCreator').show("fast");
+    } else {
+      alert('Please pick a Poll to create from the drop down list.')
+    };
   });
 
   $('#savePoll').on("click", function() {
-      console.log($("#polls").val());
-      $( ".pollOption" ).each(function( index ) {
-          console.log( index + ": " + $( this ).val() );
+      let tripId = getUrlParams('tripId')
+      let type = $("#polls").val();
+      let options = [];
+      $( ".pollOption" ).each(function() {
+          options.push( $( this ).val())
       });
-      console.log($("#deadline").val());
+      let deadline = $("#deadline").val();
+      $.post("/polls/create", {type: type, options: options.join(','), deadline: deadline, tripId: tripId });
       $('#pollCreator').hide("fast");
   });
 
@@ -20,5 +27,19 @@ $(document).ready(function() {
   $("#addAnotherOption").on("click", function() {
       let input = $("<input type=\"text\" class = \"pollOption\"><br>")
       $('#pollOptions').append(input)
-  })
+  });
+
+  const getUrlParams = (name) => {
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      return results[1];
+  };
+
 });
+
+//
+// /polls/create
+// {
+//   type: type,
+//       options: optionsArray,
+//     deadline: deadline,
+// }

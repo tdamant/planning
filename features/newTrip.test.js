@@ -48,7 +48,6 @@ describe('New Trip', () => {
         });
         await page.click('#submit');
         await page.waitForNavigation({'waitUntil': 'networkidle0'});
-        await expect(page).toMatch('Unique Trip name');
-        await expect(page).toMatch('Trip description')
+        await expect(page).toMatch('This is where we create polls to find out the preferences of the guests');
     });
 });
