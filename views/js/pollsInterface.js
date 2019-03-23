@@ -13,7 +13,8 @@ $(document).ready(function() {
       });
       let deadline = $("#deadline").val();
       console.log(type+options+deadline+tripId);
-      // $.post("/polls/create", {type: type, options: options, deadline: deadline, tripId: tripId });
+      console.log(options);
+      $.post("/polls/create", {type: type, options: JSON.stringify(options), deadline: deadline, tripId: tripId });
       $('#pollCreator').hide("fast");
   });
 

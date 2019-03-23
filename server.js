@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT;
 const path = require("path");
 const trips = require("./routes/trips.js");
+const polls = require("./routes/polls.js");
 const users = require("./routes/users.js");
 const tripsUsers = require("./routes/tripsUsers.js");
 var cookieParser = require("cookie-parser");
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/trips", trips);
+app.use("/polls", polls);
 app.use("/users", users);
 app.use("/stages", stages);
 app.use("/trips_users", tripsUsers);
@@ -36,10 +38,6 @@ app.use(function(req, res, next) {
 
 app.get("/home", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "home.html"));
-});
-
-app.get("/polls", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "polls.html"));
 });
 
 app.get("/guests", (req, res) => {
