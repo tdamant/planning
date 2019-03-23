@@ -46,6 +46,11 @@ app.get("/guests", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "guests.html"));
 });
 
+app.get("/newTrip", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "newTrip.html"));
+});
+
+
 app.get("/organiserTripHome", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "organiserTripHome.html"));
 });

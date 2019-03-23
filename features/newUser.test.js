@@ -21,7 +21,7 @@ describe('Sign Up', () => {
 
     it('should redirect to the next page on submit', async () => {
         await page.click("#signUp");
-        await sleep.sleep(1)
+        await sleep.sleep(1);
         await page.waitForSelector("#firstName");
         await page.screenshot({path:"test1.png"});
         await expect(page).toFillForm('form[name="signUpForm"]', {
