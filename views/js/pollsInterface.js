@@ -5,11 +5,20 @@ $(document).ready(function() {
   });
 
   $('#savePoll').on("click", function() {
-    $('#pollCreator').hide("fast");
+      console.log($("#polls").val());
+      $( ".pollOption" ).each(function( index ) {
+          console.log( index + ": " + $( this ).val() );
+      });
+      console.log($("#deadline").val());
+      $('#pollCreator').hide("fast");
   });
 
   $('#next').on("click", function() {
     $(location).attr('href', '/guests')
   });
 
+  $("#addAnotherOption").on("click", function() {
+      let input = $("<input type=\"text\" class = \"pollOption\"><br>")
+      $('#pollOptions').append(input)
+  })
 });

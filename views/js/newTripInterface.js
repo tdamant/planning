@@ -5,8 +5,7 @@ $(document).ready(function() {
         let description = $('#description').val();
         let cleanDescription = description.replace(/'/g , "\\");
         let trip = await $.post("/trips/create", {tripName: tripName, description: cleanDescription});
-//         $(location).attr('href', `/polls`) // append with trip id
-        $(location).attr('href', `/trip?${trip.id}`)
+        $(location).attr('href', `/polls?tripId=${trip.id}`)
     });
 });
 

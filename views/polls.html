@@ -29,12 +29,14 @@
 
     <div id="pollCreator" style="display: none;background-color:#ffcc00;">
       Add the options for guests to pick from: <br><br>
-      <input type="text" id=""><br>
-      <input type="text" id=""><br>
-      <input type="text" id=""><br><br>
-      <button>Add another option</button><br>
+      <div id="pollOptions">
+      <input type="text" class = "pollOption"><br>
+      <input type="text" class = "pollOption"><br>
+      <input type="text" class = "pollOption"><br>
+      </div><br>
+      <button id="addAnotherOption">Add another option</button><br>
       <p>Poll Deadline</p>
-      <input type="text" id="deadline"><br>
+      <input type="date" id="deadline"><br>
       <button id="savePoll">Save Poll</button>
     </div>
 
