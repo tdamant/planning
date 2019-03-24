@@ -90,7 +90,8 @@ button:hover {
     height: 450px;
     width: 25%;
     /* margin: auto; */
-    margin-top: 10%;
+    margin-top: 15%;
+    margin-bottom: 40px;
     background: white;
     box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
     transition: all 500ms ease-in-out;
@@ -100,7 +101,7 @@ button:hover {
     text-align: center;
 }
 
-.whiteBox #logInForm, .whiteBox #signUpForm {
+.whiteBox #logInDiv, .whiteBox #signUpDiv {
     border: 3px double #f4b11c;
     padding: 20px;
 }

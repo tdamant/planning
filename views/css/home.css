@@ -8,7 +8,8 @@ body {
 
 h1{
   font-size: 4vw;
-  text-shadow: 1px 1px 4px rgb(170, 169, 169);
+  color: black;
+  text-shadow: 1px 1px 4px rgba(238, 10, 121, 0.81);
 }
 
 h2{
@@ -91,9 +92,8 @@ input:focus {
 label {
     display: block;
     margin: 10px 0 8px 0;
-    color: #f4b11c;
+    color: #000000;
     font-family: 'Roboto Condensed', sans-serif;
-    text-shadow: 2px 2px 4px #000000;
     /* font-size: 16px; */
     font-size: 1.5vw;
     box-sizing: border-box;
@@ -123,4 +123,13 @@ textarea:focus {
 textarea::placeholder {
   text-align: left;
   font-size: 1.2vw;
+}
+
+.card {
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0, 0, 0, 0.39);
+  margin:16px!important;
+  color:#000!important;
+  background-color:rgba(255, 255, 255, 0.71)!important;
+  padding:1em 16px;
+  border-radius: 3px;
 }
