@@ -8,6 +8,39 @@ body {
 
 h1{
   font-size: 4vw;
+  text-shadow: 1px 1px 4px rgb(170, 169, 169);
+}
+
+h2{
+  font-size: 2vw;
+  text-shadow: 1px 1px 4px #ee0979;
+  color: #f4b11c;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+a{
+  color: #f4b11c;
+}
+
+a:hover{
+  color: #ee0979;
+}
+
+h3{
+  font-size: 1.5vw;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-shadow: 1px 1px 4px #ee0979;
+  color: #f4b11c;
+}
+
+select{
+  min-width: 135px;
+  max-width: 200px;
+}
+
+select:focus{
+  outline: none !important;
+  border:1px solid #ee0979;
 }
 
 button, input[type="submit"] {
@@ -60,9 +93,9 @@ label {
     margin: 10px 0 8px 0;
     color: #f4b11c;
     font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: 2px 2px 4px #000000;
     /* font-size: 16px; */
     font-size: 1.5vw;
-    text-shadow: 2px 1px greyrgba(79, 60, 19, 0.68);
     box-sizing: border-box;
     text-align: left;
 
