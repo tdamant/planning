@@ -8,6 +8,7 @@ body {
   margin: 0;
   display: grid;
   align-items: center;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 body::before {
@@ -47,7 +48,6 @@ body::before {
 h1 {
     font-size: 25px;
     margin: 0;
-    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 500;
     color: #f4b11c;
 }
@@ -56,7 +56,6 @@ p {
     font-size: 12px;
     margin: 15px 0 0 0;
     color: white;
-    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 300;
 }
 
@@ -89,7 +88,6 @@ button:hover {
     left: 50%;
     height: 450px;
     width: 25%;
-    /* margin: auto; */
     margin-top: 10%;
     background: white;
     box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
@@ -100,7 +98,7 @@ button:hover {
     text-align: center;
 }
 
-.whiteBox #logInForm, .whiteBox #signUpForm {
+.whiteBox #logInDiv, .whiteBox #signUpDiv {
     border: 3px double #f4b11c;
     padding: 20px;
 }
@@ -127,7 +125,6 @@ label {
     display: block;
     margin: 8px 0 2px 0;
     color: #f4b11c;
-    font-family: 'Roboto Condensed', sans-serif;
     font-size: 12px;
     box-sizing: border-box;
     text-align: left;
@@ -145,7 +142,6 @@ label:first-of-type {
     border: 1px solid #f4b11c;
     background: #ee0979;
     background: linear-gradient(to right, #ee0979, #f4b11c);
-    font-family: 'Roboto Condensed', sans-serif;
     padding: 8px 20px;
     border-radius: 500px;
     cursor: pointer;
