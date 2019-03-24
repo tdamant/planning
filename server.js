@@ -57,4 +57,9 @@ app.get("/whoami", (req, res) => {
     res.send(req.cookies.user)
 });
 
+app.get("/logout", (req, res) => {
+    res.clearCookie('user');
+    res.redirect('/');
+});
+
 app.listen(port, () => console.log(`Planning app listening here: ${port}!`));
