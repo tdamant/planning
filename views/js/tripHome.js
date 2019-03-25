@@ -65,15 +65,21 @@ $(document).ready(async () => {
       return vote.option_id === optionId
     });
     return relevantVotes.length;
-  }
+  };
 
   let data = await getData();
-  addPolls(data.pollsData);
+    console.log(data);
+    addPolls(data.pollsData);
   console.log(data.votes);
 
   $('#addStage').on("click", function() {
     $('#stageCreator').show("fast");
   });
+
+    $('#join').click( async function() {
+        await $.post("/trips_users/create", {tripId: data.trip.id});
+        location.reload();
+    });
 
   $('#saveStage').on("click", function() {
     $('#stageCreator').hide("fast");
