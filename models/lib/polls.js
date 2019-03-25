@@ -10,6 +10,12 @@ class Poll {
       let result = await connection.pool.query(`SELECT * FROM polls WHERE trip_id = '${tripId}'`)
       return result.rows
     }
+    static async saveVotes(pollId, userId, optionIds) {
+      let splitOptionIds = await optionIds.split(',')
+      splitOptionIds.forEach((vote) => {
+        connection.pool.query(`INSERT INTO votes (poll_id, user_id, option_id) VALUES ('${pollId}', '${userId}', '${vote}')`);
+      })
+    }
 
 }
 

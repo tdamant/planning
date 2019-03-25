@@ -18,7 +18,7 @@ exports.getPolls = async (req, res) => {
 };
 
 exports.saveVotes = async (req, res) => {
-    console.log(req.body);
-    // pollsModel.saveVotes(req.body.pollId, req.body.userId, req.body.optionIds);
+    pollsModel.saveVotes(req.body.pollId, req.body.userId, req.body.optionIds)
+    console.log(req.body.optionIds);
     res.send('ok')
 }
