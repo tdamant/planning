@@ -8,8 +8,8 @@ $(document).ready(async () => {
   const buildPoll = (poll) => {
       let pollDiv = "";
       const addOptions = (options) => {
-        options.forEach((option) => {
-          pollDiv += `<input id = "${option}" type="checkbox"><label for ="${option}"> ${option}</label>`
+        options.forEach((option, index) => {
+          pollDiv += `<input id = "${index}-poll${poll.id}" type="checkbox"><label for ="${option}"> ${option}</label>`
         });
       };
       const addDivId = (type) => {
@@ -22,18 +22,19 @@ $(document).ready(async () => {
       $("#pollsContainer").append(pollDiv);
       $(`#${poll.type}-submit`).on("click", (event) => {
         event.preventDefault();
-        let votes = []
-        $(`#votesFor${poll.type} input[type=checkbox]`).each( function (element) {
-          console.log(this);
-          if (this.prop('checked')) { votes.push(element) }
-          console.log(votes);
+        let votes = [];
+        $(`#votesFor${poll.type} input[type=checkbox]`).each( function (index) {
+            if ($(`#${index}-poll${poll.id}`).prop("checked")) {
+              votes.push(`${index}-poll${poll.id}`)
+            }
         });
+          saveVotes(poll.id, userId, votes)
       });
   };
 
   const saveVotes = (pollId, userId, optionIds) => {
-    $.post("/polls/saveVotes", {pollId: pollId, userId: userId, optionIds: optionIds})
-  }
+      $.post("/polls/saveVotes", {pollId: pollId, userId: userId, optionIds: optionIds})
+  };
 
   const addPolls = (polls) => {
       polls.forEach((poll) => {
