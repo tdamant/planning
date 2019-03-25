@@ -11,9 +11,19 @@
   </head>
   <body>
     <div class="container card">
+    <nav>
+      <ul>
+        <img style="float:left" src="images/wingwithpink-01.png">
+        <li><a class="active" href="/" id="home">Home</a></li>
+        <li><a href="/about" id="home">About</a></li>
+        <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
+      </ul>
+    </nav>
+    <div class="container">
       <h1>Welcome, <span id ="greet_user"></span>!</h1>
       <button onclick="window.location.href = '/newTrip';">CREATE A TRIP</button>
-      <button onclick="window.location.href = '/#';">SEARCH FOR TRIP</button>
+      <!-- search function is to be implemented so it just takes you back home for now -->
+      <button onclick="window.location.href = '/home';">SEARCH FOR TRIP</button>
     </div>
   </body>
 </html>

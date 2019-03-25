@@ -10,6 +10,14 @@
     <script src="js/pollsInterface.js"></script>
   </head>
   <body align="center" >
+    <nav>
+      <ul>
+        <img style="float:left" src="images/wingwithpink-01.png">
+        <li><a href="/" id="home">Home</a></li>
+        <li><a href="/about" id="home">About</a></li>
+        <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
+      </ul>
+    </nav>
     <div class="container">
       <h2>This is where we create polls to find out the preferences of the guests.</h2>
       <h3>Guests will receive text messages to remind them to fill in the polls.</h3>
@@ -27,12 +35,14 @@
 
     <div id="pollCreator" style="display: none;background-color:#ffcc00;">
       Add the options for guests to pick from: <br><br>
-      <input type="text" id=""><br>
-      <input type="text" id=""><br>
-      <input type="text" id=""><br><br>
-      <button>Add another option</button><br>
+      <div id="pollOptions">
+      <input type="text" class = "pollOption"><br>
+      <input type="text" class = "pollOption"><br>
+      <input type="text" class = "pollOption"><br>
+      </div><br>
+      <button id="addAnotherOption">Add another option</button><br>
       <p>Poll Deadline</p>
-      <input type="text" id="deadline"><br>
+      <input type="date" id="deadline"><br>
       <button id="savePoll">Save Poll</button>
     </div>
 
@@ -41,7 +51,7 @@
     (here we'll want 3 boxes to represent each poll, which will be ticked when the organiser has created that poll)
     <br><br>
 
-    <button id="next">Invite Guests</button>
+    <button id="guests">Invite Guests</button>
 
   </body>
 </html>

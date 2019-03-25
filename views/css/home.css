@@ -3,8 +3,12 @@ body {
   place-items: center;
   height: 100vh;
   margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
+.container {
+  padding-top: 50px;
+}
 
 h1{
   font-size: 4vw;
@@ -42,6 +46,51 @@ select{
 select:focus{
   outline: none !important;
   border:1px solid #ee0979;
+}
+
+nav {
+  position: fixed;
+  display: inline-block;
+  top: 0;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0.7;
+  background: linear-gradient(to right, #ee0979, #f4b11c);
+  /* position: fixed;
+  display: inline-block;
+  top: 0;
+  width: 100%; */
+}
+
+li {
+  float: left;
+  font-size: 14px;
+}
+
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+img {
+    height: auto;
+    width: auto;
+    /* max-height: 40px; */
+    max-width: 100px;
+    padding-top: 3px;
 }
 
 button, input[type="submit"] {

@@ -8,7 +8,6 @@ exports.getTripUsers = async (req, res) => {
     res.send(users);
 }
 
-
 const returnUsers = async(tripUsers) => {
     let tripUserIds = [];
     tripUsers.forEach(tripUser => { tripUserIds.push(tripUser.user_id) });
