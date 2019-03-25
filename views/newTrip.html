@@ -11,6 +11,9 @@
   <script src="js/newTripInterface.js"></script>
 </head>
 <body>
+  <div class="container card">
+    <div>
+      <h1 style="text-align:center">Set up your trip</h1>
   <nav>
     <ul>
       <img style="float:left" src="images/wingwithpink-01.png">
@@ -32,5 +35,15 @@
       <input type="submit" id="submit" value="Create">
     </form>
     </div>
+      <div name="addTrip">
+        <form name="addTrip">
+        <label for="tripName">What would you like to call your trip?</label>
+        <input type="text" id="tripName" name="tripName" placeholder="My fun trip" required><br>
+        <label for="description">Provide a short description:</label>
+        <textarea type="text" id="description" name="description" placeholder="What do you have in mind?" rows="5" cols ="60" required></textarea>
+        <input type="submit" id="submit" value="Create">
+      </form>
+      </div>
+  </div>
 </body>
 </html>
