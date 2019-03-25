@@ -61,7 +61,7 @@ describe('Sign Up and log in', () => {
         beforeAll( async() => {
             browser = await puppeteer.launch();
             page = await browser.newPage();
-            await page.goto("http://localhost:5000/")
+            await page.goto("http://localhost:5000/");
             page.on('dialog', async dialog => {
                 await dialog.dismiss();
             });
@@ -69,7 +69,7 @@ describe('Sign Up and log in', () => {
 
         it('error if not a known user', async() => {
             await expect(page).toFillForm('form[name="logInForm"]', {
-                email: 'email@email.com',
+                email: 'wrong@email.com',
                 password: 'password'
             });
             await page.click('#logInButton');
@@ -77,14 +77,15 @@ describe('Sign Up and log in', () => {
             await expect(page).toMatch("Sign Up")
         });
 
-        // it('error if incorrect password', async() => {
-        //     await expect(page).toFillForm('form[name="logInForm"]', {
-        //         email: 'email@email.com',
-        //         password: 'wrongpassword'
-        //     });
-        //     await page.click('#logInButton');
-        //     await expect(page).toMatch("Sign Up")
-        // });
+        it('error if incorrect password', async() => {
+            await expect(page).toFillForm('form[name="logInForm"]', {
+                email: 'email@email.com',
+                password: 'wrongpassword'
+            });
+            await page.click('#logInButton');
+            await sleep.sleep(1);
+            await expect(page).toMatch("Sign Up")
+        });
     });
 
 });
