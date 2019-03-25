@@ -12,6 +12,11 @@ class Trips {
       return data.rows[0]
   };
 
+  static async getByName(name) {
+    let data = await connection.pool.query(`SELECT * FROM trips WHERE name LIKE '%${name}%'`);
+    return data.rows
+  };
+
   static async getTripUsers(tripId) {
       let result = await connection.pool.query(`SELECT * FROM trips_users where trip_id = '${tripId}'`);
       return result.rows
