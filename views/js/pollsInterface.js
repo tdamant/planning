@@ -20,8 +20,9 @@ $(document).ready(function() {
       $('#pollCreator').hide("fast");
   });
 
-  $('#next').on("click", function() {
-    $(location).attr('href', '/guests')
+  $('#guests').on("click", function() {
+    let tripId = getUrlParams('tripId')
+    $(location).attr('href', '/guests?tripId='+tripId)
   });
 
   $("#addAnotherOption").on("click", function() {
@@ -35,11 +36,3 @@ $(document).ready(function() {
   };
 
 });
-
-//
-// /polls/create
-// {
-//   type: type,
-//       options: optionsArray,
-//     deadline: deadline,
-// }

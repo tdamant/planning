@@ -3,14 +3,14 @@ const connection = require("../../database/connection");
 
 class Trips {
   static async saveToDB(tripName, description, organiserID) {
-        let tripId = await connection.pool.query(`INSERT INTO trips (name, description, organiser) VALUES ('${tripName}', '${description}', '${organiserID}') returning id`);
+      let tripId = await connection.pool.query(`INSERT INTO trips (name, description, organiser) VALUES ('${tripName}', '${description}', '${organiserID}') returning id`);
       return tripId.rows[0]
   };
 
   static async getById(id) {
-        let data = await connection.pool.query(`SELECT * FROM trips WHERE id = '${id}'`);
-        return data.rows[0]
-    };
+      let data = await connection.pool.query(`SELECT * FROM trips WHERE id = '${id}'`);
+      return data.rows[0]
+  };
 
   static async getTripUsers(tripId) {
       let result = await connection.pool.query(`SELECT * FROM trips_users where trip_id = '${tripId}'`);
@@ -27,4 +27,3 @@ module.exports = Trips;
 
 
 //add stage to trip
-

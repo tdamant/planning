@@ -1,14 +1,15 @@
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const port = process.env.PORT;
-const path = require("path");
-const trips = require("./routes/trips.js");
-const polls = require("./routes/polls.js");
-const users = require("./routes/users.js");
-const tripsUsers = require("./routes/tripsUsers.js");
-var cookieParser = require("cookie-parser");
-const stages = require("./routes/stages.js");
+const express =       require("express");
+const app =           express();
+const bodyParser =    require("body-parser");
+const port =          process.env.PORT;
+const path =          require("path");
+const trips =         require("./routes/trips.js");
+const polls =         require("./routes/polls.js");
+const guests =        require("./routes/guests.js");
+const users =         require("./routes/users.js");
+const tripsUsers =    require("./routes/tripsUsers.js");
+var cookieParser =    require("cookie-parser");
+const stages =        require("./routes/stages.js");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/trips", trips);
 app.use("/polls", polls);
+app.use("/guests", guests);
 app.use("/users", users);
 app.use("/stages", stages);
 app.use("/trips_users", tripsUsers);
@@ -40,17 +42,8 @@ app.get("/home", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "home.html"));
 });
 
-app.get("/guests", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "guests.html"));
-});
-
 app.get("/newTrip", (req, res) => {
     res.sendFile(path.resolve(__dirname, "views", "newTrip.html"));
-});
-
-
-app.get("/organiserTripHome", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views", "organiserTripHome.html"));
 });
 
 app.get("/whoami", (req, res) => {
