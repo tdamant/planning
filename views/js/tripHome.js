@@ -22,7 +22,9 @@ $(document).ready(async () => {
       let pollDiv = "";
       const addOptions = (options) => {
           options.forEach((option, index) => {
-              pollDiv += `<input id = "${index}-poll${poll.id}" type="checkbox"><label for ="${option}"> ${option}</label>`
+            let votes = getVotes(`${index}-poll${poll.id}`);
+            console.log(votes);
+            pollDiv += `<input id = "${index}-poll${poll.id}" type="checkbox"><label for ="${option}"> ${option} -- VOTES SO FAR -- ${votes} </label>`
           });
       };
       const addDivId = (type) => {
@@ -41,12 +43,13 @@ $(document).ready(async () => {
                   votes.push(`${index}-poll${poll.id}`)
               }
           });
-          saveVotes(poll.id, data.userId, votes.join(','))
+          saveVotes(data.tripId, poll.id, data.userId, votes.join(','))
       });
   };
 
-  const saveVotes = (pollId, userId, optionIds) => {
-      $.post("/polls/saveVotes", {pollId: pollId, userId: userId, optionIds: optionIds})
+  const saveVotes = (tripId, pollId, userId, optionIds) => {
+      console.log(optionIds);
+      $.post("/polls/saveVotes", {tripId: tripId, pollId: pollId, userId: userId, optionIds: optionIds})
   };
 
 
@@ -55,6 +58,14 @@ $(document).ready(async () => {
         buildPoll(poll)
     });
   };
+
+  const getVotes = (optionId) => {
+    let relevantVotes =
+     data.votes.filter(function(vote) {
+      return vote.option_id === optionId
+    });
+    return relevantVotes.length;
+  }
 
   let data = await getData();
   addPolls(data.pollsData);

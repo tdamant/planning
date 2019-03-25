@@ -13,18 +13,17 @@ exports.savePollToDB = async (req, res) => {
 };
 
 exports.getPolls = async (req, res) => {
-  let polls = await pollsModel.getPolls(req.query.tripId);
-  res.send(polls)
+    let polls = await pollsModel.getPolls(req.query.tripId);
+    res.send(polls)
 };
 
 exports.saveVotes = async (req, res) => {
-    pollsModel.saveVotes(req.body.pollId, req.body.userId, req.body.optionIds);
-    console.log(req.body.optionIds);
+    pollsModel.saveVotes(req.body.tripId, req.body.pollId, req.body.userId, req.body.optionIds);
     res.send('ok')
 };
 
 exports.getVotes = async (req, res) => {
-    console.log(req.query);
     let votes = await pollsModel.getVotes(req.query.tripId);
     res.send(votes)
+    console.log(votes);
 };

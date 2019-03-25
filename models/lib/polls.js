@@ -11,7 +11,9 @@ class Poll {
       return result.rows
     }
 
-    static async saveVotes(pollId, userId, optionIds) {
+    static async saveVotes(tripId, pollId, userId, optionIds) {
+      console.log(optionIds);
+
         const asyncForEach = async (array, callback) => {
             for (let index = 0; index < array.length; index++) {
                 await callback(array[index], index, array);
@@ -19,13 +21,13 @@ class Poll {
         };
       let splitOptionIds = optionIds.split(',');
       await asyncForEach(splitOptionIds, (vote) => {
-        connection.pool.query(`INSERT INTO votes (poll_id, user_id, option_id) VALUES ('${pollId}', '${userId}', '${vote}')`);
+        connection.pool.query(`INSERT INTO votes (trip_id, poll_id, user_id, option_id) VALUES ('${tripId}', '${pollId}', '${userId}', '${vote}')`);
       });
       return "done"
     };
 
-    static async getVotes(pollId) {
-        let result = await connection.pool.query(`select * from votes where poll_id = '${pollId}'`);
+    static async getVotes(tripId) {
+        let result = await connection.pool.query(`select * from votes where trip_id = '${tripId}'`);
         return result.rows
     }
 
