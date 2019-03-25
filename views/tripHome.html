@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <title>Trip</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/modal.css" />
+  <meta charset="UTF-8">
+  <title>Trip</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/modal.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/tripHome.js"></script>
     <script src="js/specialCharacters.js"></script>
-    <script src="js/tripInterface.js"></script>
     <script src="js/modal.js"></script>
 </head>
+  <body align="center" >
+    <nav>
+      <ul>
+        <img style="float:left" src="images/wingwithpink-01.png">
+        <li><a href="/" id="home">Home</a></li>
+        <li><a href="/about" id="home">About</a></li>
+        <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <p>Trip name</p>
+      <p>Trip description</p><br><br>
+
+      <div id="pollsContainer">
+
+
+      </div>
+
+      <br><br><br>
     <body>
       <nav>
         <ul>
@@ -21,23 +41,30 @@
           <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
         </ul>
       </nav>
-      <h1 id="trip-title" > Overview</h1>
-      <h3 id="trip-description" ></h3>
 
       <button id="join">Join</button>
 
-      <form name="addStage">
-        <select id="stageName" name="stageName">
-          <option value="Book flights">Book flights</option>
-          <option value="Choose city">Choose city</option>
-          <option value="Book hotel">Book hotel</option>
-          <option value="Confirm attendance">Confirm attendance</option>
-        </select>
-        Description: <textarea type="text" id="stageContent" name="stageContent" placeholder="Describe the options for this stage" rows="5" cols ="60"></textarea><br>
-        Due Date: <input type="date" id="stageDueDate" name="stageDueDate" required><br>
-        <input type="submit" id="submit" value="Submit">
-      </form>
+      What do the guests need to do? <br>
+      We'll send them reminders for you, just give us the task details and deadline. <br><br>
+      <button id="addStage">Add a task</button>
 
+      <div id="stageCreator" style="display: none;background-color:#ffcc00;">
+        <p>What's this task called (e.g. Book flights): </p>
+        <input type="text" id=""><br>
+        <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
+        <input type="text" id=""><br>
+        <p>What's the deadline:</p>
+        <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
+        <button id="saveStage">Save Reminder</button>
+      </div>
+
+      <br><br><br>
+
+      <div style="width:700px;height:50px;background-color:#4286f4;">
+         Here's all the reminders being sent out already: <br>
+      </div>
+    </div>
+  </body>
       <h3>Stages</h3>
       <p id="stages-list" ></p> <br>
       <h3>Invites</h3>
