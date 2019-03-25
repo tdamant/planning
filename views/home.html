@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="css/modal.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/modal.js"></script>
   </head>
   <body>
     <nav>
       <ul>
-        <img style="float:left" src="images/wingwithpink-01.png">
+        <img class="logo" style="float:left" src="images/wingwithpink-01.png">
         <li><a class="active" href="/" id="home">Home</a></li>
         <li><a href="/about" id="home">About</a></li>
         <li><input id="srchbar" type="search" placeholder="Search"></li>
@@ -30,6 +31,7 @@
     <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
+        <h2>Your Search Results:</h2>
         <div class="searchResult">
         </div>
       </div>
