@@ -5,12 +5,41 @@ $(document).ready(async () => {
       return results[1];
   };
 
-  // $('#pollsContainer').val( function() {
-    let tripId = await getUrlParams('id')
-    let pollsData = await $.get("/polls/getPolls", {tripId: tripId });
-    console.log(pollsData);
-  // }
+  const buildPoll = (poll) => {
+      let pollDiv = "";
+      const addOptions = (options) => {
+        options.forEach((option) => {
+          pollDiv += `<input id = "${option}" type="checkbox"><label for ="${option}"> ${option}</label>`
+        });
+      };
+      const addDivId = (type) => {
+        pollDiv += `<div id="${type}"><form action=""><fieldset><legend>${type}</legend>`
+      };
 
+      let options = poll.options.split(",");
+      addDivId(poll.type);
+      addOptions(options);
+      pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form> </div>`;
+      $("#pollsContainer").append(pollDiv);
+      $(`#${poll.type}-submit`).on("click", (event) => {
+          event.preventDefault();
+          {
+            option: y/n,
+
+          },
+          $("/polls").post({})
+      })
+  };
+
+  const addPolls = (polls) => {
+      polls.forEach((poll) => {
+          buildPoll(poll)
+      });
+  };
+
+  let tripId = await getUrlParams('id');
+  let pollsData = await $.get("/polls/getPolls", {tripId: tripId });
+  addPolls(pollsData);
 
   $('#addStage').on("click", function() {
     $('#stageCreator').show("fast");
