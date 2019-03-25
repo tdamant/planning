@@ -11,3 +11,8 @@ exports.savePollToDB = async (req, res) => {
     }
   })
 };
+
+exports.getPolls = async (req, res) => {
+  let polls = await pollsModel.getPolls(req.query.tripId);
+  res.send(polls)
+};

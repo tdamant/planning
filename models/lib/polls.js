@@ -6,7 +6,10 @@ class Poll {
       connection.pool.query(`INSERT INTO polls (type, options, deadline, trip_id) VALUES ('${type}', '${options}', '${deadline}', '${tripId}')`)
     }
 
-    // function to get polls out and turn the options back into an array.
+    static async getPolls(tripId) {
+      let result = await connection.pool.query(`SELECT * FROM polls WHERE trip_id = '${tripId}'`)
+      return result.rows
+    }
 
 }
 

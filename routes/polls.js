@@ -7,5 +7,6 @@ router.post("/create", pollsController.savePollToDB);
 router.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, "../", "views", "polls.html"));
 })
+router.get('/getPolls', pollsController.getPolls)
 
 module.exports = router;
