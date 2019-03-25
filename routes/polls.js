@@ -9,5 +9,6 @@ router.get('/', (req, res) => {
 })
 router.get('/getPolls', pollsController.getPolls)
 router.post('/saveVotes', pollsController.saveVotes);
+router.get("/votes", pollsController.getVotes);
 
 module.exports = router;
