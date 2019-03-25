@@ -70,27 +70,46 @@ ul {
 
 li {
   float: left;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 li a {
   display: inline-block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
   text-decoration: none;
+}
+
+li input[type="search"] {
+  vertical-align: middle;
+  margin: 12px 16px;
+  font-size: 12px;
+}
+
+li input[type="search"]::placeholder {
+  font-size: 14px;
 }
 
 li a:hover:not(.active) {
   background-color: #111;
 }
 
+.active {
+  background-color: #111;
+}
+
 img {
     height: auto;
     width: auto;
+    padding: 0px 16px;
     /* max-height: 40px; */
     max-width: 100px;
-    padding-top: 3px;
+    margin: 10px 0px;
+}
+
+.logo {
+  margin: 10px 0px;
 }
 
 button, input[type="submit"] {
@@ -181,4 +200,5 @@ textarea::placeholder {
   background-color:rgba(255, 255, 255, 0.71)!important;
   padding:1em 16px;
   border-radius: 3px;
+  text-align: center;
 }

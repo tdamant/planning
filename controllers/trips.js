@@ -10,3 +10,8 @@ exports.getById = async(req, res) => {
   let trip = await tripsModel.getById(req.params.id);
   res.send(trip);
 };
+
+exports.getByName = async(req, res) => {
+  let trips = await tripsModel.getByName(req.params.name);
+  res.send(trips);
+};
