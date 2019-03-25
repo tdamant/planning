@@ -21,11 +21,17 @@
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
-    <div class="container card">
-      <h1>Welcome, <span id ="greet_user"></span>!</h1>
-      <button onclick="window.location.href = '/newTrip';">CREATE A TRIP</button>
-    </div>
+    <div>
+      <div class="container card">
+        <h1>Welcome, <span id ="greet_user"></span>!</h1>
+        <button onclick="window.location.href = '/newTrip';">CREATE A TRIP</button>
+      </div>
 
+      <div class="container card">
+        <h2>Your trips</h2>
+        <div id="user_trips"></div>
+      </div>
+    </div>
     <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
