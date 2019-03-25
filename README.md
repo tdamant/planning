@@ -32,3 +32,8 @@ Create stages_users table:
 ```
 CREATE TABLE stages_users (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), stage_id INTEGER REFERENCES stages (id));
 ```
+Create votes table:
+
+```
+CREATE TABLE votes (id SERIAL PRIMARY KEY, poll_id INTEGER REFERENCES polls (id), user_id INTEGER REFERENCES users (id), option_id VARCHAR);
+```

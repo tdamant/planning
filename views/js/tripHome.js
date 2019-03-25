@@ -13,23 +13,27 @@ $(document).ready(async () => {
         });
       };
       const addDivId = (type) => {
-        pollDiv += `<div id="${type}"><form action=""><fieldset><legend>${type}</legend>`
+        pollDiv += `<div id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
       };
-
       let options = poll.options.split(",");
       addDivId(poll.type);
       addOptions(options);
       pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form> </div>`;
       $("#pollsContainer").append(pollDiv);
       $(`#${poll.type}-submit`).on("click", (event) => {
-          event.preventDefault();
-          {
-            option: y/n,
-
-          },
-          $("/polls").post({})
-      })
+        event.preventDefault();
+        let votes = []
+        $(`#votesFor${poll.type} input[type=checkbox]`).each( function (element) {
+          console.log(this);
+          if (this.prop('checked')) { votes.push(element) }
+          console.log(votes);
+        });
+      });
   };
+
+  const saveVotes = (pollId, userId, optionIds) => {
+    $.post("/polls/saveVotes", {pollId: pollId, userId: userId, optionIds: optionIds})
+  }
 
   const addPolls = (polls) => {
       polls.forEach((poll) => {
@@ -38,7 +42,9 @@ $(document).ready(async () => {
   };
 
   let tripId = await getUrlParams('id');
+  let userId = await $.get("/whoami")
   let pollsData = await $.get("/polls/getPolls", {tripId: tripId });
+  console.log(pollsData);
   addPolls(pollsData);
 
   $('#addStage').on("click", function() {
