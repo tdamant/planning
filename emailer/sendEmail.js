@@ -17,7 +17,7 @@ class SendMail {
       from: 'wing.it.hq@gmail.com',
       to: to,
       subject: 'Come fly with me! ;)',
-      text: `You're invited: http://stormy-escarpment-39913/trip_home?id=${tripid}`
+      text: `You're invited: http://stormy-escarpment-39913.herokuapp.com/trip_home?id=${tripid}`
     }
   };
 
