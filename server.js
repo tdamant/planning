@@ -6,6 +6,7 @@ const path =          require("path");
 const trips =         require("./routes/trips.js");
 const polls =         require("./routes/polls.js");
 const users =         require("./routes/users.js");
+const comments =      require("./routes/comments.js");
 const tripsUsers =    require("./routes/tripsUsers.js");
 const sendEmail =     require("./routes/sendEmail.js");
 var cookieParser =    require("cookie-parser");
@@ -29,6 +30,7 @@ app.use("/users", users);
 app.use("/stages", stages);
 app.use("/trips_users", tripsUsers);
 app.use("/send-email", sendEmail);
+app.use("/comments", comments);
 
 app.use(function(req, res, next) {
     if (!req.cookies.user){

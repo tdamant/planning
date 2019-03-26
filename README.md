@@ -37,3 +37,9 @@ Create votes table:
 ```
 CREATE TABLE votes (id SERIAL PRIMARY KEY, trip_id INTEGER REFERENCES trips (id), poll_id INTEGER REFERENCES polls (id), user_id INTEGER REFERENCES users (id), option_id VARCHAR);
 ```
+
+Create votes table:
+
+```
+CREATE TABLE comments (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), comment VARCHAR);
+```
