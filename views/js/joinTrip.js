@@ -25,8 +25,8 @@ $(document).ready(async function() {
         };
 
         const formatForTripMembers = () => {
-            if(isOn) { $('#join').hide() }
-        };
+            isOn ? $('#join').hide() : $('.tripOverview').hide()
+          };
 
         showStages();
         showAttendees();
