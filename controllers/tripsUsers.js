@@ -19,3 +19,9 @@ exports.createTripUser = async(req, res) => {
     await StagesUsers.addUserToStages(req.body.tripId, req.cookies.user);
     res.send("complete");
 }
+
+
+exports.deleteUserFromTrip = async (req, res) => {
+  await Trips.removeUserFromTrip(req.body.tripId, req.cookies.user)
+  res.send("success")
+}

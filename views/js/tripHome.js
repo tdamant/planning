@@ -68,9 +68,7 @@ $(document).ready(async () => {
   };
 
   let data = await getData();
-    console.log(data);
     addPolls(data.pollsData);
-  console.log(data.votes);
 
   $('#addStage').on("click", function() {
     $('#stageCreator').show("fast");

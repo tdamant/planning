@@ -43,7 +43,32 @@ $(document).ready(async function() {
         location.reload();
     });
 
+    // delete function for removing users:
+    $.delete = function(url, data, callback, type){
+      if ( $.isFunction(data) ){
+          type = type || callback,
+              callback = data,
+              data = {}
+        }
+        return $.ajax({
+          url: url,
+          type: 'DELETE',
+          success: callback,
+          data: data,
+          contentType: type
+        });
+      }
 
+    $("#leaveTrip").click(function(event) {
+      event.preventDefault();
+      $.delete("/users/trips/", {tripId: data.trip.id}, function(response){
+        if (response === "success"){
+          location.reload();
+          alert("You've left the trip :(")
+        };
+
+      });
+    });
 
     const fetchData = async () => {
         let tripId = location.search.substr(4);
