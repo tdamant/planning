@@ -12,6 +12,11 @@ class Trips {
       return data.rows[0]
   };
 
+  static async getByName(name) {
+    let data = await connection.pool.query(`SELECT * FROM trips WHERE name LIKE '%${name}%'`);
+    return data.rows
+  };
+
   static async getTripUsers(tripId) {
       let result = await connection.pool.query(`SELECT * FROM trips_users where trip_id = '${tripId}'`);
       return result.rows
@@ -20,6 +25,12 @@ class Trips {
   static async addUserToTrip(tripId, userId) {
       await connection.pool.query(`INSERT into trips_users (trip_id, user_id) VALUES ('${tripId}', '${userId}')`);
   //    get all stages and add user to them
+  }
+
+  static async removeUserFromTrip(tripId, userId) {
+    console.log(tripId)
+    console.log(userId);
+    await connection.pool.query(`DELETE FROM trips_users WHERE trip_id = ${tripId} AND user_id = ${userId}`)
   }
 }
 

@@ -6,8 +6,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/modal.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/pollsInterface.js"></script>
+    <script src="js/modal.js"></script>
   </head>
   <body align="center" >
     <nav>
@@ -15,6 +17,7 @@
         <img style="float:left" src="images/wingwithpink-01.png">
         <li><a href="/" id="home">Home</a></li>
         <li><a href="/about" id="home">About</a></li>
+        <li><input id="srchbar" type="search" placeholder="Search"></li>
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
@@ -24,14 +27,12 @@
       <h3>You can skip this stage by clicking <a href="#">here</a>, or build whichever polls you need from the drop down list below.</h3>
     </div>
     <div class="container">
-      <p>What do you and the rest of the guests need to decide on?</p>
-      <select id="polls">
-        <option id="blank"></option>
-        <option id="datesPoll">Dates</option>
-        <option id="locationPoll">Location</option>
-        <option id="budgetPoll">Budget</option>
+      <label for="polls">What do you and the rest of the guests need to decide on?</label>
+      <select id="polls" name="polls">
+        <option id="DatesPoll">Dates</option>
+        <option id="LocationPoll">Location</option>
+        <option id="BudgetPoll">Budget</option>
       </select>
-      <br>
       <button id="buildPoll">Build Poll</button>
     </div>
 
@@ -48,12 +49,18 @@
       <button id="savePoll">Save Poll</button>
     </div>
 
-    <br><br><br><br>
-
-    (here we'll want 3 boxes to represent each poll, which will be ticked when the organiser has created that poll)
+    <br><br>
+    <div id="pollsCreated"></div>
     <br><br>
 
-    <button id="guests">Invite Guests</button>
-
+    <button id="guests" onclick="window.location.href = '/guests';">Invite Guests</button>
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Your Search Results:</h2>
+        <div class="searchResult">
+        </div>
+      </div>
+    </div>
   </body>
 </html>

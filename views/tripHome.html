@@ -1,53 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <title>Planning App</title>
+  <meta charset="UTF-8">
+  <title>Trip</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/home.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/tripHome.js"></script>
   <script src="js/tripHomeSimpleEventListeners.js"></script>
+  <script src="js/specialCharacters.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/joinTrip.js"></script>
 </head>
   <body align="center" >
     <nav>
       <ul>
         <img style="float:left" src="images/wingwithpink-01.png">
-        <li><a href="/" id="home">Home</a></li>
+        <li><a class="active" href="/" id="home">Home</a></li>
         <li><a href="/about" id="home">About</a></li>
+        <li><input id="srchbar" type="search" placeholder="Search"></li>
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
     <div class="container">
-      <p>Trip name</p>
-      <p>Trip description</p><br><br>
+      <p id="trip-title"></p>
+      <p id="trip-description"></p><br><br>
 
-      <div id="pollsContainer">
+      <button id="join">Join <i class="far fa-laugh-beam"></i> </button>
 
-      </div>
+      <div class="tripOverview">
+        <div id="pollsContainer">
+        </div>
+        <br>
+        What do the guests need to do? <br>
+        We'll send them reminders for you, just give us the task details and deadline. <br><br>
+        <button id="addStage">Add a task <i class="fas fa-pencil-alt"></i></button>
 
-      <br><br><br>
+        <div id="stageCreator" style="display: none;background-color:#ffcc00;">
+          <p>What's this task called (e.g. Book flights): </p>
+          <input type="text" id=""><br>
+          <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
+          <input type="text" id=""><br>
+          <p>What's the deadline:</p>
+          <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
+          <button id="saveStage">Save Reminder</button>
+        </div>
 
-      What do the guests need to do? <br>
-      We'll send them reminders for you, just give us the task details and deadline. <br><br>
-      <button id="addStage">Add a task</button>
+        <br><br><br>
 
-      <div id="stageCreator" style="display: none;background-color:#ffcc00;">
-        <p>What's this task called (e.g. Book flights): </p>
-        <input type="text" id=""><br>
-        <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
-        <input type="text" id=""><br>
-        <p>What's the deadline:</p>
-        <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
-        <button id="saveStage">Save Reminder</button>
-      </div>
+        <div style="width:700px;height:50px;background-color:#4286f4;">
+           Here's all the reminders being sent out already: <br>
+        </div>
+        <h3>Stages</h3>
+        <p id="stages-list" ></p> <br>
+        <h3>Invites</h3>
+        <p id="attendees-list" ></p>
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Search Results:</h2>
+            <div class="searchResult">
+            </div>
+          </div>
+        </div>
+        <form name="addStage">
+          <p>Add more stages</p>
+          <select id="stageName" name="stageName">
+            <option value="Book flights">Book flights</option>
+            <option value="Choose city">Choose city</option>
+            <option value="Book hotel">Book hotel</option>
+            <option value="Confirm attendance">Confirm attendance</option>
+          </select>
+          Description: <textarea type="text" id="stageContent" name="stageContent" placeholder="Describe the options for this stage" rows="5" cols ="60"></textarea><br>
+          Due Date: <input type="date" id="stageDueDate" name="stageDueDate" required><br>
+          <input type="submit" id="submit" value="Submit">
+        </form>
 
-      <br><br><br>
-
-      <div style="width:700px;height:50px;background-color:#4286f4;">
-         Here's all the reminders being sent out already: <br>
+        <br>
+        <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
       </div>
     </div>
-  </body>
+    </body>
 </html>

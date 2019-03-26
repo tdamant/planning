@@ -93,5 +93,9 @@ $(document).ready(async () => {
   let data = await getData();
   addPolls(data.pollsData);
 
+  $('#join').click( async function() {
+      await $.post("/trips_users/create", {tripId: data.tripId});
+      location.reload();
+  });
 
 });
