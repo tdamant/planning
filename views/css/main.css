@@ -20,10 +20,10 @@ body::before {
   top: -2.5vh;
   left: -2.5vw;
   display: block;
-  background: url('../images/background.jpg');
+  background: url('../images/background-2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 .greyBox {
@@ -82,14 +82,14 @@ button:hover {
     padding: 20px;
     display: grid;
     align-items: center;
-    justify-items: center;
+    align-self: center;
     vertical-align: middle;
     position: absolute;
     left: 50%;
     height: 450px;
     width: 25%;
     /* margin: auto; */
-    margin-top: 15%;
+    margin-top: 40vh;
     margin-bottom: 40px;
     background: white;
     box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
