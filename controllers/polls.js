@@ -25,5 +25,4 @@ exports.saveVotes = async (req, res) => {
 exports.getVotes = async (req, res) => {
     let votes = await pollsModel.getVotes(req.query.tripId);
     res.send(votes)
-    console.log(votes);
 };
