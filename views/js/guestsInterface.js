@@ -14,8 +14,8 @@ $(document).ready(function() {
     let tripId = await getUrlParams('tripId');
     emails.forEach(email => {
       $.post("/send-email", {to: email, tripId: tripId});
-    })
-
+    });
+    $('.emailconf').css("display", "block");
   });
 
   $('#saveGuests').on("click", async() => {
