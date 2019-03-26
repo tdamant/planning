@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/modal.js"></script>
+    <title>About</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <img class="logo" style="float:left" src="images/wingwithpink-01.png">
+            <li><a class="active" href="/" id="home">Home</a></li>
+            <li><a href="/about" id="home">About</a></li>
+            <li><input id="srchbar" type="search" placeholder="Search"></li>
+            <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
+        </ul>
+    </nav>
+    <div class="container card">
+        <h1>It's better to wing it</h1>
+        <br>
+        <div>
+            <b>Love to travel but hate chasing your friends</b> for input? No one wants to be 'that guy'. Especially not co-founder and mega-stressed-travel-planner, Tom Damant.<br>
+            That's where Wing comes in.<br><br>
+            Our simple set up will walk you through <b>creating deadlines</b> for key decisions, <b>adding polls</b> for gathering input and <b>text reminders</b> for those slow-to-respond friends.<br>
+            No more bogeyman, no more last minute scrabble, no more stress. <b> Just wing it. </b>
+        </div>
+        <button onclick="window.location.href = '/newTrip';">GET STARTED</button>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Search Results:</h2>
+            <div class="searchResult">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
