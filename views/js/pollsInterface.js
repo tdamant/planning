@@ -5,11 +5,14 @@ $(document).ready(function() {
       $('#pollCreator').show("fast");
     } else {
       alert('Please pick a Poll to create from the drop down list.')
-    };
+    }
   });
 
   $('#savePoll').on("click", function() {
-
+      const updatePage = (type) => {
+          $(`#${type}Poll`).remove();
+          $(`#pollsCreated`).append(`${type} <br>`)
+      };
       let tripId = getUrlParams('tripId');
       let type = $("#polls").val();
       let options = [];
@@ -18,9 +21,8 @@ $(document).ready(function() {
       });
       let deadline = $("#deadline").val();
       $.post("/polls/create", {type: type, options: options.join(','), deadline: deadline, tripId: tripId });
-      $(`#${type}Poll`).remove();
+      updatePage(type);
       $('#pollCreator').hide("fast");
-
   });
 
   $('#guests').on("click", function() {
@@ -29,7 +31,7 @@ $(document).ready(function() {
   });
 
   $("#addAnotherOption").on("click", function() {
-      let input = $("<input type=\"text\" class = \"pollOption\"><br>")
+      let input = $("<input type=\"text\" class = \"pollOption\"><br>");
       $('#pollOptions').append(input)
   });
 
