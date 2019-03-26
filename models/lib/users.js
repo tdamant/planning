@@ -10,7 +10,7 @@ class User {
       if (result.rows.length === 0) {
         return false
       } else {
-        let res = await bcrypt.compare(password, result.rows[0].password)
+        let res = await bcrypt.compare(password, result.rows[0].password);
         return res ? result.rows[0] : false
       };
   };

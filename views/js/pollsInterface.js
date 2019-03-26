@@ -21,7 +21,7 @@ $(document).ready(function() {
   });
 
   $('#guests').on("click", function() {
-    let tripId = getUrlParams('tripId')
+    let tripId = getUrlParams('tripId');
     $(location).attr('href', '/guests?tripId='+tripId)
   });
 

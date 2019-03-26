@@ -5,7 +5,6 @@ const port =          process.env.PORT;
 const path =          require("path");
 const trips =         require("./routes/trips.js");
 const polls =         require("./routes/polls.js");
-const guests =        require("./routes/guests.js");
 const users =         require("./routes/users.js");
 const tripsUsers =    require("./routes/tripsUsers.js");
 const sendEmail =     require("./routes/sendEmail.js");
@@ -26,7 +25,6 @@ app.get("/", (req, res) => {
 
 app.use("/trips", trips);
 app.use("/polls", polls);
-app.use("/guests", guests);
 app.use("/users", users);
 app.use("/stages", stages);
 app.use("/trips_users", tripsUsers);
@@ -38,6 +36,18 @@ app.use(function(req, res, next) {
     } else {
       next()
     }
+});
+
+app.get('/guests', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "guests.html"));
+});
+
+app.get("/trip_home", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "tripHome.html"))
+});
+
+app.get('/create_poll', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "views", "polls.html"));
 });
 
 app.get("/home", (req, res) => {
