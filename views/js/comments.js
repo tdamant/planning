@@ -33,7 +33,6 @@ $(document).ready(async function() {
             $("#announcement").hide();
             $("#announcement-label").hide();
         }
-
     };
 
     const formatComments = async() => {
