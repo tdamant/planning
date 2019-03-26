@@ -43,10 +43,7 @@ $(document).ready(async function() {
         location.reload();
     });
 
-    $('#join').click( async function() {
-        await $.post("/trips_users/create", {tripId: data.trip.id});
-        location.reload();
-    });
+
 
     const fetchData = async () => {
         let tripId = location.search.substr(1);
