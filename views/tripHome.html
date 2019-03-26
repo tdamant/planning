@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/tripHome.js"></script>
+  <script src="js/comments.js"></script>
   <script src="js/tripHomeToDo.js"></script>
   <script src="js/tripHomeSimpleEventListeners.js"></script>
   <script src="js/specialCharacters.js"></script>
@@ -76,9 +77,23 @@
             </div>
           </div>
         </div>
-
         <br>
         <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
+
+        <div>
+          <h1>Important Comments</h1>
+          <p id="important-comment-list"></p>
+        </div>
+
+        <div id="comments">
+          <h1>Feed</h1>
+          <form name="addComment" id="addComment">
+            <textarea rows="3" cols="30" type="text" id="comment"> </textarea>
+            <input type="checkbox" id="announcement"/> <label for="announcement" id="announcement-label">Important Announcement</label> <br>
+            <input type="submit" class="ellipse" id="commentButton" value="Add Comment"/>
+          </form>
+          <p id="comment-list"></p>
+        </div>
 
       </div>
     </div>

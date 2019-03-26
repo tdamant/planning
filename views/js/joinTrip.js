@@ -93,14 +93,11 @@ $(document).ready(async function() {
 
     const isUserOnTrip = () => {
         return data.usersOnTrip.filter((user) => {
-          console.log(user.id);
-          console.log(data.currentUserId);
             return user.id === data.currentUserId
         }).length > 0
     };
 
     let isOn = isUserOnTrip();
-    console.log(isOn);
 
     formatTripOverview();
 

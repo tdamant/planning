@@ -29,6 +29,11 @@ exports.getUser = async (req, res) => {
   res.send(response)
 };
 
+exports.getUserById = async (req, res) => {
+  let response = await usersModel.getUsers([req.params.id]);
+  res.send(response[0])
+};
+
 exports.getTripsByUser = async (req, res) => {
   let user = req.cookies.user;
   let trips = await usersModel.getTripsByUser(user);
