@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/tripHome.js"></script>
   <script src="js/tripHomeToDo.js"></script>
-  <script src="js/tripHomeSimpleEventListeners.js"></script>
+  <script src="js/toDoEventListeners.js"></script>
   <script src="js/specialCharacters.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/joinTrip.js"></script>
@@ -37,14 +37,14 @@
         <div id="pollsContainer">
         </div>
 
-        
+
         <div id="stageCreator" style="display: none;background-color:#ffcc00;">
           <p>What's this task called (e.g. Book flights): </p>
-          <input type="text" id=""><br>
+          <input type="text" id="stageNameInput"><br>
           <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
-          <input type="text" id=""><br>
+          <input type="text" id="stageContentInput"><br>
           <p>What's the deadline:</p>
-          <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
+          <input type="date" id="stageDeadlineInput"><br>  <!-- This will need to be a date input -->
           <button id="saveStage">Save Reminder</button>
         </div>
 

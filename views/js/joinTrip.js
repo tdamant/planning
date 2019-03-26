@@ -9,14 +9,14 @@ $(document).ready(async function() {
 
         $('#trip-description').prepend(`${description}`);
 
-        const showStages = () => {
-            if(data.stages.length > 0) {
-                data.stages.forEach(stage => {
-                    let cleanStageDescription = cleanDbString(stage.content);
-                    $('#stages-list').append(`${stage.name} - ${cleanStageDescription} <br>`)
-                })
-            }
-        };
+        // const showStages = () => {
+        //     if(data.stages.length > 0) {
+        //         data.stages.forEach(stage => {
+        //             let cleanStageDescription = cleanDbString(stage.content);
+        //             $('#stages-list').append(`${stage.name} - ${cleanStageDescription} <br>`)
+        //         })
+        //     }
+        // };
 
         const showAttendees = () => {
             data.usersOnTrip.forEach( user => {
@@ -28,7 +28,7 @@ $(document).ready(async function() {
             isOn ? $('#join').hide() : $('.tripOverview').hide()
           };
 
-        showStages();
+        // showStages();
         showAttendees();
         formatForTripMembers();
     };
@@ -74,15 +74,15 @@ $(document).ready(async function() {
         let tripId = location.search.substr(4);
         let tripResponse = await fetch(`/trips/${tripId}`);
         let trip = await tripResponse.json();
-        let stagesObject = await fetch(`/stages/${tripId}`);
-        let stages = await stagesObject.json();
+        // let stagesObject = await fetch(`/stages/${tripId}`);
+        // let stages = await stagesObject.json();
         let usersOnTripResponse = await fetch(`/trips_users/${tripId}`);
         let usersOnTrip = await usersOnTripResponse.json();
         let currentUser = await fetch ("/whoami");
         let currentUserId = await currentUser.json();
         return {
             trip: trip,
-            stages: stages,
+            // stages: stages,
             usersOnTrip: usersOnTrip,
             currentUserId: currentUserId
         };

@@ -10,11 +10,14 @@ $(document).ready(async () => {
     let userId = await $.get("/whoami");
     let pollsData = await $.get("/polls/getPolls", {tripId: tripId });
     let votes = await $.get("/polls/votes", {tripId: tripId});
+    let stagesObject = await fetch(`/stages/${tripId}`);
+    let stages = await stagesObject.json();
     return {
       tripId: tripId,
       userId: userId,
       pollsData: pollsData,
-      votes: votes
+      votes: votes,
+      stages: stages
     }
   };
 
@@ -66,6 +69,7 @@ $(document).ready(async () => {
   };
 
   const addPolls = async (polls) => {
+    console.log('hello');
     polls.forEach((poll) => {
       let pollVotes =
       data.votes.filter(function(vote) {
@@ -75,10 +79,8 @@ $(document).ready(async () => {
       pollVotes.filter(function(vote) {
         return vote.user_id.toString() === data.userId.toString()
       })
-      if (usersPollVotes.length === 0)
-        buildPoll(poll)
-      else
-        buildPollResults(poll)
+      console.log(usersPollVotes);
+      usersPollVotes.length === 0 ? buildPoll(poll) : buildPollResults(poll);
     });
   };
 
@@ -92,10 +94,9 @@ $(document).ready(async () => {
 
   let data = await getData();
   addPolls(data.pollsData);
+  addToDoListeners(data);
+  showStages(data);
 
-  $('#join').click( async function() {
-      await $.post("/trips_users/create", {tripId: data.tripId});
-      location.reload();
-  });
+
 
 });

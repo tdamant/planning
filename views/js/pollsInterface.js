@@ -13,7 +13,7 @@ $(document).ready(function() {
           $(`#${type}Poll`).remove();
           $(`#pollsCreated`).append(`${type} <br>`)
       };
-      let tripId = getUrlParams('tripId');
+      let tripId = getUrlParams('id');
       let type = $("#polls").val();
       let options = [];
       $( ".pollOption" ).each(function() {
@@ -26,7 +26,7 @@ $(document).ready(function() {
   });
 
   $('#guests').on("click", function() {
-    let tripId = getUrlParams('tripId');
+    let tripId = getUrlParams('id');
     $(location).attr('href', '/guests?tripId='+tripId)
   });
 

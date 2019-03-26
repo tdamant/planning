@@ -2,8 +2,8 @@ const connection = require("../../database/connection");
 
 class Poll {
 
-    static async savePollToDB(type, options, deadline, tripId) {
-      connection.pool.query(`INSERT INTO polls (type, options, deadline, trip_id) VALUES ('${type}', '${options}', '${deadline}', '${tripId}')`)
+    static async savePollToDB(type, options, deadline, tripId, stageId) {
+      connection.pool.query(`INSERT INTO polls (type, options, deadline, trip_id, stage_id) VALUES ('${type}', '${options}', '${deadline}', '${tripId}', '${stageId}')`)
     }
 
     static async getPolls(tripId) {
