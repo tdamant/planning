@@ -2,7 +2,8 @@ const commentsModel = require("../models/lib/comments.js");
 
 exports.saveComment = async (req, res) => {
     let comment = req.body.comment;
-    await commentsModel.saveComment(comment, req.cookies.user);
+    let announcement = req.body.announcement;
+    await commentsModel.saveComment(comment, req.cookies.user, announcement);
     res.send("success")
 };
 

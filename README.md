@@ -41,5 +41,5 @@ CREATE TABLE votes (id SERIAL PRIMARY KEY, trip_id INTEGER REFERENCES trips (id)
 Create votes table:
 
 ```
-CREATE TABLE comments (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), comment VARCHAR, date TIMESTAMP DEFAULT NOW());
+CREATE TABLE comments (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), comment VARCHAR, date TIMESTAMP DEFAULT NOW(), announcement BOOL);
 ```

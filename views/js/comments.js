@@ -1,7 +1,13 @@
 $(document).ready(async function() {
     const loadComments = async() =>{
         let commentsResponse = await fetch("/comments");
-        return await commentsResponse.json();
+        let comments =  await commentsResponse.json();
+        let importantComments = await comments.filter(comment=> { return comment.announcement === true });
+        let otherComments = await comments.filter(comment=> { return comment.announcement != true });
+        return {
+            important: importantComments,
+            other: otherComments
+        };
     };
 
     let comments = await loadComments();
@@ -12,15 +18,21 @@ $(document).ready(async function() {
         }
     };
 
-    await asyncForEach(comments, async(comment) => {
+    await asyncForEach(comments.other, async(comment) => {
         let userData = await $.get(`/users/${comment.user_id}`);
         $("#comment-list").append(`${comment.comment} --- ${userData.first_name}<br>`)
+    });
+
+    await asyncForEach(comments.important, async(comment) => {
+        let userData = await $.get(`/users/${comment.user_id}`);
+        $("#important-comment-list").append(`${comment.comment} --- ${userData.first_name}<br>`)
     });
 
     $('#commentButton').on("click", function(event) {
         event.preventDefault();
         let comment = $("#comment").val();
-        $.post("/comments", {comment: comment});
+        let announcement = $("#announcement").is(':checked');
+        $.post("/comments", {comment: comment, announcement: announcement});
         location.reload()
     });
 });

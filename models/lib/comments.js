@@ -2,8 +2,8 @@ const connection = require("../../database/connection");
 
 
 class Comments {
-    static async saveComment(comment, userId) {
-        await connection.pool.query(`INSERT INTO comments (comment, user_id) VALUES ('${comment}', '${userId}') `);
+    static async saveComment(comment, userId, announcement) {
+        await connection.pool.query(`INSERT INTO comments (comment, user_id, announcement) VALUES ('${comment}', '${userId}', ${announcement}) `);
     };
 
     static async getComments() {
