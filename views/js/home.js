@@ -3,9 +3,20 @@ $(document).ready(async function(){
   let currentUser = await fetch ("/users");
   let currentUserId = await currentUser.json();
   return currentUserId[0].first_name;
-  }
+  };
 
   let name = await fetchName();
 
   $("#greet_user").text(`${name}`);
+
+  const loadTrips = async () => {
+    let currentUserTripsResponse = await fetch(`/users/trips`);
+    let currentUserTrips = await currentUserTripsResponse.json();
+    console.log(currentUserTrips)
+    currentUserTrips.forEach(trip => {
+      $("#user_trips").append(`<a href="/trip_home?id=${trip.id}">${trip.name}</a><br>`)
+    });
+  };
+
+  loadTrips();
 });

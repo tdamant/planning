@@ -6,8 +6,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/guestsInterface.js"></script>
+    <script src="js/modal.js"></script>
   </head>
   <body align="center" >
     <nav>
@@ -15,6 +18,7 @@
         <img style="float:left" src="images/wingwithpink-01.png">
         <li><a href="/" id="home">Home</a></li>
         <li><a href="/about" id="home">About</a></li>
+        <li><input id="srchbar" type="search" placeholder="Search"></li>
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
@@ -23,18 +27,26 @@
 
         <p>Email addresses:</p>
         <div id="emails">
-          <input type="text" class="attendeeEmail"><br>
+          <input id="to1" type="text" name="to" class="attendeeEmail"><br>
           <input type="text" class="attendeeEmail"><br>
           <input type="text" class="attendeeEmail"><br>
         </div><br>
-        <button id="addAnotherEmail">Add another email</button>
-
+        <a href="#" id="addAnotherEmail">Add another email</a>
         <br>
-
+        <button id="sendEmails" type="button" name="button"><i class="far fa-envelope"></i> Send Invites!</button>
+        <br>
+        <p class="emailconf">Emails have succesfully been sent!</p>
         <button id="saveGuests">Save trip!</button><br>
     </div>
 
     <p>(you can continue to edit and add guests and reminders etc)</p>
-
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Your Search Results:</h2>
+        <div class="searchResult">
+        </div>
+      </div>
+    </div>
   </body>
 </html>
