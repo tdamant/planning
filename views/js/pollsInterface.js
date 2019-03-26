@@ -1,43 +1,73 @@
 $(document).ready(function() {
 
-  $('#buildPoll').on("click", function() {
+const getUrlParams = (name) => {
+    let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1];
+};
+
+const setMinDate = () => {
+    let dateToday = new Date(Date.now()).toISOString().split('T')[0];
+    $('#deadline').attr('min', dateToday)
+};
+
+setMinDate();
+
+$('#buildPoll').on("click", function() {
       if ($("#polls").val()) {
       $('#pollCreator').show("fast");
     } else {
       alert('Please pick a Poll to create from the drop down list.')
     }
-  });
+});
 
-  $('#savePoll').on("click", function() {
-      const updatePage = (type) => {
-          $(`#${type}Poll`).remove();
-          $(`#pollsCreated`).append(`${type} <br>`)
-      };
-      let tripId = getUrlParams('tripId');
-      let type = $("#polls").val();
+$('#savePoll').on("click", function() {
+    const updatePage = (type) => {
+      $('#pollCreator').hide("fast");
+      $(`#${type}Poll`).remove();
+      $(`#pollsCreated`).append(`${type} <br>`)
+    };
+
+    const checkInput = (date) => {
+      if(date === "") {
+          alert("please enter a deadline")
+      }
+      else {
+          return true
+      }
+    };
+
+    const getOptions = () => {
       let options = [];
       $( ".pollOption" ).each(function() {
           options.push( $( this ).val())
       });
-      let deadline = $("#deadline").val();
-      $.post("/polls/create", {type: type, options: options.join(','), deadline: deadline, tripId: tripId });
-      updatePage(type);
-      $('#pollCreator').hide("fast");
-  });
+      return options.join(",")
+    };
 
-  $('#guests').on("click", function() {
+    const getPollData = () => {
+      return {
+           tripId: getUrlParams('tripId'),
+       type: $("#polls").val(),
+       deadline: $("#deadline").val(),
+       options: getOptions()
+    }
+    };
+
+    let data = getPollData();
+    if (checkInput(data.deadline)) {
+      $.post("/polls/create", data);
+      updatePage(data.type)
+    }
+});
+
+$('#guests').on("click", function() {
     let tripId = getUrlParams('tripId');
     $(location).attr('href', '/guests?tripId='+tripId)
-  });
+    });
 
-  $("#addAnotherOption").on("click", function() {
-      let input = $("<input type=\"text\" class = \"pollOption\"><br>");
-      $('#pollOptions').append(input)
-  });
-
-  const getUrlParams = (name) => {
-      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-      return results[1];
-  };
+$("#addAnotherOption").on("click", function() {
+    let input = $("<input type=\"text\" class = \"pollOption\"><br>");
+    $('#pollOptions').append(input)
+    });
 
 });
