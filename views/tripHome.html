@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/tripHome.js"></script>
     <script src="js/specialCharacters.js"></script>
@@ -27,7 +28,7 @@
       <p id="trip-title"></p>
       <p id="trip-description"></p><br><br>
 
-      <button id="join">Join</button>
+      <button id="join">Join <i class="far fa-laugh-beam"></i> </button>
 
       <div class="tripOverview">
         <div id="pollsContainer">
@@ -35,7 +36,7 @@
         <br>
         What do the guests need to do? <br>
         We'll send them reminders for you, just give us the task details and deadline. <br><br>
-        <button id="addStage">Add a task</button>
+        <button id="addStage">Add a task <i class="fas fa-pencil-alt"></i></button>
 
         <div id="stageCreator" style="display: none;background-color:#ffcc00;">
           <p>What's this task called (e.g. Book flights): </p>
@@ -76,6 +77,9 @@
           Due Date: <input type="date" id="stageDueDate" name="stageDueDate" required><br>
           <input type="submit" id="submit" value="Submit">
         </form>
+
+        <br>
+        <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
       </div>
     </div>
     </body>

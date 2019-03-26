@@ -26,6 +26,12 @@ class Trips {
       await connection.pool.query(`INSERT into trips_users (trip_id, user_id) VALUES ('${tripId}', '${userId}')`);
   //    get all stages and add user to them
   }
+
+  static async removeUserFromTrip(tripId, userId) {
+    console.log(tripId)
+    console.log(userId);
+    await connection.pool.query(`DELETE FROM trips_users WHERE trip_id = ${tripId} AND user_id = ${userId}`)
+  }
 }
 
 module.exports = Trips;
