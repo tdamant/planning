@@ -6,6 +6,18 @@ $(document).ready(function() {
       $('#emails').append(input)
   });
 
+  $('#sendEmails').on("click", async() => {
+    let emails = [];
+    $( ".attendeeEmail" ).each(function() {
+        if($(this).val() != "") {emails.push( $( this ).val())}
+    });
+    let tripId = await getUrlParams('tripId');
+    emails.forEach(email => {
+      $.post("/send-email", {to: email, tripId: tripId});
+    });
+    $('.emailconf').css("display", "block");
+  });
+
   $('#saveGuests').on("click", async() => {
       let tripId = await getUrlParams('tripId')
       let emails = [];

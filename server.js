@@ -8,6 +8,7 @@ const polls =         require("./routes/polls.js");
 const guests =        require("./routes/guests.js");
 const users =         require("./routes/users.js");
 const tripsUsers =    require("./routes/tripsUsers.js");
+const sendEmail =     require("./routes/sendEmail.js");
 var cookieParser =    require("cookie-parser");
 const stages =        require("./routes/stages.js");
 
@@ -29,6 +30,7 @@ app.use("/guests", guests);
 app.use("/users", users);
 app.use("/stages", stages);
 app.use("/trips_users", tripsUsers);
+app.use("/send-email", sendEmail);
 
 app.use(function(req, res, next) {
     if (!req.cookies.user){
