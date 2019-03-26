@@ -14,7 +14,7 @@ $(document).ready(async function(){
     let currentUserTrips = await currentUserTripsResponse.json();
     console.log(currentUserTrips)
     currentUserTrips.forEach(trip => {
-      $("#user_trips").append(`<a href="/trips?id=${trip.id}">${trip.name}</a><br>`)
+      $("#user_trips").append(`<a href="/trip_home?id=${trip.id}">${trip.name}</a><br>`)
     });
   };
 

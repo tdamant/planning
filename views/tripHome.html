@@ -27,57 +27,56 @@
       <p id="trip-title"></p>
       <p id="trip-description"></p><br><br>
 
-      <div id="pollsContainer">
-
-
-      </div>
-
-      <br><br><br>
       <button id="join">Join</button>
 
-      What do the guests need to do? <br>
-      We'll send them reminders for you, just give us the task details and deadline. <br><br>
-      <button id="addStage">Add a task</button>
+      <div class="tripOverview">
+        <div id="pollsContainer">
+        </div>
+        <br>
+        What do the guests need to do? <br>
+        We'll send them reminders for you, just give us the task details and deadline. <br><br>
+        <button id="addStage">Add a task</button>
 
-      <div id="stageCreator" style="display: none;background-color:#ffcc00;">
-        <p>What's this task called (e.g. Book flights): </p>
-        <input type="text" id=""><br>
-        <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
-        <input type="text" id=""><br>
-        <p>What's the deadline:</p>
-        <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
-        <button id="saveStage">Save Reminder</button>
-      </div>
+        <div id="stageCreator" style="display: none;background-color:#ffcc00;">
+          <p>What's this task called (e.g. Book flights): </p>
+          <input type="text" id=""><br>
+          <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
+          <input type="text" id=""><br>
+          <p>What's the deadline:</p>
+          <input type="text" id="deadline"><br>  <!-- This will need to be a date input -->
+          <button id="saveStage">Save Reminder</button>
+        </div>
 
-      <br><br><br>
+        <br><br><br>
 
-      <div style="width:700px;height:50px;background-color:#4286f4;">
-         Here's all the reminders being sent out already: <br>
-      </div>
-    </div>
-      <h3>Stages</h3>
-      <p id="stages-list" ></p> <br>
-      <h3>Invites</h3>
-      <p id="attendees-list" ></p>
-      <div class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Your Search Results:</h2>
-          <div class="searchResult">
+        <div style="width:700px;height:50px;background-color:#4286f4;">
+           Here's all the reminders being sent out already: <br>
+        </div>
+        <h3>Stages</h3>
+        <p id="stages-list" ></p> <br>
+        <h3>Invites</h3>
+        <p id="attendees-list" ></p>
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Search Results:</h2>
+            <div class="searchResult">
+            </div>
           </div>
         </div>
+        <form name="addStage">
+          <p>Add more stages</p>
+          <select id="stageName" name="stageName">
+            <option value="Book flights">Book flights</option>
+            <option value="Choose city">Choose city</option>
+            <option value="Book hotel">Book hotel</option>
+            <option value="Confirm attendance">Confirm attendance</option>
+          </select>
+          Description: <textarea type="text" id="stageContent" name="stageContent" placeholder="Describe the options for this stage" rows="5" cols ="60"></textarea><br>
+          Due Date: <input type="date" id="stageDueDate" name="stageDueDate" required><br>
+          <input type="submit" id="submit" value="Submit">
+        </form>
       </div>
-      <form name="addStage">
-        <p>Add more stages</p>
-        <select id="stageName" name="stageName">
-          <option value="Book flights">Book flights</option>
-          <option value="Choose city">Choose city</option>
-          <option value="Book hotel">Book hotel</option>
-          <option value="Confirm attendance">Confirm attendance</option>
-        </select>
-        Description: <textarea type="text" id="stageContent" name="stageContent" placeholder="Describe the options for this stage" rows="5" cols ="60"></textarea><br>
-        Due Date: <input type="date" id="stageDueDate" name="stageDueDate" required><br>
-        <input type="submit" id="submit" value="Submit">
-      </form>
+    </div>
     </body>
 </html>

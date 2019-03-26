@@ -8,7 +8,7 @@ $(document).ready(async function(){
       console.log(results);
       $('.searchResult').text("");
       results.forEach ((result) => {
-        $('.searchResult').append(`<a href="/trips?id=${result.id}">${result.name}</a><br>`)
+        $('.searchResult').append(`<a href="/trip_home?id=${result.id}">${result.name}</a><br>`)
       });
       $('#srchbar').val("");
       $('.modal').css("display", "block");
