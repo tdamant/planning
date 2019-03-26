@@ -28,7 +28,7 @@
     <div class="container">
       <p id="trip-title"></p>
       <p id="trip-description"></p><br><br>
-
+      
       <button id="join">Join <i class="far fa-laugh-beam"></i> </button>
 
       <div class="tripOverview">
@@ -51,6 +51,9 @@
 
         <br><br><br>
 
+        <div id="detailsAndUpdatesContainer">
+        </div>
+
         <div style="width:700px;height:50px;background-color:#4286f4;">
            Here's all the reminders being sent out already: <br>
         </div>
@@ -58,6 +61,7 @@
         <p id="stages-list" ></p> <br>
         <h3>Invites</h3>
         <p id="attendees-list" ></p>
+        
         <div class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
@@ -66,21 +70,10 @@
             </div>
           </div>
         </div>
-        <form name="addStage">
-          <p>Add more stages</p>
-          <select id="stageName" name="stageName">
-            <option value="Book flights">Book flights</option>
-            <option value="Choose city">Choose city</option>
-            <option value="Book hotel">Book hotel</option>
-            <option value="Confirm attendance">Confirm attendance</option>
-          </select>
-          Description: <textarea type="text" id="stageContent" name="stageContent" placeholder="Describe the options for this stage" rows="5" cols ="60"></textarea><br>
-          Due Date: <input type="date" id="stageDueDate" name="stageDueDate" required><br>
-          <input type="submit" id="submit" value="Submit">
-        </form>
-
+  
         <br>
         <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
+
       </div>
     </div>
     </body>
