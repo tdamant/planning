@@ -17,7 +17,7 @@ $(document).ready(function() {
       // emails added to trip table? or trip_users? Do we want to just
       // save emails as an array, or track who has and hasn't joined
       // or even just send emails from here and not persist the data
-      $(location).attr('href', '/trips?id='+tripId)
+      $(location).attr('href', '/trip_home?id='+tripId)
           // $(location).attr('href', '/trips')
   });
 
