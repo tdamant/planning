@@ -20,10 +20,10 @@ body::before {
   top: -2.5vh;
   left: -2.5vw;
   display: block;
-  background: url('../images/background.jpg');
+  background: url('../images/background-2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 .greyBox {

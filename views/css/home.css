@@ -12,19 +12,20 @@ body {
 
 h1{
   font-size: 4vw;
-  color: black;
-  text-shadow: 1px 1px 4px rgba(238, 10, 121, 0.81);
+  color: #292828;
+  text-shadow: 1px 1px 4px rgba(238, 10, 121, 0.30);
 }
 
 h2{
   font-size: 2vw;
-  text-shadow: 1px 1px 4px #ee0979;
-  color: #f4b11c;
+  text-shadow: 1px 1px 4px rgba(238, 10, 121, 0.30);
+  color: #292828;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 a{
-  color: #f4b11c;
+  text-shadow: 1px 1px 4px rgba(238, 10, 121, 0.30);
+  color: #292828;
 }
 
 a:hover{
@@ -34,8 +35,8 @@ a:hover{
 h3{
   font-size: 1.5vw;
   font-family: 'Roboto Condensed', sans-serif;
-  text-shadow: 1px 1px 4px #ee0979;
-  color: #f4b11c;
+  text-shadow: 1px 1px 4px rgba(238, 10, 121, 0.30);
+  color: #292828;
 }
 
 select{
@@ -61,7 +62,7 @@ ul {
   padding: 0;
   overflow: hidden;
   opacity: 0.7;
-  background: linear-gradient(to right, #ee0979, #f4b11c);
+  background: linear-gradient(to right, #b0c0c9, #616b80);
   /* position: fixed;
   display: inline-block;
   top: 0;
@@ -92,11 +93,11 @@ li input[type="search"]::placeholder {
 }
 
 li a:hover:not(.active) {
-  background-color: #111;
+  background-color: #616b80;
 }
 
 .active {
-  background-color: #111;
+  background-color: #616b80;
 }
 
 img {
@@ -193,9 +194,17 @@ textarea::placeholder {
   font-size: 1.2vw;
 }
 
+.card:first-of-type {
+  margin-top: 10vh!important;
+}
+
+.card:last-of-type {
+  margin-bottom: 10vh!important;
+}
+
 .card {
   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0, 0, 0, 0.39);
-  margin:16px!important;
+  margin:2.5vh 20vw 2.5vh 20vw!important;
   color:#000!important;
   background-color:rgba(255, 255, 255, 0.71)!important;
   padding:1em 16px;
