@@ -1,5 +1,5 @@
 const usersModel = require("../models/lib/users.js");
-const Cookies = require('cookies');
+const Cookies = require("cookies");
 
 exports.addUser = async (req, res) => {
   var cookies = new Cookies(req, res,{httpOnly: false});
@@ -22,7 +22,7 @@ exports.authLogin = async (req, res) => {
   } else {
       res.send('failed to authenticate')
   };
-}
+};
 
 exports.getUser = async (req, res) => {
   let response = await usersModel.getUsers([req.cookies.user]);

@@ -28,9 +28,8 @@ class Trips {
   }
 
   static async removeUserFromTrip(tripId, userId) {
-    console.log(tripId)
-    console.log(userId);
     await connection.pool.query(`DELETE FROM trips_users WHERE trip_id = ${tripId} AND user_id = ${userId}`)
+      return "done"
   }
 }
 
