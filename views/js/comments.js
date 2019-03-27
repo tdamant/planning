@@ -38,7 +38,7 @@ $(document).ready(async function() {
     });
 
     const loadTripData = async() => {
-        let tripId = location.search.substr(4);
+        let tripId = await location.search.substr(4);
         let tripResponse = await fetch(`/trips/${tripId}`);
         let trip = tripResponse.json();
         return trip
