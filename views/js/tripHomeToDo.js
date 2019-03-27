@@ -16,8 +16,9 @@ const showToDos = (data) => {
           if (checkUserCompleted(stage)) {
             $('#stages-list').append(`<s>${stage.name} - ${cleanStageDescription} </s><br>`)
           } else {
-            $('#stages-list').append(`${stage.name} - ${cleanStageDescription} <br>`)
+            $('#stages-list').append(`<div class="small button"><button id="done${stage.id}"> Done </button></div> <span> ${stage.name} - ${cleanStageDescription}</span><br>`)
           }
         })
     }
+
 };
