@@ -19,6 +19,10 @@ $(document).ready(async function() {
         location.reload()
     });
 
+    $("#addUsers").click(function() {
+        $(location).attr('href', '/guests?tripId='+ trip.id);
+    });
+
     const showCommentBox = async (id) => {
         $(`#${id}`).toggle();
     };
@@ -48,9 +52,9 @@ $(document).ready(async function() {
 
     const hideOrganiserFunctionality = async () => {
         if(isOrganiser === false) {
-            console.log("here")
             $("#announcement2").hide();
             $("#announcement2-label").hide();
+            $("#addUsers").hide();
             $("#showImportantCommentBox").hide();
         }
     };
