@@ -9,7 +9,7 @@ exports.saveComment = async (req, res) => {
 };
 
 exports.getComments = async(req, res) => {
-    let tripId = req.params.id
+    let tripId = req.params.id;
     let comments = await commentsModel.getCommentsByTrip(tripId);
     res.send(comments);
 };

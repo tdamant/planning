@@ -92,7 +92,7 @@ $(document).ready(async () => {
 
   let data = await getData();
   addPolls(data.pollsData);
-  showToDos(data)
+  showToDos(data);
 
 
   $('#join').click( async function() {

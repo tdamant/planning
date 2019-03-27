@@ -30,8 +30,8 @@
       </ul>
     </nav>
     <div class="container">
-      <p id="trip-title"></p>
-      <p id="trip-description"></p><br><br>
+      <h1 id="trip-title"></h1>
+      <h2 id="trip-description"></h2><br><br>
 
       <button id="join">Join <i class="far fa-laugh-beam"></i> </button>
 
@@ -39,7 +39,6 @@
 
         <div id="pollsContainer">
         </div>
-
 
         <div id="stageCreator" class="container card" style="display: none;background-color:#ffcc00;">
           <p>What's this task called (e.g. Book flights): </p>
@@ -71,10 +70,11 @@
           <button id="showImportantCommentBox"> <i class="fas fa-pencil-alt"></i></button>
 
           <div class="hidden" id="addImportantCommentDiv">
+            <br>
             <form name="addComment" id="addComment">
-              <textarea rows="3" cols="30" type="text" id="comment"> </textarea>
-              <input type="checkbox" id="announcement" checked /> <label for="announcement" id="announcement-label">Important Update</label> <br>
-              <input type="submit" class="ellipse" id="commentButton" value="Add Comment"/>
+              <textarea rows="3" cols="30" type="text" id="comment1"> </textarea>
+              <input type="checkbox" id="announcement1" checked /> <label for="announcement" id="announcement-label">Important Update</label> <br>
+              <input type="button" class="ellipse" id="commentButton1" value="Add Comment"/>
             </form>
           </div>
         </div>
@@ -85,10 +85,11 @@
           <button id="showCommentBox"> <i class="fas fa-pencil-alt"></i></button>
 
           <div class="hidden" id="addCommentDiv">
-            <form name="addComment" id="addComment">
-              <textarea rows="3" cols="30" type="text" id="comment"> </textarea>
-              <input type="checkbox" id="announcement"/> <label for="announcement" id="announcement-label">Important Update</label> <br>
-              <input type="submit" class="ellipse" id="commentButton" value="Add Comment"/>
+            <br>
+            <form name="addComment" id="addComment1">
+              <textarea rows="3" cols="30" type="text" id="comment2"> </textarea>
+              <input type="checkbox" id="announcement2"/> <label for="announcement" id="announcement-label">Important Update</label> <br>
+              <input type="submit" class="ellipse" id="commentButton2" value="Add Comment"/>
             </form>
           </div>
         </div>
