@@ -8,15 +8,17 @@ $(document).ready(async () => {
   const getData = async () => {
     let tripId = await getUrlParams('id');
     let userId = await $.get("/whoami");
+    let stagesObject = await fetch(`/stages/${tripId}`);
+    let stages = await stagesObject.json();
     let pollsData = await $.get("/polls/getPolls", {tripId: tripId });
     let votes = await $.get("/polls/votes", {tripId: tripId});
     return {
       tripId: tripId,
       userId: userId,
+      stages: stages,
       pollsData: pollsData,
       votes: votes
     }
-
   };
 
   const buildPoll = (poll) => {
@@ -89,8 +91,10 @@ $(document).ready(async () => {
   };
 
   let data = await getData();
-  console.log(data.pollsData);
+  console.log(data.votes);
   addPolls(data.pollsData);
+  showToDos(data)
+
 
   $('#join').click( async function() {
       await $.post("/trips_users/create", {tripId: data.tripId});

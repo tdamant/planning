@@ -9,15 +9,6 @@ $(document).ready(async function() {
 
         $('#trip-description').prepend(`${description}`);
 
-        const showStages = () => {
-            if(data.stages.length > 0) {
-                data.stages.forEach(stage => {
-                    let cleanStageDescription = cleanDbString(stage.content);
-                    $('#stages-list').append(`${stage.name} - ${cleanStageDescription} <br>`)
-                })
-            }
-        };
-
         const showAttendees = () => {
             data.usersOnTrip.forEach( user => {
                 $('#attendees-list').append( `${user.first_name} ${user.last_name} <br>`)
@@ -28,7 +19,6 @@ $(document).ready(async function() {
             isOn ? $('#join').hide() : $('.tripOverview').hide()
           };
 
-        showStages();
         showAttendees();
         formatForTripMembers();
     };
