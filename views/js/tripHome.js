@@ -12,7 +12,11 @@ $(document).ready(async () => {
     let stages = await stagesObject.json();
     let pollsData = await $.get("/polls/getPolls", {tripId: tripId });
     let votes = await $.get("/polls/votes", {tripId: tripId});
+    let tripResponse = await fetch(`/trips/${tripId}`);
+    let trip = await tripResponse.json();
+    let tripOrganiserId = trip.organiser;
     return {
+      tripOrganiserId: tripOrganiserId,
       tripId: tripId,
       userId: userId,
       stages: stages,
@@ -22,19 +26,25 @@ $(document).ready(async () => {
   };
 
 
+  const loadOrganiserPriveledges = () => {
+    if (data.userId.toString() === data.tripOrganiserId.toString()) {
+      $('#addStage').show();
+      $('#addStage').on("click", function() {
+        $('#stageCreator').show("fast");
+      });
+    };
+  }
+
 
   let data = await getData();
   makePolls(data);
-  showToDos(data)
+  showToDos(data);
+  loadOrganiserPriveledges();
 
 
   $('#join').click( async function() {
       await $.post("/trips_users/create", {tripId: data.tripId});
       location.reload();
-  });
-
-  $('#addStage').on("click", function() {
-    $('#stageCreator').show("fast");
   });
 
   $('#saveStage').click(function(event) {
@@ -61,6 +71,7 @@ $(document).ready(async () => {
     $.post("/polls/saveVotes", {tripId: data.tripId, userId: data.userId, stageId: stageCompleted})
     location.reload();
   })
+
 
 
 });
