@@ -5,7 +5,7 @@ const connection = require("../../database/connection");
 describe("trips", () => {
 
     beforeAll( async() => {
-        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users, comments, votes, polls RESTART IDENTITY");
         await Users.addUser('is', 'cooper', 'is@is.com', '0123556', 'password');
         await Users.addUser('tom', 'd', 'tom@tom.com', '0123556', 'password');
     });
@@ -41,5 +41,13 @@ describe("trips", () => {
            expect(result.rows[0].user_id).toEqual(2)
         });
     });
+
+    describe('removeUserFromTrip', () => {
+        it("removes user from trips_users", async () => {
+            await Trips.removeUserFromTrip(1, 2);
+            let result = await connection.pool.query("select * from trips_users where user_id = 2");
+            expect(result.rows.length).toEqual(0)
+        })
+    })
 
 });
