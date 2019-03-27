@@ -37,21 +37,19 @@
     </div>
 
     <div class="container card" id="pollCreator" style="display: none;background-color:#ffcc00;">
-          Add the options for guests to pick from: <br><br>
-
-
+          <h3>Add the options for guests to pick from:</h3>
           <div id="pollOptions">
               <div class="option" id="option0">
                  <div class="userInput">
                      <input id="usersPollOption" type="text" name="userInput[]" />
                  </div>
-                  <div class="removebtn"><button type='button' class='rmbtn'>(bin icon)</button></div>
+                <button type='button' class='rmbtn'><i class="fas fa-trash-alt"></i></button>
               </div>
               <div class="addbtn">
-                    <button type="button" class="addmore">Add another option</button>
+                <button type="button" class="addmore">Add another option</button>
               </div>
           </div>
-          <p>Poll Deadline</p>
+          <h3>Poll Deadline</h3>
           <input type="date" id="deadline" min="">
           <button id="savePoll">Save Poll</button>
           <div class="small button">
