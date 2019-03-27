@@ -223,10 +223,23 @@ textarea::placeholder {
   margin-top: 3px;
 }
 
+.attendeeEmail {
+  margin-top: 3px;
+}
+
+.attendeeEmail:last-of-type {
+  margin-bottom: 10px;
+}
+
 #buildPoll {
   margin-top: 5px;
 }
 
 #guests {
   justify-self: center;
+}
+
+#saveGuests {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
