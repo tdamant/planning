@@ -8,7 +8,7 @@ Create trips table:
 ```
 CREATE TABLE trips (id SERIAL PRIMARY KEY, name VARCHAR(60), description VARCHAR, organiser INTEGER);
 ```
-Create stages and user tables:
+Create stages tables:
 ```
 CREATE TABLE stages (id SERIAL PRIMARY KEY, name VARCHAR, content VARCHAR, due_date DATE, event_id INTEGER);
 ```
@@ -18,7 +18,7 @@ CREATE TABLE users (id SERIAL PRIMARY KEY, first_name VARCHAR, last_name VARCHAR
 ```
 Create polls table:
 ```
-CREATE TABLE polls (id SERIAL PRIMARY KEY, type VARCHAR, options VARCHAR, deadline DATE, trip_id INTEGER REFERENCES trips (id));
+CREATE TABLE polls (id SERIAL PRIMARY KEY, type VARCHAR, options VARCHAR, deadline DATE, trip_id INTEGER REFERENCES trips (id), stage_id INTEGER REFERENCES stages (id));
 ```
 
 Create trips_users table:
@@ -35,10 +35,10 @@ CREATE TABLE stages_users (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES use
 Create votes table:
 
 ```
-CREATE TABLE votes (id SERIAL PRIMARY KEY, trip_id INTEGER REFERENCES trips (id), poll_id INTEGER REFERENCES polls (id), user_id INTEGER REFERENCES users (id), option_id VARCHAR);
+CREATE TABLE votes (id SERIAL PRIMARY KEY, trip_id INTEGER REFERENCES trips (id), poll_id INTEGER REFERENCES polls (id), user_id INTEGER REFERENCES users (id), option_id VARCHAR, stage_id INTEGER REFERENCES stages (id));
 ```
 
-Create votes table:
+Create comments table:
 
 ```
 CREATE TABLE comments (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), comment VARCHAR, date TIMESTAMP DEFAULT NOW(), announcement BOOL);
