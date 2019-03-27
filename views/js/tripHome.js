@@ -91,7 +91,6 @@ $(document).ready(async () => {
   };
 
   let data = await getData();
-  console.log(data.votes);
   addPolls(data.pollsData);
   showToDos(data)
 
