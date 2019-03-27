@@ -16,6 +16,7 @@ $(document).ready(async () => {
       pollsData: pollsData,
       votes: votes
     }
+
   };
 
   const buildPoll = (poll) => {
@@ -91,6 +92,7 @@ $(document).ready(async () => {
   };
 
   let data = await getData();
+  console.log(data.pollsData);
   addPolls(data.pollsData);
 
   $('#join').click( async function() {
