@@ -265,6 +265,20 @@ textarea::placeholder {
   cursor:pointer;
 }
 
+.small-button {
+  display: static;
+  box-sizing: border-box;
+  background: none;
+  color: #ee0979;
+  cursor:pointer;
+  margin: 0;
+  vertical-align: middle;
+}
+
+#stages-list ul li > .small-button {
+  display: inline-block;
+}
+
 #buildPoll {
   margin-top: 5px;
 }
