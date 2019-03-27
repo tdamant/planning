@@ -42,6 +42,7 @@ $(document).ready(async function() {
     });
 
     $('#savePoll').on("click", function() {
+
         const updatePage = (type) => {
           $('#pollCreator').hide("fast");
           $(`#${type}Poll`).remove();
@@ -49,35 +50,46 @@ $(document).ready(async function() {
         };
 
         const checkInput = (date) => {
-          date === "" ? alert("Please enter a deadline") : true
+         if (date === "") {
+           alert("Please enter a deadline")
+         } else {
+           return true
+         }
         };
 
         const getOptions = () => {
           let options = [];
-          $( ".pollOption" ).each(function() {
-              let input = $( this ).val();
+          $( ".option" ).each(function() {
+              let input = $( this ).find('input:text').val();
               options.push(input);
-              $( this ).val("")
+              $( this ).find('input:text').val("")
           });
           return options.join(",")
         };
 
         const getPollData = () => {
           return {
-               tripId: getUrlParams('tripId'),
+           tripId: getUrlParams('tripId'),
            type: $("#polls").val(),
            deadline: $("#deadline").val(),
            options: getOptions()
-        }
+          }
         };
 
         let data = getPollData();
 
-        if (checkInput(data.deadline)) {
-          $.post("/polls/create", data);
-          updatePage(data.type)
-        }
+        const sendPollData = (data) => {
+            if (checkInput(data.deadline)) {
+              $.post("/polls/create", data);
+              updatePage(data.type)
+            }
+        };
+
+        sendPollData(data)
+
     });
+
+
     const showPollsCreated = (polls) => {
         polls.forEach((poll) => {
             $('#pollsCreated').append(`${poll.type}`)
