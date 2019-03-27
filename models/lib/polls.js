@@ -20,6 +20,7 @@ class Poll {
           };
           let splitOptionIds = optionIds.split(',');
           await asyncForEach(splitOptionIds, (vote) => {
+              console.log(vote);
               connection.pool.query(`INSERT INTO votes (trip_id, poll_id, user_id, stage_id, option_id) VALUES ('${tripId}', '${pollId}', '${userId}', '${stageId}', '${vote}')`);
           });
         } else {

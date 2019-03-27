@@ -5,17 +5,18 @@ const makePolls = (data) => {
         const addOptions = (options) => {
           options.forEach((option, index) => {
             let votes = getVotes(`${index}-poll${poll.id}`);
+            console.log(votes);
             pollDiv += `<input id = "${index}-poll${poll.id}" type="checkbox"><label for ="${option}"> <span id="option">${option} -- </span> <span id="votes"> VOTES SO FAR -- ${votes}</span> </label>`
           });
         };
         const addDivId = (type) => {
-          pollDiv += `<div id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
+          pollDiv += `<div class="column"><div class="grid-item container card different" id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
         };
         let options = poll.options.split(",");
         addDivId(poll.type);
         addOptions(options);
-        pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form> </div>`;
-        $("#pollsContainer").append(pollDiv);
+        pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form></div></div>`;
+        $(".row1").append(pollDiv);
 
         $(`#${poll.type}-submit`).on("click", (event) => {
             event.preventDefault();
@@ -44,6 +45,8 @@ const makePolls = (data) => {
     }
 
     const saveVotes = (tripId, pollId, userId, optionIds, stageId) => {
+      console.log(pollId);
+      console.log(stageId);
         $.post("/polls/saveVotes", {tripId: tripId, pollId: pollId, userId: userId, optionIds: optionIds, stageId: stageId})
     };
 
