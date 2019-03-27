@@ -5,6 +5,7 @@
     <title>Planning App</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="icon" href="images/wing4.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/modal.css" />
@@ -29,26 +30,33 @@
       <h3>You can skip this stage by clicking <a href="#">here</a>, or build whichever polls you need from the drop down list below.</h3>
     </div>
     <div class="container card">
-      <label for="polls">What do you and the rest of the guests need to decide on?</label>
-      <select id="polls" name="polls">
-        <option id="DatesPoll">Dates</option>
-        <option id="LocationPoll">Location</option>
-        <option id="BudgetPoll">Budget</option>
-      </select>
-      <button id="buildPoll">Build Poll</button>
+      <h3>What do you and the rest of the guests need to decide on?</h3>
+      <select id="polls" name="polls"></select>
+      <br>
+      <button id="buildPoll">Build Poll <i class="fas fa-vote-yea"></i></button>
     </div>
 
-    <div id="pollCreator" style="display: none;background-color:#ffcc00;">
-      Add the options for guests to pick from: <br><br>
-      <div id="pollOptions">
-      <input type="text" class = "pollOption"><br>
-      <input type="text" class = "pollOption"><br>
-      <input type="text" class = "pollOption"><br>
-      </div><br>
-      <button id="addAnotherOption">Add another option</button><br>
-      <p>Poll Deadline</p>
-      <input type="date" id="deadline" min="">
-      <button id="savePoll">Save Poll</button>
+    <div class="container card" id="pollCreator" style="display: none;background-color:#ffcc00;">
+          Add the options for guests to pick from: <br><br>
+
+
+          <div id="pollOptions">
+              <div class="option" id="option0">
+                 <div class="userInput">
+                     <input id="usersPollOption" type="text" name="userInput[]" />
+                 </div>
+                  <div class="removebtn"><button type='button' class='rmbtn'>(bin icon)</button></div>
+              </div>
+              <div class="addbtn">
+                    <button type="button" class="addmore">Add another option</button>
+              </div>
+          </div>
+          <p>Poll Deadline</p>
+          <input type="date" id="deadline" min="">
+          <button id="savePoll">Save Poll</button>
+          <div class="small button">
+            <button id="closePollCreator">Close</button>
+          </div>
     </div>
 
     <br><br>

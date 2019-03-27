@@ -23,15 +23,7 @@ $(document).ready(async function() {
         formatForTripMembers();
     };
 
-    $('#submit').click(function(event) {
-        event.preventDefault();
-        let stageName = $('#stageName').val();
-        let content = $('#stageContent').val();
-        let cleanContent = cleanStringForDb(content);
-        let due_date = $('#stageDueDate').val();
-        $.post("/stages/create", {stageName: stageName, content: cleanContent, due_date: due_date, trip_id: data.trip.id });
-        location.reload();
-    });
+
 
     // delete function for removing users:
     $.delete = function(url, data, callback, type){
