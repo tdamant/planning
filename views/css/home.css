@@ -201,19 +201,27 @@ textarea::placeholder {
   font-size: 1.2vw;
 }
 
-/* .card:first-of-type {
+.card:first-of-type {
   margin-top: 10vh!important;
 }
 .card:last-of-type {
   margin-bottom: 10vh!important;
-} */
+}
 
-.card {
+.card:not(.different) {
   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0, 0, 0, 0.39);
-  /* margin:2.5vh 20vw 2.5vh 20vw!important; */
+  margin:2.5vh 20vw 2.5vh 20vw!important;
   color:#000!important;
   background-color:rgba(255, 255, 255, 0.71)!important;
-  /* padding:1em 16px; */
+  padding:1em 16px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.different {
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0, 0, 0, 0.39);
+  color:#000!important;
+  background-color:rgba(255, 255, 255, 0.71)!important;
   border-radius: 3px;
   text-align: center;
 }

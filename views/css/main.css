@@ -177,7 +177,7 @@ label:first-of-type {
   float: left;
   width: 33.33%;
   padding: 10px;
-  height: 600px; /* Should be removed. Only for demonstration */
+  /* height: 600px; */
 }
 
 /* Clear floats after the columns */

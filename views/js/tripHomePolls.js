@@ -9,7 +9,7 @@ const makePolls = (data) => {
           });
         };
         const addDivId = (type) => {
-          pollDiv += `<div class="column"><div class="grid-item container card" id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
+          pollDiv += `<div class="column"><div class="grid-item container card different" id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
         };
         let options = poll.options.split(",");
         addDivId(poll.type);

@@ -36,26 +36,43 @@
       <button id="join">Join <i class="far fa-laugh-beam"></i> </button>
       <div class="tripOverview">
 
+
+        <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
+
           <div class="row1">
             <!-- polls -->
           </div>
           <div class="row2">
             <div class="column">
-              <div class="container card" id="to-do">
+              <div class="container card different" id="to-do">
                 <h3>Your To-Do list</h3>
                 <p id="stages-list" ></p> <br>
                 <button style="display: none" id="addStage"> <i class="fas fa-pencil-alt"></i></button>
               </div>
             </div>
             <div class="column">
-              <div class="container card" id="attendees">
+              <div class="container card different" id="attendees">
                 <h3>Trip Attendees</h3>
                 <p id="attendees-list" ></p>
                 <button id="addUsers">Invite More <i class="fas fa-envelope"></i></button>
               </div>
             </div>
             <div class="column">
+              <div class="container card different">
+                <h2>Important Updates</h2>
+                <p><em>Organiser only</em></p>
+                <p id="important-comment-list"></p>
+                <button id="showImportantCommentBox"> <i class="fas fa-pencil-alt"></i></button>
 
+                <div class="hidden" id="addImportantCommentDiv">
+                  <br>
+                  <form name="addComment" id="addComment">
+                    <textarea rows="3" cols="30" type="text" id="comment1"> </textarea>
+                    <input type="checkbox" id="announcement1" checked /> <label for="announcement" id="announcement-label">Important Update</label> <br>
+                    <input type="button" class="ellipse" id="commentButton1" value="Add Comment"/>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -77,21 +94,7 @@
         <br><br><br>
 
 
-        <div class="container card">
-          <h2>Important Updates</h2>
-          <p><em>Organiser only</em></p>
-          <p id="important-comment-list"></p>
-          <button id="showImportantCommentBox"> <i class="fas fa-pencil-alt"></i></button>
 
-          <div class="hidden" id="addImportantCommentDiv">
-            <br>
-            <form name="addComment" id="addComment">
-              <textarea rows="3" cols="30" type="text" id="comment1"> </textarea>
-              <input type="checkbox" id="announcement1" checked /> <label for="announcement" id="announcement-label">Important Update</label> <br>
-              <input type="button" class="ellipse" id="commentButton1" value="Add Comment"/>
-            </form>
-          </div>
-        </div>
 
         <div class="container card">
           <h2>Group chatter</h2>
@@ -108,9 +111,7 @@
           </div>
         </div>
 
-        <br>
-        <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
-        <br>
+
       </div>
     <div class="modal">
       <div class="modal-content">
