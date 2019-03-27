@@ -79,14 +79,15 @@
 
 
         <div id="stageCreator" class="container card" style="display: none;background-color:#ffcc00;">
-          <p>What's this task called (e.g. Book flights): </p>
-          <input type="text" id="stageName"><br>
-          <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
-          <input type="text" id="stageContent"><br>
-          <p>What's the deadline:</p>
-          <input type="date" id="stageDueDate"><br>
+
+          <h3>What's this task called (e.g. Book flights): </h3>
+          <input type="text" id="stageName">
+          <h3>What's the message that you want us to send the guests. Include as much or as little detail as you like:</h3>
+          <input type="text" id="stageContent">
+          <h3>What's the deadline:</h3>
+          <input type="date" id="stageDueDate"> <!-- This will need to be a date input -->
           <button id="saveStage">Save Reminder</button>
-          <div class="small button">
+          <div class="small-button">
             <button id="closeStageCreator">Close</button>
           </div>
         </div>
@@ -94,6 +95,11 @@
         <br><br><br>
 
 
+        <div class="container card" id="to-do">
+          <h3>Your To-Do list</h3>
+          <div id="stages-list"></div> <br>
+          <button style="display: none" id="addStage"> <i class="fas fa-pencil-alt"></i></button>
+        </div>
 
 
         <div class="container card">

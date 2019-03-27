@@ -14,11 +14,11 @@ const showToDos = (data) => {
         stages.forEach(stage => {
           let cleanStageDescription = cleanDbString(stage.content);
           if (checkUserCompleted(stage)) {
-            $('#stages-list').append(`<s>${stage.name} - ${cleanStageDescription} </s><br>`)
+            $('#stages-list').append(`<p><s>${stage.name} - ${cleanStageDescription} </s></p><br>`)
           } else {
-            $('#stages-list').append(`<div class="small button"><button id="done${stage.id}"> Done </button></div> <span> ${stage.name} - ${cleanStageDescription}</span><br>`)
+            $('#stages-list').append(`<p>${stage.name} - ${cleanStageDescription} <button class="small-button" id="done${stage.id}">Done <i class="fas fa-check-circle"></i></button></p><br>`)
           }
-        })
+        });
     }
 
 };
