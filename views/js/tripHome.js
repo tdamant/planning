@@ -29,9 +29,6 @@ $(document).ready(async () => {
   const loadOrganiserPriveledges = () => {
     if (data.userId.toString() === data.tripOrganiserId.toString()) {
       $('#addStage').show();
-      $('#addStage').on("click", function() {
-        $('#stageCreator').show("fast");
-      });
     };
   }
 
@@ -72,6 +69,8 @@ $(document).ready(async () => {
     location.reload();
   })
 
-
+  $('#addStage').on("click", function() {
+    $('#stageCreator').show("fast");
+  });
 
 });
