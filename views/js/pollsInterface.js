@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(async function() {
 
 const getUrlParams = (name) => {
     let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -10,7 +10,28 @@ const setMinDate = () => {
     $('#deadline').attr('min', dateToday)
 };
 
+const buildPollOptions = (existingPolls) => {
+    const findTypesToAdd = (existingPolls) => {
+        let existingPollTypes = [];
+        existingPolls.forEach((poll) => {
+            existingPollTypes.push(poll.type)
+        });
+        let options = ['Dates', 'Location', 'Budget'];
+        return newArr = options.filter(x => !existingPollTypes.includes(x));
+    };
+    let typesToAdd = findTypesToAdd(existingPolls);
+    typesToAdd.forEach((type) => {
+        $('#polls').append(`<option id="${type}Poll">${type}</option>`)
+    });
+};
+
 setMinDate();
+
+const getExistingPolls = async () => {
+    let tripId = getUrlParams('tripId');
+    let pollsResponse = await fetch(`/polls/getPolls?tripId=${tripId}`);
+    return await pollsResponse.json();
+};
 
 $('#buildPoll').on("click", function() {
       if ($("#polls").val()) {
@@ -59,6 +80,10 @@ $('#savePoll').on("click", function() {
       updatePage(data.type)
     }
 });
+
+let myPolls = await getExistingPolls();
+
+buildPollOptions(myPolls);
 
 $('#guests').on("click", function() {
     let tripId = getUrlParams('tripId');
