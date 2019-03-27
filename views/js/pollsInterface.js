@@ -132,4 +132,9 @@ $(document).ready(async function() {
         $('#pollCreator').hide("fast");
         $('#pollCreator').find('input:text').val('');
     });
+
+    $("#skip").on("click", function() {
+        let tripId = getUrlParams('tripId');
+        $(location).attr('href', '/trip_home?id='+tripId)
+    });
 });
