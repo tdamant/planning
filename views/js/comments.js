@@ -48,8 +48,9 @@ $(document).ready(async function() {
 
     const hideOrganiserFunctionality = async () => {
         if(isOrganiser === false) {
-            $("#announcement").hide();
-            $("#announcement-label").hide();
+            console.log("here")
+            $("#announcement2").hide();
+            $("#announcement2-label").hide();
             $("#showImportantCommentBox").hide();
         }
     };
@@ -89,6 +90,7 @@ $(document).ready(async function() {
     let trip = await loadTripData();
     let comments = await loadCommentData();
     let isOrganiser = await checkIfOrganiser();
+    console.log(isOrganiser)
     formatComments();
     hideOrganiserFunctionality();
 });
