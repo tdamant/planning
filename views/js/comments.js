@@ -94,7 +94,6 @@ $(document).ready(async function() {
     let trip = await loadTripData();
     let comments = await loadCommentData();
     let isOrganiser = await checkIfOrganiser();
-    console.log(isOrganiser)
     formatComments();
     hideOrganiserFunctionality();
 });
