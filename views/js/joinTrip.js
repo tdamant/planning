@@ -20,7 +20,7 @@ $(document).ready(async function() {
 
         const showAttendees = () => {
             data.usersOnTrip.forEach( user => {
-                $('#attendees-list').append( `${user.first_name} ${user.last_name}`)
+                $('#attendees-list').append( `${user.first_name} ${user.last_name} <br>`)
             })
         };
 
