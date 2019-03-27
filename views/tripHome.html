@@ -34,11 +34,32 @@
       <h2 id="trip-description"></h2><br><br>
 
       <button id="join">Join <i class="far fa-laugh-beam"></i> </button>
-
       <div class="tripOverview">
 
-        <div id="pollsContainer">
-        </div>
+          <div class="row1">
+            <!-- polls -->
+          </div>
+          <div class="row2">
+            <div class="column">
+              <div class="container card" id="to-do">
+                <h3>Your To-Do list</h3>
+                <p id="stages-list" ></p> <br>
+                <button style="display: none" id="addStage"> <i class="fas fa-pencil-alt"></i></button>
+              </div>
+            </div>
+            <div class="column">
+              <div class="container card" id="attendees">
+                <h3>Trip Attendees</h3>
+                <p id="attendees-list" ></p>
+                <button id="addUsers">Invite More <i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="column">
+
+            </div>
+          </div>
+
+
 
         <div id="stageCreator" class="container card" style="display: none;background-color:#ffcc00;">
           <p>What's this task called (e.g. Book flights): </p>
@@ -46,7 +67,7 @@
           <p>What's the message that you want us to send the guests. Include as much or as little detail as you like:</p>
           <input type="text" id="stageContent"><br>
           <p>What's the deadline:</p>
-          <input type="date" id="stageDueDate"><br>  <!-- This will need to be a date input -->
+          <input type="date" id="stageDueDate"><br>
           <button id="saveStage">Save Reminder</button>
           <div class="small button">
             <button id="closeStageCreator">Close</button>
@@ -55,18 +76,6 @@
 
         <br><br><br>
 
-        <div class="container card" id="to-do">
-          <h3>Your To-Do list</h3>
-          <p id="stages-list" ></p> <br>
-          <button style="display: none" id="addStage"> <i class="fas fa-pencil-alt"></i></button>
-        </div>
-
-        <div class="container card" id="attendees">
-          <h3>Trip Attendees</h3>
-          <p id="attendees-list" ></p>
-          <button id="addUsers">Invite More <i class="fas fa-envelope"></i></button>
-
-        </div>
 
         <div class="container card">
           <h2>Important Updates</h2>
