@@ -46,7 +46,8 @@ $(document).ready(async function() {
         const updatePage = (type) => {
           $('#pollCreator').hide("fast");
           $(`#${type}Poll`).remove();
-          $(`#pollsCreated`).append(`${type} <br>`)
+          $(`#pollsCreated`).show();
+          $(`#pollsCreated`).append(`<figure><img src="../images/checkbox.png" alt="Check Box" height="22" width="22"><figcaption>${type}</figcaption></figure>`)
         };
 
         const checkInput = (date) => {

@@ -158,3 +158,7 @@ label:first-of-type {
 .emailconf {
   display: none;
 }
+
+#pollsCreated figure {
+  display: inline-block;
+}
