@@ -9,13 +9,13 @@ const makePolls = (data) => {
           });
         };
         const addDivId = (type) => {
-          pollDiv += `<div id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
+          pollDiv += `<div class="column"><div class="grid-item container card" id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
         };
         let options = poll.options.split(",");
         addDivId(poll.type);
         addOptions(options);
-        pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form> </div>`;
-        $("#pollsContainer").append(pollDiv);
+        pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form></div></div>`;
+        $(".row1").append(pollDiv);
 
         $(`#${poll.type}-submit`).on("click", (event) => {
             event.preventDefault();

@@ -16,7 +16,7 @@ $(document).ready(async function() {
             existingPolls.forEach((poll) => {
                 existingPollTypes.push(poll.type)
             });
-            let options = ['Dates', 'Location', 'Budget', 'Sights to see',  'Accommodation', 'Pool vs Sea'];
+            let options = ['Dates', 'Location', 'Budget'];
             return newArr = options.filter(x => !existingPollTypes.includes(x));
         };
         let typesToAdd = findTypesToAdd(existingPolls);
