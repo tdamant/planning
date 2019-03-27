@@ -112,4 +112,10 @@ $(document).ready(async function() {
     $("body").on("click", ".rmbtn", function() {
         $(this).parents('.option').remove();
     });
+
+    $('#closePollCreator').click(function(event) {
+        event.preventDefault();
+        $('#pollCreator').hide("fast");
+        $('#pollCreator').find('input:text').val('');
+    });
 });

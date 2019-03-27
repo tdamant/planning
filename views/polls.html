@@ -42,7 +42,7 @@
       <div id="pollOptions">
           <div class="option" id="option0">
              <div class="userInput">
-                 <input type="text" name="userInput[]" />
+                 <input id="usersPollOption" type="text" name="userInput[]" />
              </div>
               <div class="removebtn"><button type='button' class='rmbtn'>(bin icon)</button></div>
           </div>
@@ -50,17 +50,12 @@
                 <button type="button" class="addmore">Add another option</button>
           </div>
       </div>
-
-<!--
-      <div id="pollOptions">
-        <span id="option1"> <input type="text" class = "pollOption" ><button id="bin"> bin icon </button></span> <br>
-        <span id="option2"> <input type="text" class = "pollOption" ><button id="bin"> bin icon </button></span> <br>
-        <span id="option3"> <input type="text" class = "pollOption" ><button id="bin"> bin icon </button></span> <br>
-      </div><br>
-      <button id="addAnotherOption">Add another option</button><br> -->
       <p>Poll Deadline</p>
       <input type="date" id="deadline" min="">
       <button id="savePoll">Save Poll</button>
+      <div class="small button">
+        <button id="closePollCreator">Close</button>
+      </div>
     </div>
 
     <br><br>
