@@ -60,4 +60,3 @@ $(document).ready(async function() {
     formatComments();
 
 });
-
