@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Planning App</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="icon" href="images/wing4.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/modal.css" />
@@ -21,12 +22,12 @@
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
-    <div class="container">
+    <div class="container card" style="padding:0">
       <h2>This is where we create polls to find out the preferences of the guests.</h2>
       <h3>Guests will receive text messages to remind them to fill in the polls.</h3>
       <h3>You can skip this stage by clicking <a href="#">here</a>, or build whichever polls you need from the drop down list below.</h3>
     </div>
-    <div class="container">
+    <div class="container card">
       <label for="polls">What do you and the rest of the guests need to decide on?</label>
       <select id="polls" name="polls">
         <option id="DatesPoll">Dates</option>
@@ -45,7 +46,7 @@
       </div><br>
       <button id="addAnotherOption">Add another option</button><br>
       <p>Poll Deadline</p>
-      <input type="date" id="deadline"><br>
+      <input type="date" id="deadline" min="">
       <button id="savePoll">Save Poll</button>
     </div>
 

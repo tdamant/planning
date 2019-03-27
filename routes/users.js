@@ -11,5 +11,6 @@ router.get("/trips", usersController.getTripsByUser);
 router.delete("/trips", tripsUsersController.deleteUserFromTrip);
 
 router.get("/", usersController.getUser);
+router.get("/:id", usersController.getUserById);
 
 module.exports = router;
