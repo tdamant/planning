@@ -38,6 +38,7 @@ h3{
 select{
   min-width: 135px;
   max-width: 200px;
+  font-size: 1.5vw;
 }
 
 select:focus{
@@ -160,6 +161,11 @@ input:focus {
   border:1px solid #ee0979;
 }
 
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
 label {
     display: block;
     margin: 10px 0 8px 0;
@@ -190,7 +196,6 @@ textarea:focus {
     border:1px solid #ee0979;
 }
 
-}
 textarea::placeholder {
   text-align: left;
   font-size: 1.2vw;
@@ -214,6 +219,14 @@ textarea::placeholder {
   text-align: center;
 }
 
+.pollOption {
+  margin-top: 3px;
+}
+
 #buildPoll {
-  margin: auto;
+  margin-top: 5px;
+}
+
+#guests {
+  justify-self: center;
 }
