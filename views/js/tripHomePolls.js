@@ -34,7 +34,7 @@ const makePolls = (data) => {
       let resultsDiv =
       `<div class="column">
       <div class="grid-item container card different" id"${poll.type}">
-      <p id"thanks"> Thanks for voting on the ${poll.type.toLowerCase()}! </p><br>`
+      <p id"thanks" > Thanks for voting on the ${poll.type.toLowerCase()}! </p><br>`
       const getOptions = (options) => {
         options.forEach((option, index) => {
           let votes = getVotes(`${index}-poll${poll.id}`);
