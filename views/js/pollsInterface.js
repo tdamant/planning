@@ -11,6 +11,7 @@ const setMinDate = () => {
 };
 
 const buildPollOptions = (existingPolls) => {
+    console.log(existingPolls);
     const findTypesToAdd = (existingPolls) => {
         let existingPollTypes = [];
         existingPolls.forEach((poll) => {
@@ -60,7 +61,9 @@ $('#savePoll').on("click", function() {
     const getOptions = () => {
       let options = [];
       $( ".pollOption" ).each(function() {
-          options.push( $( this ).val())
+          let input = $( this ).val();
+          options.push(input);
+          $( this ).val("")
       });
       return options.join(",")
     };
