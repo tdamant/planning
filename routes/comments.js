@@ -3,6 +3,6 @@ var router = express.Router();
 const commentsController = require("../controllers/comments.js");
 
 router.post("/", commentsController.saveComment);
-router.get('/', commentsController.getComments);
+router.get('/trips/:id', commentsController.getComments);
 
 module.exports = router;

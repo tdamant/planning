@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="css/comment.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/tripHome.js"></script>
   <script src="js/comments.js"></script>
   <script src="js/tripHomeToDo.js"></script>
@@ -66,34 +67,39 @@
           <p id="attendees-list" ></p>
         </div>
 
-        <div class="container card" id="details">
-          <h3>Trip Details</h3>
-          <p>Check back here for updates from the organiser!</p>
-          <p id="updates-list"></p>
-        </div>
-
         <div class="container card">
           <h2>Important Updates</h2>
+          <p><em>Organiser only</em></p>
           <p id="important-comment-list"></p>
+          <button id="showImportantCommentBox"> <i class="fas fa-pencil-alt"></i></button>
+
+          <div class="hidden" id="addImportantCommentDiv">
+            <form name="addComment" id="addComment">
+              <textarea rows="3" cols="30" type="text" id="comment"> </textarea>
+              <input type="checkbox" id="announcement" checked /> <label for="announcement" id="announcement-label">Important Update</label> <br>
+              <input type="submit" class="ellipse" id="commentButton" value="Add Comment"/>
+            </form>
+          </div>
         </div>
 
         <div class="container card">
-          <h2>Feed</h2>
+          <h2>Group chatter</h2>
           <p id="comment-list"></p>
+          <button id="showCommentBox"> <i class="fas fa-pencil-alt"></i></button>
+
+          <div class="hidden" id="addCommentDiv">
+            <form name="addComment" id="addComment">
+              <textarea rows="3" cols="30" type="text" id="comment"> </textarea>
+              <input type="checkbox" id="announcement"/> <label for="announcement" id="announcement-label">Important Update</label> <br>
+              <input type="submit" class="ellipse" id="commentButton" value="Add Comment"/>
+            </form>
+          </div>
         </div>
 
-        <div class="container card">
-          <form name="addComment" id="addComment">
-            <textarea rows="3" cols="30" type="text" id="comment"> </textarea>
-            <input type="checkbox" id="announcement"/> <label for="announcement" id="announcement-label">Important Update</label> <br>
-            <input type="submit" class="ellipse" id="commentButton" value="Add Comment"/>
-          </form>
-        </div>
         <br>
         <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
         <br>
       </div>
-    </div>
     <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -101,6 +107,8 @@
         <div class="searchResult">
         </div>
       </div>
+
     </div>
+
     </body>
 </html>

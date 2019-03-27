@@ -1,14 +1,30 @@
+
 $(document).ready(async function() {
+
+    const showCommentBox = async (id) => {
+        $(`#${id}`).toggle();
+    };
+
     $('#commentButton').on("click", function(event) {
         event.preventDefault();
         let comment = $("#comment").val();
         let announcement = $("#announcement").is(':checked');
-        $.post("/comments", {comment: comment, announcement: announcement});
+        $.post("/comments", {comment: comment, announcement: announcement, tripId: trip.id});
         location.reload()
     });
 
+    $('#showCommentBox').on("click", function(event) {
+        event.preventDefault();
+        showCommentBox("addCommentDiv");
+    });
+
+    $('#showImportantCommentBox').on("click", function(event) {
+        event.preventDefault();
+        showCommentBox("addImportantCommentDiv");
+    });
+
     const loadCommentData = async() =>{
-        let commentsResponse = await fetch("/comments");
+        let commentsResponse = await fetch(`/comments/trips/${trip.id}`);
         let comments =  await commentsResponse.json();
         let importantComments = await comments.filter(comment=> { return comment.announcement === true });
         let otherComments = await comments.filter(comment=> { return comment.announcement != true });
@@ -18,17 +34,20 @@ $(document).ready(async function() {
         };
     };
 
-    const checkIfOrganiser = async() => {
-        let userId = await $.get("/whoami");
+    const loadTripData = async() => {
         let tripId = location.search.substr(4);
         let tripResponse = await fetch(`/trips/${tripId}`);
-        let trip = await tripResponse.json();
+        let trip = tripResponse.json();
+        return trip
+    };
+
+    const checkIfOrganiser = async() => {
+        let userId = await $.get("/whoami");
         let tripOrganiserId = trip.organiser;
         return userId == tripOrganiserId
     };
 
     const showImportantCheckbox = async () => {
-        console.log(isOrganiser);
         if(isOrganiser === false) {
             $("#announcement").hide();
             $("#announcement-label").hide();
@@ -48,15 +67,16 @@ $(document).ready(async function() {
         });
 
         await asyncForEach(comments.important, async(comment) => {
-            let userData = await $.get(`/users/${comment.user_id}`);
-            $("#important-comment-list").append(`${comment.comment} --- ${userData.first_name}<br>`)
+            $("#important-comment-list").append(`${comment.comment} --- ${comment.date}<br>`)
         });
     };
 
-
+    let trip = await loadTripData();
     let comments = await loadCommentData();
+
     let isOrganiser = await checkIfOrganiser();
     showImportantCheckbox();
     formatComments();
+
 
 });
