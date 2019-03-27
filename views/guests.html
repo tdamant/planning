@@ -23,22 +23,27 @@
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
-    <div class="container-card">
-        <h2>Invite guests!</h2><br><br>
-
-        <p>Email addresses:</p>
-        <div id="emails">
-          <input id="to1" type="text" name="to" class="attendeeEmail"><br>
-          <input type="text" class="attendeeEmail"><br>
-          <input type="text" class="attendeeEmail"><br>
-        </div><br>
-        <a href="#" id="addAnotherEmail">Add another email</a>
-        <br>
-        <button id="sendEmails" type="button" name="button"><i class="far fa-envelope"></i> Send Invites!</button>
-        <br>
-        <p class="emailconf">All done! Emails are winging their way to your friends. Feel free to add more if you've missed someone.. </p>
-        <br>
-        <button id="saveGuests">Save trip</button><br>
+    <div class="container">
+      <div class="container card" style="padding:20px">
+        <h2>Invite guests!</h2>
+      </div>
+        <div class="container card">
+          <h3>Add guests' email addresses:</h3>
+          <div id="emails">
+            <input type="text" name="to" class="attendeeEmail"><br>
+            <input type="text" class="attendeeEmail"><br>
+            <input type="text" class="attendeeEmail"><br>
+          </div>
+          <div>
+            <a href="#" id="addAnotherEmail">Add another email</a>
+            <br>
+            <button id="sendEmails" type="button" name="button">Send Invites! <i class="far fa-envelope"></i></button>
+          </div>
+        </div>
+        <div class="container card emailconf">
+          <h3>All done! Emails are winging their way to your friends. Feel free to add more if you've missed someone...</h3>
+        </div>
+        <button id="saveGuests">Save trip <i class="fas fa-umbrella-beach"></i></button>
     </div>
     <div class="modal">
       <div class="modal-content">
