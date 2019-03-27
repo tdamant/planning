@@ -4,11 +4,12 @@ const stageController = require("./stages.js");
 exports.savePollToDB = async (req, res) => {
   let stageId = await stageController.saveStageToDB({body:
     { stageName: req.body.type,
-      content: `Please fill in the ${req.body.type.toLowerCase()} poll.`, 
+      content: `Please fill in the ${req.body.type.toLowerCase()} poll.`,
       due_date: req.body.deadline,
       trip_id: req.body.tripId
     }
   });
+  console.log(req.body.options);
   pollsModel.savePollToDB(req.body.type, `${req.body.options}`, req.body.deadline, req.body.tripId, stageId);
 };
 
