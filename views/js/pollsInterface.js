@@ -80,10 +80,15 @@ $('#savePoll').on("click", function() {
       updatePage(data.type)
     }
 });
+const showPollsCreated = (polls) => {
+    polls.forEach((poll) => {
+        $('#pollsCreated').append(`${poll.type}`)
+    })
+};
+let polls = await getExistingPolls();
 
-let myPolls = await getExistingPolls();
-
-buildPollOptions(myPolls);
+buildPollOptions(polls);
+showPollsCreated(polls);
 
 $('#guests').on("click", function() {
     let tripId = getUrlParams('tripId');
@@ -94,5 +99,4 @@ $("#addAnotherOption").on("click", function() {
     let input = $("<input type=\"text\" class = \"pollOption\"><br>");
     $('#pollOptions').append(input)
     });
-
 });
