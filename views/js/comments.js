@@ -1,10 +1,26 @@
+
 $(document).ready(async function() {
+
+    const showCommentBox = async (id) => {
+        $(`#${id}`).toggle();
+    };
+
     $('#commentButton').on("click", function(event) {
         event.preventDefault();
         let comment = $("#comment").val();
         let announcement = $("#announcement").is(':checked');
         $.post("/comments", {comment: comment, announcement: announcement, tripId: trip.id});
         location.reload()
+    });
+
+    $('#showCommentBox').on("click", function(event) {
+        event.preventDefault();
+        showCommentBox("addCommentDiv");
+    });
+
+    $('#showImportantCommentBox').on("click", function(event) {
+        event.preventDefault();
+        showCommentBox("addImportantCommentDiv");
     });
 
     const loadCommentData = async() =>{
@@ -51,8 +67,7 @@ $(document).ready(async function() {
         });
 
         await asyncForEach(comments.important, async(comment) => {
-            let userData = await $.get(`/users/${comment.user_id}`);
-            $("#important-comment-list").append(`${comment.comment} --- ${userData.first_name}<br>`)
+            $("#important-comment-list").append(`${comment.comment} --- ${comment.date}<br>`)
         });
     };
 
@@ -62,6 +77,7 @@ $(document).ready(async function() {
     let isOrganiser = await checkIfOrganiser();
     showImportantCheckbox();
     formatComments();
+
 
 });
 
