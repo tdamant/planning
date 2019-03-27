@@ -1,8 +1,8 @@
 const usersModel = require("../models/lib/users.js");
-const Cookies = require('cookies');
+const Cookie = require("cookies");
 
 exports.addUser = async (req, res) => {
-  var cookies = new Cookies(req, res,{httpOnly: false});
+  var cookies = new Cookie(req, res,{httpOnly: false});
   let existsInDb = await usersModel.authSignUp(req.body.email);
   if (existsInDb) {
     res.send('user already exists')
@@ -14,7 +14,7 @@ exports.addUser = async (req, res) => {
 };
 
 exports.authLogin = async (req, res) => {
-  var cookies = new Cookies(req, res,{httpOnly: false});
+  var cookies = new Cookie(req, res,{httpOnly: false});
   let response = await usersModel.authLogin(req.body.email, req.body.password);
   if (response) {
       cookies.set('user', `${response.id}`);
@@ -22,7 +22,7 @@ exports.authLogin = async (req, res) => {
   } else {
       res.send('failed to authenticate')
   };
-}
+};
 
 exports.getUser = async (req, res) => {
   let response = await usersModel.getUsers([req.cookies.user]);
