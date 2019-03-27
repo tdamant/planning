@@ -19,8 +19,7 @@ exports.getPolls = async (req, res) => {
 };
 
 exports.saveVotes = async (req, res) => {
-  // save RESPONSE. include stage id. Get it at front end with the rest of the poll data once its in the poll db
-    pollsModel.saveVotes(req.body.tripId, req.body.pollId, req.body.userId, req.body.optionIds);
+    pollsModel.saveVotes(req.body.tripId, req.body.pollId, req.body.userId, req.body.optionIds, req.body.stageId);
     res.send('ok')
 };
 

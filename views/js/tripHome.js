@@ -44,7 +44,7 @@ $(document).ready(async () => {
               votes.push(`${index}-poll${poll.id}`)
             };
           });
-        saveVotes(data.tripId, poll.id, data.userId, votes.join(','))
+        saveVotes(data.tripId, poll.id, data.userId, votes.join(','), poll.stage_id)
         location.reload()
       });
   };
@@ -62,24 +62,21 @@ $(document).ready(async () => {
     $("#pollsContainer").append(resultsDiv);
   }
 
-  const saveVotes = (tripId, pollId, userId, optionIds) => {
-      $.post("/polls/saveVotes", {tripId: tripId, pollId: pollId, userId: userId, optionIds: optionIds})
+  const saveVotes = (tripId, pollId, userId, optionIds, stageId) => {
+      $.post("/polls/saveVotes", {tripId: tripId, pollId: pollId, userId: userId, optionIds: optionIds, stageId: stageId})
   };
 
   const addPolls = async (polls) => {
     polls.forEach((poll) => {
       let pollVotes =
-      data.votes.filter(function(vote) {
-        return vote.poll_id === poll.id
-      })
+        data.votes.filter(function(vote) {
+          return vote.poll_id === poll.id
+        })
       let usersPollVotes =
-      pollVotes.filter(function(vote) {
-        return vote.user_id.toString() === data.userId.toString()
-      })
-      if (usersPollVotes.length === 0)
-        buildPoll(poll)
-      else
-        buildPollResults(poll)
+        pollVotes.filter(function(vote) {
+          return vote.user_id.toString() === data.userId.toString()
+        })
+      usersPollVotes.length === 0 ? buildPoll(poll) : buildPollResults(poll);
     });
   };
 
