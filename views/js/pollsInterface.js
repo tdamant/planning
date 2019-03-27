@@ -62,7 +62,6 @@ $(document).ready(async function() {
           $( ".option" ).each(function() {
               let input = $( this ).find('input:text').val();
               options.push(input);
-              $( this ).find('input:text').val("")
           });
           return options.join(",")
         };
@@ -82,6 +81,9 @@ $(document).ready(async function() {
             if (checkInput(data.deadline)) {
               $.post("/polls/create", data);
               updatePage(data.type)
+              $( ".option" ).each(function() {
+                  $( this ).find('input:text').val("")
+              });
             }
         };
 
