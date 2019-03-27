@@ -16,7 +16,7 @@ $(document).ready(async function() {
             existingPolls.forEach((poll) => {
                 existingPollTypes.push(poll.type)
             });
-            let options = ['Dates', 'Location', 'Budget'];
+            let options = ['Dates', 'Location', 'Budget', 'Sights to see',  'Accommodation', 'Pool vs Sea'];
             return newArr = options.filter(x => !existingPollTypes.includes(x));
         };
         let typesToAdd = findTypesToAdd(existingPolls);
@@ -132,5 +132,10 @@ $(document).ready(async function() {
         event.preventDefault();
         $('#pollCreator').hide("fast");
         $('#pollCreator').find('input:text').val('');
+    });
+
+    $("#skip").on("click", function() {
+        let tripId = getUrlParams('tripId');
+        $(location).attr('href', '/trip_home?id='+tripId)
     });
 });

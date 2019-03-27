@@ -39,7 +39,7 @@ $(document).ready(async function() {
           data: data,
           contentType: type
         });
-      }
+      };
 
     $("#leaveTrip").click(function(event) {
       event.preventDefault();

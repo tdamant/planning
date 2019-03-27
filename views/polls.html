@@ -25,15 +25,18 @@
       </ul>
     </nav>
     <div class="container card" style="padding:0">
-      <h2>This is where we create polls to find out the preferences of the guests.</h2>
-      <h3>Guests will receive text messages to remind them to fill in the polls.</h3>
-      <h3>You can skip this stage by clicking <a href="#">here</a>, or build whichever polls you need from the drop down list below.</h3>
+      <h2>Get set up </h2>
+        <p>1) <b> Add polls</b> to get feedback from the group on your ideas.<br>
+            <em> Don't forget, they'll be getting <b>notifications</b> the day before!</em><br><br>
+            2) <b>Add your guests</b> - they'll get a notification email taking them straight to login. <p>
     </div>
+
+
     <div class="container card">
       <h3>What do you and the rest of the guests need to decide on?</h3>
       <select id="polls" name="polls"></select>
-      <br>
       <button id="buildPoll">Build Poll <i class="fas fa-vote-yea"></i></button>
+
     </div>
 
     <div class="container card" id="pollCreator" style="display: none;background-color:#ffcc00;">
@@ -65,6 +68,10 @@
     <br>
 
     <button id="guests" onclick="window.location.href = '/guests';">Invite Guests <i class="fas fa-angle-double-right"></i></button>
+    <br>
+    <div>
+        <button id="skip">SKIP STRAIGHT TO TRIP OVERVIEW <i class="fas fa-angle-double-right"></i></button>
+    </div>
     <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
