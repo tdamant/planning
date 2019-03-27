@@ -11,7 +11,6 @@ const setMinDate = () => {
 };
 
 const buildPollOptions = (existingPolls) => {
-    console.log(existingPolls);
     const findTypesToAdd = (existingPolls) => {
         let existingPollTypes = [];
         existingPolls.forEach((poll) => {
