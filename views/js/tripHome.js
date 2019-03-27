@@ -39,6 +39,7 @@ $(document).ready(async () => {
   loadOrganiserPriveledges();
 
 
+
   $('#join').click( async function() {
       await $.post("/trips_users/create", {tripId: data.tripId});
       location.reload();
