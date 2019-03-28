@@ -7,6 +7,27 @@ $(document).ready(function() {
   });
 
   $('#sendEmails').on("click", async() => {
+
+    let emails = [];
+    $( ".attendeeEmail" ).each(function() {
+        if($(this).val() != "") {
+            emails.push( $( this ).val());
+            $( this ).val("");
+        };
+    });
+    let tripId = await getUrlParams('tripId');
+    emails.forEach(email => {
+      $.post("/send-email", {to: email, tripId: tripId});
+    });
+    $('.emailconf').css("display", "block");
+    emails.forEach(email => {
+        $('#list').append(`<li> ${email} </li><br>`)
+    });
+  });
+
+  $('#saveGuests').on("click", async() => {
+      let tripId = await getUrlParams('tripId')
+
       let emails = [];
       $( ".attendeeEmail" ).each(function() {
           if($(this).val() != "") {
