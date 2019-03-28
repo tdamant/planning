@@ -56,15 +56,12 @@ nav {
 
 ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 2px;
+  padding: 2px;
+  margin-top: 3px;
   overflow: hidden;
   opacity: 0.7;
-  background: linear-gradient(to right, #b0c0c9, #616b80);
-  /* position: fixed;
-  display: inline-block;
-  top: 0;
-  width: 100%; */
+  background: #9cb4d8;
 }
 
 li {
