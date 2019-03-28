@@ -179,6 +179,27 @@ label {
 
 }
 
+#announcement2-label {
+  margin: 10px;
+  font-size: 12px !important;
+}
+
+#comment2 {
+  margin: 10px;
+}
+
+.sidenav {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+#sidenav {
+  display: none;
+}
+
+#close:hover {
+  cursor: pointer;
+}
+
 textarea {
   text-align: left;
   font-size: 16px;

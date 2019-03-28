@@ -1,8 +1,8 @@
 $(document).ready(async function() {
 
-   $("#nav, #close").on("click", function(event) {
+   $("#nav, #close").on("click", function() {
        event.preventDefault();
-       $("#sidenav").toggle();
+       $("#sidenav").toggle("slow");
    })
 
 });
