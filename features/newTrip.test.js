@@ -45,7 +45,7 @@ describe('New Trip', () => {
             description: 'Trip description'
         });
         await page.click('#submit');
-        await page.waitForNavigation({'waitUntil': 'networkidle0'});
+        await page.waitFor(2000);
         await expect(page).toMatch('Set up your polls');
     });
 });

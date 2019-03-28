@@ -95,6 +95,26 @@ li a:hover:not(.active) {
   background-color: #616b80;
 }
 
+img {
+  width: 33%;
+  position: absolute;
+  left: 33%;
+  margin-top: 10vh;
+  display: grid;
+  /* height: auto;
+  width: auto;
+  padding: 0px 16px;
+  max-height: 40px;
+  max-width: 100px;
+  margin: 10px 0px; */
+}
+
+div.static {
+  position: static;
+  border: 3px solid #73AD21;
+}
+
+
 .logo {
   margin: 10px 0px;
 }

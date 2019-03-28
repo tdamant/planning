@@ -1,6 +1,6 @@
 // test controller functions as integration test
 
-ReminderFinder = require("../lib/reminderService.js");
+const ReminderFinder = require("../lib/reminderService.js");
 const Stage = require("../../models/lib/stage.js");
 const StagesUsers = require("../../models/lib/stagesUsers.js");
 const Trip = require("../../models/lib/trips.js");
