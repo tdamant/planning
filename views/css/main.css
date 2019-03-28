@@ -149,6 +149,10 @@ label:not(.pollLabel, #announcement2-label) {
     text-align: left;
 }
 
+#announcement2 {
+  font-size: 12px !important;
+}
+
 label {
     display: block;
     margin: 8px 0 2px 0;
