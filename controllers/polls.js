@@ -23,6 +23,11 @@ exports.saveVotes = async (req, res) => {
     res.send('ok')
 };
 
+exports.saveAsDone = async (req, res) => {
+    pollsModel.saveAsDone(req.body.tripId, req.body.userId, req.body.stageId);
+    res.send('ok')
+};
+
 exports.getVotes = async (req, res) => {
     let votes = await pollsModel.getVotes(req.query.tripId);
     res.send(votes)

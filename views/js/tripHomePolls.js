@@ -1,3 +1,4 @@
+
 const makePolls = (data) => {
 
     const buildPoll = (poll) => {
@@ -5,17 +6,30 @@ const makePolls = (data) => {
         const addOptions = (options) => {
           options.forEach((option, index) => {
             let votes = getVotes(`${index}-poll${poll.id}`);
-            pollDiv += `<input id = "${index}-poll${poll.id}" type="checkbox"><label for ="${option}"> <span id="option">${option} -- </span> <span id="votes"> VOTES SO FAR -- ${votes}</span> </label>`
+            pollDiv += `
+                          <label class="pollLabel">
+                          <input class="checkbox" id = "${index}-poll${poll.id}" type="checkbox">
+                           ${option} </label>
+
+                        <span id="votes"> VOTES SO FAR -- ${votes}</span><br> `
           });
         };
         const addDivId = (type) => {
-          pollDiv += `<div id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
+          pollDiv += `<div class="column">
+                        <div class="grid-item container card different" id="${type}">
+
+                        <fieldset id="votesFor${type}">
+                        <legend>${type}</legend>`
         };
         let options = poll.options.split(",");
         addDivId(poll.type);
         addOptions(options);
-        pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form> </div>`;
-        $("#pollsContainer").append(pollDiv);
+        pollDiv += `<input id="${poll.type}-submit" type="submit" value="Save Vote">
+                  </fieldset>
+
+              </div>
+            </div>`;
+        $(".row1").append(pollDiv);
 
         $(`#${poll.type}-submit`).on("click", (event) => {
             event.preventDefault();
@@ -31,17 +45,21 @@ const makePolls = (data) => {
     };
 
     const buildPollResults = (poll) => {
-      let resultsDiv = `<div id"${poll.type} > <p id"thanks"> Thanks for voting on ${poll.type.toLowerCase()}! </p> `
+      let resultsDiv =
+      `<div class="column">
+      <div class="grid-item container card different" id"${poll.type}">
+      <p id"thanks" > Thanks for voting on the ${poll.type.toLowerCase()}! </p><br>`
       const getOptions = (options) => {
         options.forEach((option, index) => {
           let votes = getVotes(`${index}-poll${poll.id}`);
-          resultsDiv += `<p>${option} -- VOTES SO FAR -- ${votes}</p><br>`
+          resultsDiv += `<p id="votesSoFar">${option} -- VOTES SO FAR -- ${votes}</p><br>`
         });
+        resultsDiv += '</div></div>'
       };
       let options = poll.options.split(",");
       getOptions(options);
-      $("#pollsContainer").append(resultsDiv);
-    }
+      $(".row1").append(resultsDiv);
+    };
 
     const saveVotes = (tripId, pollId, userId, optionIds, stageId) => {
         $.post("/polls/saveVotes", {tripId: tripId, pollId: pollId, userId: userId, optionIds: optionIds, stageId: stageId})
@@ -71,4 +89,4 @@ const makePolls = (data) => {
     };
 
     addPolls(data);
-}
+};

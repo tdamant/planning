@@ -7,7 +7,8 @@ body {
 }
 
 .container:first-of-type {
-  padding-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 h1{
@@ -204,17 +205,24 @@ textarea::placeholder {
 .card:first-of-type {
   margin-top: 10vh!important;
 }
-
 .card:last-of-type {
   margin-bottom: 10vh!important;
 }
 
-.card {
+.card:not(.different) {
   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0, 0, 0, 0.39);
   margin:2.5vh 20vw 2.5vh 20vw!important;
   color:#000!important;
   background-color:rgba(255, 255, 255, 0.71)!important;
   padding:1em 16px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.different {
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0, 0, 0, 0.39);
+  color:#000!important;
+  background-color:rgba(255, 255, 255, 0.71)!important;
   border-radius: 3px;
   text-align: center;
 }
@@ -229,6 +237,54 @@ textarea::placeholder {
 
 .attendeeEmail:last-of-type {
   margin-bottom: 10px;
+}
+
+.option {
+  display: table;
+  margin: 4px;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.userInput {
+  display: table-cell;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.userInput > input, button {
+  width: 100%;
+  height: 100%
+  margin: 2px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.rmbtn {
+  font-size: 2vw;
+  margin: 0;
+  vertical-align: middle;
+  background: none;
+}
+
+.rmbtn:hover{
+  background: none;
+  color: #ee0979;
+  cursor:pointer;
+}
+
+.small-button {
+  display: static;
+  box-sizing: border-box;
+  background: none;
+  color: #ee0979;
+  cursor:pointer;
+  margin: 0;
+  vertical-align: middle;
+}
+
+#stages-list ul li > .small-button {
+  display: inline-block;
 }
 
 #buildPoll {
