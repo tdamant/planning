@@ -12,9 +12,10 @@ $(document).ready(async () => {
   });
 
   $('#sendEmails').on("click", async() => {
-      let emails = [];
-      $( ".attendeeEmail" ).each(function() {
-          if($(this).val() != "") {
+
+    let emails = [];
+    $( ".attendeeEmail" ).each(function() {
+        if($(this).val() != "") {
             emails.push( $( this ).val());
             $( this ).val('')
           }
@@ -25,6 +26,10 @@ $(document).ready(async () => {
         $.post("/send-email", {to: email, tripId: tripId, organiser: name});
       });
       $('.emailconf').css("display", "block");
+    
+    emails.forEach(email => {
+        $('#list').append(`<li> ${email} </li><br>`)
+    });
   });
 
   $('#saveGuests').on("click", async() => {
