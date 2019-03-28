@@ -58,15 +58,3 @@ class User {
 }
 
 module.exports = User;
-
-//
-// async function asyncForEach(array, callback) {
-//     for (let index = 0; index < array.length; index++) {
-//         await callback(array[index], index, array);
-//     }
-// };
-// await asyncForEach(stages, async(stage) => {
-//     let textArray = await ReminderFinder.getUsersOnStage(stage);
-//     // textsToSend = [ ... textArray];
-//     textsToSend.push(textArray);
-// });

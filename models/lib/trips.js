@@ -24,7 +24,6 @@ class Trips {
 
   static async addUserToTrip(tripId, userId) {
       await connection.pool.query(`INSERT into trips_users (trip_id, user_id) VALUES ('${tripId}', '${userId}')`);
-  //    get all stages and add user to them
   }
 
   static async removeUserFromTrip(tripId, userId) {

@@ -9,13 +9,16 @@ describe("adding a trip", () => {
     });
     it("trip is added to db", async () => {
         await tripController.saveTripToDB(
-            {cookies: {user: 1},
+            {
+                cookies: {user: 1},
                 body: {
                     tripName: 'Great new trip',
                     description: 'lovely',
 
-                }, connection: {encrypted: false}
-            }, {
+                },
+                connection: {encrypted: false}
+            },
+            {
                 getHeader: () => {
                 }, setHeader: {
                     call: () => {
