@@ -164,8 +164,17 @@ label {
     font-size: 1.5vw;
     box-sizing: border-box;
     text-align: left;
-
 }
+
+img {
+    height: auto;
+    width: auto;
+    padding: 0px 16px;
+    /* max-height: 40px; */
+    max-width: 100px;
+    margin: 10px 0px;
+}
+
 
 #announcement2-label {
   margin: 10px;
