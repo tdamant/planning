@@ -29,7 +29,7 @@ class Stage {
     };
 
     static async getStagesByTripId(tripId) {
-        var stages = await connection.pool.query(`SELECT * FROM stages WHERE event_id =${tripId}`);
+        var stages = await connection.pool.query(`SELECT * FROM stages WHERE event_id = ${tripId}`);
         let stagesArray = [];
         stages.rows.forEach((stage) => {
             stagesArray.push(new Stage(stage.id, stage.name, stage.content, stage.due_date, stage.event_id))
