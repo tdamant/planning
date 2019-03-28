@@ -1,7 +1,5 @@
 const User = require("../lib/users.js");
 const connection = require("../../database/connection");
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 describe("users", () => {
     beforeAll( async() => {
