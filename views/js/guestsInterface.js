@@ -24,13 +24,7 @@ $(document).ready(function() {
       $( ".attendeeEmail" ).each(function() {
           emails.push( $( this ).val())
       });
-      //$.post("/trips/invite", {emails: emails.join(','), tripId: tripId });
-
-      // emails added to trip table? or trip_users? Do we want to just
-      // save emails as an array, or track who has and hasn't joined
-      // or even just send emails from here and not persist the data
       $(location).attr('href', '/trip_home?id='+tripId)
-          // $(location).attr('href', '/trips')
   });
 
   const getUrlParams = (name) => {
