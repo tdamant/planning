@@ -1,5 +1,10 @@
-$(document).ready(function() {
+$(document).ready(async () => {
 
+  const fetchName = async () => {
+      let currentUser = await fetch ("/users");
+      let currentUserId = await currentUser.json();
+      return currentUserId[0].first_name;
+  };
 
   $("#addAnotherEmail").on("click", function() {
       let input = $("<input type=\"text\" class = \"attendeeEmail\"><br>")
@@ -7,23 +12,35 @@ $(document).ready(function() {
   });
 
   $('#sendEmails').on("click", async() => {
+
     let emails = [];
     $( ".attendeeEmail" ).each(function() {
-        if($(this).val() != "") {emails.push( $( this ).val())}
-    });
-    let tripId = await getUrlParams('tripId');
+        if($(this).val() != "") {
+            emails.push( $( this ).val());
+            $( this ).val('')
+          }
+      });
+      let name = await fetchName();
+      let tripId = await getUrlParams('tripId');
+      emails.forEach(email => {
+        $.post("/send-email", {to: email, tripId: tripId, organiser: name});
+      });
+      $('.emailconf').css("display", "block");
+    
     emails.forEach(email => {
-      $.post("/send-email", {to: email, tripId: tripId});
+        $('#list').append(`<li> ${email} </li><br>`)
     });
-    $('.emailconf').css("display", "block");
   });
 
   $('#saveGuests').on("click", async() => {
       let tripId = await getUrlParams('tripId')
+<<<<<<< HEAD
       let emails = [];
       $( ".attendeeEmail" ).each(function() {
           emails.push( $( this ).val())
       });
+=======
+>>>>>>> 6a1887f646c0f184b783f5051e23c033a0afc2a4
       $(location).attr('href', '/trip_home?id='+tripId)
   });
 

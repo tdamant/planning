@@ -2,7 +2,7 @@ $(document).ready(async function() {
     const formatTripOverview = async() => {
         let dbName = data.trip.name;
         let name = cleanDbString(dbName);
-        $('#trip-title').prepend(`${name}`);
+        $('#trip-title').prepend(`${name.toUpperCase()}`);
 
         let dbDescription = data.trip.description;
         let description = cleanDbString(dbDescription);

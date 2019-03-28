@@ -109,6 +109,19 @@ button:hover {
     padding: 20px;
 }
 
+input {
+    text-align: left;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: 1px solid #f4b11c;
+    border-radius: 3px;
+    color: #f4b11c;
+    width: 100%;
+    padding: 5px;
+    transition: all 300ms ease-in-out;
+}
+
 input:not(.checkbox, #announcement2) {
     text-align: left;
     font-size: 16px;
@@ -128,6 +141,15 @@ input:focus {
 }
 
 label:not(.pollLabel, #announcement2-label) {
+    display: block;
+    margin: 8px 0 2px 0;
+    color: #f4b11c;
+    font-size: 12px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+label {
     display: block;
     margin: 8px 0 2px 0;
     color: #f4b11c;
