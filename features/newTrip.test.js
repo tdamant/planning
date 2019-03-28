@@ -2,11 +2,9 @@ var sleep = require('sleep');
 const connection = require("../database/connection");
 const User = require("../models/lib/users.js");
 
-
-
 describe('New Trip', () => {
     beforeAll(async () => {
-        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users, polls, votes, comments RESTART IDENTITY");
         await User.addUser("Tom", "Damant", "tomdamant@hotmail.com", "07588468084",  "strongpassword");
         sleep.sleep(1);
         var cookie = [
@@ -48,6 +46,6 @@ describe('New Trip', () => {
         });
         await page.click('#submit');
         await page.waitForNavigation({'waitUntil': 'networkidle0'});
-        await expect(page).toMatch('This is where we create polls to find out the preferences of the guests');
+        await expect(page).toMatch('Set up your polls');
     });
 });
