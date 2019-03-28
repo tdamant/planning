@@ -38,7 +38,7 @@ const makePolls = (data) => {
       const getOptions = (options) => {
         options.forEach((option, index) => {
           let votes = getVotes(`${index}-poll${poll.id}`);
-          resultsDiv += `<p>${option} -- VOTES SO FAR -- ${votes}</p><br>`
+          resultsDiv += `<p id="votesSoFar">${option} -- VOTES SO FAR -- ${votes}</p><br>`
         });
         resultsDiv += '</div></div>'
       };

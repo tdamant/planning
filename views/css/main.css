@@ -3,6 +3,10 @@ html {
   padding: 0;
 }
 
+#trip-title {
+  padding-top: 40px;
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -163,21 +167,14 @@ label:first-of-type {
   display: inline-block;
 }
 
-/* .container {
-  display: inline-block;
-
-} */
-
 * {
   box-sizing: border-box;
 }
 
-/* Create three equal columns that floats next to each other */
 .column {
   float: left;
   width: 33.33%;
   padding: 10px;
-  /* height: 600px; */
 }
 
 /* Clear floats after the columns */
