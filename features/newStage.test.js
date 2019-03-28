@@ -1,9 +1,13 @@
 const sleep = require('sleep');
 const connection = require("../database/connection");
+const User = require("../models/lib/users.js");
+
 
 describe('New Stage', () => {
-    beforeAll(async () => {
-        // await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
+    beforeEach(async () => {
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users, polls, votes, comments RESTART IDENTITY");
+        await User.addUser("Tom", "Damant", "tomdamant@hotmail.com", "07588468084",  "strongpassword");
+        sleep.sleep(1);
         var cookie = [
             {
                 "domain": "localhost",
@@ -21,35 +25,52 @@ describe('New Stage', () => {
             }
         ];
         await page.setCookie(...cookie);
-        await page.goto('http://localhost:5000/newTrip');
+        await page.goto('http://localhost:5000/newTrip')
+
         await expect(page).toFillForm('form[name="addTrip"]', {
-            tripName: 'Trip-name',
+            tripName: 'Unique Trip name',
             description: 'Trip description'
-          });
-        await page.evaluate(() => {
-            localStorage.setItem("tripName", "Trip-name");
         });
         await page.click('#submit');
-
-        await page.waitForNavigation();
+        await page.waitForNavigation({'waitUntil': 'networkidle0'});
     });
 
-    it('can submit form, load relevant trip page with name and description', async () => {
-      await expect(page).toFillForm('form[name="addStage"]', {
-          stageName: 'Book flights',
-          stageContent: 'Unique stage description',
-          stageDueDate: `${Date.now()}`,
-      });
+    describe("Skip to Trip Home", () => {
+        it('should click through to tripHome', async () => {
+            await page.click("#skip");
+            await page.waitForNavigation({'waitUntil': 'networkidle0'});
+            await expect(page).toMatch("UNIQUE TRIP NAME")
+        })
     });
 
-    it('can submit form and save details of stage', async () => {
-      await expect(page).toFillForm('form[name="addStage"]', {
-          stageName: 'Book flights',
-          stageContent: 'Unique stage description',
-          stageDueDate: `${Date.now()}`,
-      });
-      await page.click('#submit');
-      sleep.sleep(1);
-      await expect(page).toMatch('Book flights');
+    // describe("New poll", () => {
+        // it('can add a poll', async () => {
+        //     await page.select('#polls',  'Dates');
+        //     await page.click("#buildPoll");
+        //     /// NEED TO INPUT OPTIONS & deadline before submitting
+        //     await page.click("#submit");
+        //     await expect(page).toMatch("Dates")
+        // });
+    // close polls/ no deadline
+
+    // });
+
+    describe("Progress to invite Guests", () => {
+        it('should click through to guests page', async () => {
+            await page.click("#guests");
+            await page.waitForNavigation({'waitUntil': 'networkidle0'});
+            await expect(page).toMatch("Time to invite others")
+        });
+
+        it('should click through to trip home', async () => {
+            await page.click("#guests");
+            await page.click("#saveGuests");
+            await page.waitForNavigation({'waitUntil': 'networkidle0'});
+            await expect(page).toMatch("UNIQUE TRIP NAME")
+        });
     });
+
+
+
+
 });
