@@ -1,5 +1,6 @@
 const userController = require("../../controllers/users.js");
 const connection = require("../../database/connection.js");
+const addTrip = require ("./helpers/addTrip.js");
 let responseSent;
 let res = {getHeader: ()=> {},setHeader: {call: () => {}},
     send: (response)=> {responseSent = response}};
@@ -39,7 +40,7 @@ describe("adding a user", () => {
     })
 });
 
-describe("authenticating a user", async () => {
+describe("authenticating a user", () => {
     it("authenticates if correct details", async () => {
         await userController.authLogin({body: {
                 email: 'email@email.com',
@@ -67,7 +68,7 @@ describe("authenticating a user", async () => {
     })
 });
 
-describe("getUserById", async () => {
+describe("getUserById",  () => {
     it ("can get the user", async () => {
         await userController.getUserById({
             params: {id: 1}}, res);
@@ -76,10 +77,20 @@ describe("getUserById", async () => {
     })
 });
 
-describe("getUser", async() => {
+describe("getUser", () => {
     it("can get user by cookie", async () => {
         await userController.getUser({cookies: {user: 1}}, res);
         expect(responseSent[0].first_name).toEqual("Tom")
         expect(responseSent[0].last_name).toEqual("D")
     })
-})
+});
+
+describe("getTripsByUser", () => {
+    it("returns trips a user is on", async () => {
+        await addTrip("great trip", "new", 1);
+        await addTrip("second trip", "second", 1);
+        await userController.getTripsByUser({cookies:{user: 1}}, res);
+        expect(responseSent[0].name).toEqual("great trip");
+        expect(responseSent[1].name).toEqual("second trip")
+    });
+});

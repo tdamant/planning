@@ -1,7 +1,7 @@
 const stageController = require("../../../controllers/stages.js");
 
 
-const addStage = (name, content, due_date, trip_id) => {
+const addStage = async (name, content, due_date, trip_id) => {
     await stageController.saveStageToDB(
         { body: {
                 stageName: name,
