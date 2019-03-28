@@ -24,7 +24,7 @@ const makePolls = (data) => {
         let options = poll.options.split(",");
         addDivId(poll.type);
         addOptions(options);
-        pollDiv += `<input id="${poll.type}-submit" type="submit">
+        pollDiv += `<input id="${poll.type}-submit" type="submit" value="Save Vote">
                   </fieldset>
 
               </div>
