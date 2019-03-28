@@ -36,11 +36,39 @@ describe("adding a comment", () => {
         await expect(result.rows[0].comment).toEqual("sounds great!");
         await expect(result.rows[0].announcement).toEqual(false)
     });
-    it("returns all comments", async () => {
+    it("returns all comments by trip Id", async () => {
         await commentController.getComments({
             params:{ id: 1 },
             connection: {encrypted: false}
             }, res );
         expect(responseSent[0].comment).toEqual("sounds great!")
+    });
+
+    it("shouldn't return other trip comments", async () => {
+        await addTrip("Trip2", "great trip");
+        await commentController.saveComment(
+            {
+                cookies: {user: 1},
+                body: {
+                    comment: 'comment on 2nd trip',
+                    announcement: false,
+                    tripId: 2,
+
+                }, connection: {encrypted: false}
+            }, {
+                getHeader: () => {
+                }, setHeader: {
+                    call: () => {
+                    }
+                },
+                send: () => {
+                }
+            });
+        await commentController.getComments({
+            params:{ id: 2 },
+            connection: {encrypted: false}
+            }, res );
+        expect(responseSent.length).toEqual(1);
+        expect(responseSent[0].comment).toEqual("comment on 2nd trip")
     });
 });
