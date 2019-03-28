@@ -19,10 +19,12 @@ exports.getPolls = async (req, res) => {
 };
 
 exports.saveVotes = async (req, res) => {
-    console.log(req.body);
-    var pollId = parseInt(req.body.pollId, 10);
-    var stageId = parseInt(req.body.stageId, 10);
-    pollsModel.saveVotes(req.body.tripId, pollId, req.body.userId, req.body.optionIds, stageId);
+    pollsModel.saveVotes(req.body.tripId, req.body.pollId, req.body.userId, req.body.optionIds, req.body.stageId);
+    res.send('ok')
+};
+
+exports.saveAsDone = async (req, res) => {
+    pollsModel.saveAsDone(req.body.tripId, req.body.userId, req.body.stageId);
     res.send('ok')
 };
 

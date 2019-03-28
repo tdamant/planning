@@ -12,22 +12,21 @@ class Poll {
     }
 
     static async saveVotes(tripId, pollId, userId, optionIds, stageId) {
-        if (pollId !== null) {
-          console.log(optionIds);
-          const asyncForEach = async (array, callback) => {
-              for (let index = 0; index < array.length; index++) {
-                  await callback(array[index], index, array);
-              }
-          };
-          let splitOptionIds = optionIds.split(',');
-          await asyncForEach(splitOptionIds, (vote) => {
-              connection.pool.query(`INSERT INTO votes (trip_id, poll_id, user_id, stage_id, option_id) VALUES ('${tripId}', '${pollId}', '${userId}', '${stageId}', '${vote}')`);
-          });
-        } else {
-          connection.pool.query(`INSERT INTO votes (trip_id, user_id, stage_id) VALUES ('${tripId}', '${userId}', '${stageId}')`);
-        }
-
+        console.log(optionIds);
+        const asyncForEach = async (array, callback) => {
+            for (let index = 0; index < array.length; index++) {
+                await callback(array[index], index, array);
+            }
+        };
+        let splitOptionIds = optionIds.split(',');
+        await asyncForEach(splitOptionIds, (vote) => {
+            connection.pool.query(`INSERT INTO votes (trip_id, poll_id, user_id, stage_id, option_id) VALUES ('${tripId}', '${pollId}', '${userId}', '${stageId}', '${vote}')`);
+        });
     };
+
+    static async saveAsDone(tripId, userId, stageId) {
+        connection.pool.query(`INSERT INTO votes (trip_id, user_id, stage_id) VALUES ('${tripId}', '${userId}', '${stageId}')`);
+    }
 
     static async getVotes(tripId) {
         let result = await connection.pool.query(`select * from votes where trip_id = '${tripId}'`);
