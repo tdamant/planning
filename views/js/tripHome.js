@@ -25,13 +25,11 @@ $(document).ready(async () => {
     }
   };
 
-
   const loadOrganiserPriveledges = () => {
     if (data.userId.toString() === data.tripOrganiserId.toString()) {
       $('#addStage').show();
     };
-  }
-
+  };
 
   let data = await getData();
 
@@ -67,7 +65,7 @@ $(document).ready(async () => {
     let stageCompleted = ($(this).attr('id')).substr(4);
     $.post("/polls/saveResponse", {tripId: data.tripId, userId: data.userId, stageId: stageCompleted})
     location.reload();
-  })
+  });
 
   $('#addStage').on("click", function() {
     $('#stageCreator').show("fast");

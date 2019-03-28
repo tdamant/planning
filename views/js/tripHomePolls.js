@@ -59,7 +59,7 @@ const makePolls = (data) => {
       let options = poll.options.split(",");
       getOptions(options);
       $(".row1").append(resultsDiv);
-    }
+    };
 
     const saveVotes = (tripId, pollId, userId, optionIds, stageId) => {
         $.post("/polls/saveVotes", {tripId: tripId, pollId: pollId, userId: userId, optionIds: optionIds, stageId: stageId})
@@ -89,4 +89,4 @@ const makePolls = (data) => {
     };
 
     addPolls(data);
-}
+};
