@@ -26,7 +26,7 @@ $(document).ready(async () => {
         $.post("/send-email", {to: email, tripId: tripId, organiser: name});
       });
       $('.emailconf').css("display", "block");
-    
+
     emails.forEach(email => {
         $('#list').append(`<li> ${email} </li><br>`)
     });
@@ -34,13 +34,10 @@ $(document).ready(async () => {
 
   $('#saveGuests').on("click", async() => {
       let tripId = await getUrlParams('tripId')
-<<<<<<< HEAD
       let emails = [];
       $( ".attendeeEmail" ).each(function() {
           emails.push( $( this ).val())
       });
-=======
->>>>>>> 6a1887f646c0f184b783f5051e23c033a0afc2a4
       $(location).attr('href', '/trip_home?id='+tripId)
   });
 
