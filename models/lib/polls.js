@@ -7,12 +7,11 @@ class Poll {
     }
 
     static async getPolls(tripId) {
-      let result = await connection.pool.query(`SELECT * FROM polls WHERE trip_id = '${tripId}'`)
+      let result = await connection.pool.query(`SELECT * FROM polls WHERE trip_id = '${tripId}'`);
       return result.rows
     }
 
     static async saveVotes(tripId, pollId, userId, optionIds, stageId) {
-        console.log(optionIds);
         const asyncForEach = async (array, callback) => {
             for (let index = 0; index < array.length; index++) {
                 await callback(array[index], index, array);
