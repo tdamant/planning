@@ -2,7 +2,6 @@
 const makePolls = (data) => {
 
     const buildPoll = (poll) => {
-        console.log("in buildpoll function")
         let pollDiv = "";
         const addOptions = (options) => {
           options.forEach((option, index) => {
@@ -30,7 +29,6 @@ const makePolls = (data) => {
 
               </div>
             </div>`;
-        console.log(pollDiv)
         $(".row1").append(pollDiv);
 
         $(`#${poll.type}-submit`).on("click", (event) => {

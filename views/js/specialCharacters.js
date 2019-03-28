@@ -3,5 +3,5 @@ const cleanStringForDb = function(string) {
 };
 
 const cleanDbString = function(string) {
-    return string.replace(/\\/, "'")
+    return string.replace(/\\/g, "'")
 };
