@@ -1,6 +1,5 @@
 const showToDos = (data) => {
     const checkUserCompleted = (stage) => {
-      console.log(data.votes)
       let allResponses = data.votes.filter(function(vote) {
         return vote.stage_id.toString() === stage.id.toString()
       })
