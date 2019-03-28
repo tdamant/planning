@@ -7,6 +7,7 @@ $(document).ready(function() {
   });
 
   $('#sendEmails').on("click", async() => {
+
     let emails = [];
     $( ".attendeeEmail" ).each(function() {
         if($(this).val() != "") {
@@ -26,17 +27,24 @@ $(document).ready(function() {
 
   $('#saveGuests').on("click", async() => {
       let tripId = await getUrlParams('tripId')
+
       let emails = [];
       $( ".attendeeEmail" ).each(function() {
-          emails.push( $( this ).val())
+          if($(this).val() != "") {
+            emails.push( $( this ).val());
+            $( this ).val('')
+          }
       });
-      //$.post("/trips/invite", {emails: emails.join(','), tripId: tripId });
+      let tripId = await getUrlParams('tripId');
+      emails.forEach(email => {
+        $.post("/send-email", {to: email, tripId: tripId});
+      });
+      $('.emailconf').css("display", "block");
+  });
 
-      // emails added to trip table? or trip_users? Do we want to just
-      // save emails as an array, or track who has and hasn't joined
-      // or even just send emails from here and not persist the data
+  $('#saveGuests').on("click", async() => {
+      let tripId = await getUrlParams('tripId')
       $(location).attr('href', '/trip_home?id='+tripId)
-          // $(location).attr('href', '/trips')
   });
 
   const getUrlParams = (name) => {
