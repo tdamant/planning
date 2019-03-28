@@ -7,8 +7,7 @@ $(document).ready(async function() {
     $('#commentButton1').on("click", function(event) {
         event.preventDefault();
         let comment = $("#comment1").val();
-        let announcement = $("#announcement1").is(':checked');
-        saveComment(comment, announcement);
+        saveComment(comment, true);
         location.reload()
     });
 
@@ -39,7 +38,7 @@ $(document).ready(async function() {
     });
 
     const loadTripData = async() => {
-        let tripId = location.search.substr(4);
+        let tripId = await location.search.substr(4);
         let tripResponse = await fetch(`/trips/${tripId}`);
         let trip = tripResponse.json();
         return trip

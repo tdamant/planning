@@ -33,7 +33,7 @@ $(document).ready(function(){
       function (response) {
       response === "user already exists" ? alert('This email address is already in use.') : redirectUser(originalUrl);
       });
-  })
+  });
 
 
   $('#signUp').on("click", function() {

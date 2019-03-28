@@ -3,6 +3,10 @@ html {
   padding: 0;
 }
 
+#trip-title {
+  padding-top: 40px;
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -105,7 +109,7 @@ button:hover {
     padding: 20px;
 }
 
-input {
+input:not(.checkbox, #announcement2) {
     text-align: left;
     font-size: 16px;
     box-sizing: border-box;
@@ -123,7 +127,7 @@ input:focus {
     background: rgba(0,0,0,0.05);
 }
 
-label {
+label:not(.pollLabel, #announcement2-label) {
     display: block;
     margin: 8px 0 2px 0;
     color: #f4b11c;
@@ -157,4 +161,63 @@ label:first-of-type {
 
 .emailconf {
   display: none;
+}
+
+#pollsCreated figure {
+  display: inline-block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row2:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+#pollsContainer {
+  width: 100%;
+}
+
+.grid-item{
+  border:thin gray solid;
+  /* padding:10px; */
+}
+
+.pollLabel {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+.checkbox {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
 }

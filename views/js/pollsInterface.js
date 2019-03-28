@@ -16,7 +16,7 @@ $(document).ready(async function() {
             existingPolls.forEach((poll) => {
                 existingPollTypes.push(poll.type)
             });
-            let options = ['Dates', 'Location', 'Budget', 'Sights to see',  'Accommodation', 'Pool vs Sea'];
+            let options = ['Dates', 'Location', 'Budget'];
             return newArr = options.filter(x => !existingPollTypes.includes(x));
         };
         let typesToAdd = findTypesToAdd(existingPolls);
@@ -46,7 +46,8 @@ $(document).ready(async function() {
         const updatePage = (type) => {
           $('#pollCreator').hide("fast");
           $(`#${type}Poll`).remove();
-          $(`#pollsCreated`).append(`${type} <br>`)
+          $(`#pollsCreated`).show();
+          $(`#pollsCreated`).append(`<figure><img src="../images/checkbox.png" alt="Check Box" height="22" width="22"><figcaption>${type}</figcaption></figure>`)
         };
 
         const checkInput = (date) => {

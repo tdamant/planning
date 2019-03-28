@@ -24,37 +24,38 @@
         <li style="float:right"><a href="/logout" id="logout">Sign out</a></li>
       </ul>
     </nav>
-    <div class="container card" style="padding:0">
-      <h2>Get set up </h2>
-        <p>1) <b> Add polls</b> to get feedback from the group on your ideas.<br>
-            <em> Don't forget, they'll be getting <b>notifications</b> the day before!</em><br><br>
-            2) <b>Add your guests</b> - they'll get a notification email taking them straight to login. <p>
+    <br><br><br>
+    <div class="container card" >
+      <h2>Set up your polls</h2>
+      <h3>Get an idea for what the rest of the guests want.</h3>
+        <p><b> <u> How this works </u> </b><br>
+           The day before the poll deadline is up,<br>
+             everyone who's joined the trip as an attendee will recieve a text. <br>
+             It will remind them to fill in the poll, so that you can make informed choices.<br><br>
     </div>
 
 
     <div class="container card">
       <h3>What do you and the rest of the guests need to decide on?</h3>
-      <select id="polls" name="polls"></select>
+      <select id="polls" name="polls"></select><br>
       <button id="buildPoll">Build Poll <i class="fas fa-vote-yea"></i></button>
 
     </div>
 
     <div class="container card" id="pollCreator" style="display: none;background-color:#ffcc00;">
-          Add the options for guests to pick from: <br><br>
-
-
+          <h3>Add the options for guests to pick from:</h3>
           <div id="pollOptions">
               <div class="option" id="option0">
                  <div class="userInput">
                      <input id="usersPollOption" type="text" name="userInput[]" />
                  </div>
-                  <div class="removebtn"><button type='button' class='rmbtn'>(bin icon)</button></div>
+                <button type='button' class='rmbtn'><i class="fas fa-trash-alt"></i></button>
               </div>
               <div class="addbtn">
-                    <button type="button" class="addmore">Add another option</button>
+                <button type="button" class="addmore">Add another option</button>
               </div>
           </div>
-          <p>Poll Deadline</p>
+          <h3>Poll Deadline</h3>
           <input type="date" id="deadline" min="">
           <button id="savePoll">Save Poll</button>
           <div class="small button">
@@ -62,15 +63,16 @@
           </div>
     </div>
 
-    <br><br>
-    <div id="pollsCreated"></div>
-    <br><br>
+    <br>
+    <div class="container card" id="pollsCreated" style="display: none;background-color:#ffcc00;">
+    </div>
+    <br>
 
     <button id="guests" onclick="window.location.href = '/guests';">Invite Guests <i class="fas fa-angle-double-right"></i></button>
     <br>
     <div>
-        <button id="skip">SKIP STRAIGHT TO TRIP OVERVIEW <i class="fas fa-angle-double-right"></i></button>
-    </div>
+        <button id="skip">Skip to event overview <i class="fas fa-angle-double-right"></i><br>  <em> Invite guests later </em> </button>
+    </div><br><br><br>
     <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
