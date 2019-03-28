@@ -245,6 +245,18 @@ textarea::placeholder {
   text-align: center;
 }
 
+#stageCreator {
+  position: absolute;
+  /* margin-top: -100px; */
+  z-index: 2400;
+  /* margin-bottom: 200px !important; */
+  /* bottom: -98%; */
+  right: 8%;
+  top: 900px;
+  background-color: rgba(255, 255, 255)!important;
+
+}
+
 .pollOption {
   margin-top: 3px;
 }
