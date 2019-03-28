@@ -1,3 +1,4 @@
+
 const makePolls = (data) => {
 
     const buildPoll = (poll) => {
@@ -5,16 +6,29 @@ const makePolls = (data) => {
         const addOptions = (options) => {
           options.forEach((option, index) => {
             let votes = getVotes(`${index}-poll${poll.id}`);
-            pollDiv += `<input id = "${index}-poll${poll.id}" type="checkbox"><label for ="${option}"> <span id="option">${option} -- </span> <span id="votes"> VOTES SO FAR -- ${votes}</span> </label>`
+            pollDiv += `
+                          <label class="pollLabel">
+                          <input class="checkbox" id = "${index}-poll${poll.id}" type="checkbox">
+                           ${option} </label>
+
+                        <span id="votes"> VOTES SO FAR -- ${votes}</span><br> `
           });
         };
         const addDivId = (type) => {
-          pollDiv += `<div class="column"><div class="grid-item container card different" id="${type}"><form id="votesFor${type}"><fieldset><legend>${type}</legend>`
+          pollDiv += `<div class="column">
+                        <div class="grid-item container card different" id="${type}">
+
+                        <fieldset id="votesFor${type}">
+                        <legend>${type}</legend>`
         };
         let options = poll.options.split(",");
         addDivId(poll.type);
         addOptions(options);
-        pollDiv += `<input id="${poll.type}-submit" type="submit"> </fieldset></form></div></div>`;
+        pollDiv += `<input id="${poll.type}-submit" type="submit">
+                  </fieldset>
+
+              </div>
+            </div>`;
         $(".row1").append(pollDiv);
 
         $(`#${poll.type}-submit`).on("click", (event) => {
