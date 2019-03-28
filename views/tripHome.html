@@ -66,8 +66,7 @@
                   <br>
                   <form name="addComment" id="addComment">
                     <textarea rows="3" cols="30" type="text" id="comment1"> </textarea>
-                    <input type="checkbox" id="announcement1" checked /> <label for="announcement" id="announcement-label">Important Update</label> <br>
-                    <input type="button" class="ellipse" id="commentButton1" value="Add Comment"/>
+                    <input type="button" class="ellipse" id="commentButton1" value="Update the attendees"/>
                   </form>
                 </div>
               </div>
@@ -102,14 +101,17 @@
             <br>
             <form name="addComment" id="addComment1">
               <textarea rows="3" cols="30" type="text" id="comment2"> </textarea>
-              <input type="checkbox" id="announcement2"/> <label for="announcement" id="announcement2-label">Important Update</label> <br>
-              <input type="submit" class="ellipse" id="commentButton2" value="Add Comment"/>
+              <label class"pollLabel" for="announcement" id="announcement2-label">
+                <input class="checkbox" type="checkbox" id="announcement2"/>
+               This comment should appear in the Important Updates box.
+                </label> <br>
+               <input type="submit" class="ellipse" id="commentButton2" value="Add Comment"/>
             </form>
           </div>
         </div>
 
         <button id="leaveTrip">Leave trip <i class="far fa-sad-tear"></i></button>
-        
+
       </div>
     <div class="modal">
       <div class="modal-content">

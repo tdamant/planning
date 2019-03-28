@@ -7,8 +7,7 @@ $(document).ready(async function() {
     $('#commentButton1').on("click", function(event) {
         event.preventDefault();
         let comment = $("#comment1").val();
-        let announcement = $("#announcement1").is(':checked');
-        saveComment(comment, announcement);
+        saveComment(comment, true);
         location.reload()
     });
      $('#commentButton2').on("click", function(event) {

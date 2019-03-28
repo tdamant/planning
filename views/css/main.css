@@ -109,7 +109,7 @@ button:hover {
     padding: 20px;
 }
 
-input:not(.checkbox) {
+input:not(.checkbox, #announcement2) {
     text-align: left;
     font-size: 16px;
     box-sizing: border-box;
@@ -127,7 +127,7 @@ input:focus {
     background: rgba(0,0,0,0.05);
 }
 
-label:not(.pollLabel) {
+label:not(.pollLabel, #announcement2-label) {
     display: block;
     margin: 8px 0 2px 0;
     color: #f4b11c;
