@@ -69,8 +69,4 @@ describe('New Stage', () => {
             await expect(page).toMatch("UNIQUE TRIP NAME")
         });
     });
-
-
-
-
 });
