@@ -71,7 +71,7 @@ describe("getUserById", async () => {
     it ("can get the user", async () => {
         await userController.getUserById({
             params: {id: 1}}, res);
-        expect(responseSent.first_name).toEqual("Tom")
+        expect(responseSent.first_name).toEqual("Tom");
         expect(responseSent.last_name).toEqual("D")
     })
 });
@@ -79,7 +79,7 @@ describe("getUserById", async () => {
 describe("getUser", async() => {
     it("can get user by cookie", async () => {
         await userController.getUser({cookies: {user: 1}}, res);
-        expect(responseSent[0].first_name).toEqual("Tom")
+        expect(responseSent[0].first_name).toEqual("Tom");
         expect(responseSent[0].last_name).toEqual("D")
     })
 })
