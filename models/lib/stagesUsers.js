@@ -7,11 +7,19 @@ class StagesUsers {
     static async addUserToStages(tripId, userId) {
         let stages = await Stage.getStagesByTripId(tripId);
         await stages.forEach(async stage => {
-            await connection.pool.query(`INSERT INTO stages_users (stage_id, user_id) VALUES ('${stage.id}', '${userId}') returning id`)
+            console.log(stage.id);
+            await StagesUsers.addToStage(stage.id, userId)
         });
     }
+
+    static async addToStage(stageId, userId) {
+        let result = await connection.pool.query(`insert into stages_users (stage_id, user_id) VALUES ('${stageId}', '${userId}')`);
+        return result
+    }
+
     static async addStageToUsers(stageId, tripId) {
         let users = await User.getUsersByTripId(tripId);
+
         await users.forEach(async user => {
             await connection.pool.query(`INSERT INTO stages_users (stage_id, user_id) VALUES ('${stageId}', '${user.user_id}') returning id`)
         });
@@ -25,6 +33,7 @@ class StagesUsers {
 
     static async deleteUsersFromStages(stages, userId) {
         await StagesUsers.asyncForEach(stages, async (stage) => {
+            console.log(stage.id);
             await StagesUsers.deleteFromStage(stage.id, userId)
         })
 
