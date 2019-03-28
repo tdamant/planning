@@ -9,8 +9,7 @@ exports.savePollToDB = async (req, res) => {
       trip_id: req.body.tripId
     }
   });
-  console.log(req.body.options);
-  pollsModel.savePollToDB(req.body.type, `${req.body.options}`, req.body.deadline, req.body.tripId, stageId);
+  await pollsModel.savePollToDB(req.body.type, `${req.body.options}`, req.body.deadline, req.body.tripId, stageId);
 };
 
 exports.getPolls = async (req, res) => {
@@ -24,7 +23,7 @@ exports.saveVotes = async (req, res) => {
 };
 
 exports.saveAsDone = async (req, res) => {
-    pollsModel.saveAsDone(req.body.tripId, req.body.userId, req.body.stageId);
+    await pollsModel.saveAsDone(req.body.tripId, req.body.userId, req.body.stageId);
     res.send('ok')
 };
 

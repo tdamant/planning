@@ -13,7 +13,6 @@ describe("polls", () => {
 
     });
 
-
     it("can be saved with options", async() => {
         await Poll.savePollToDB("Date", '1,2,3', '2018-03-03', 1, 1);
         let result = await connection.pool.query("select * from polls");
