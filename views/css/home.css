@@ -265,6 +265,7 @@ textarea::placeholder {
   margin: 0;
   vertical-align: middle;
   background: none;
+  color: rgb(27, 35, 140);
 }
 
 .rmbtn:hover{
