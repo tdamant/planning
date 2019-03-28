@@ -12,19 +12,19 @@ class SendMail {
     });
   }
 
-  setMailOptions(to, tripid) {
+  setMailOptions(to, tripid, organiser) {
     this.mailOptions = {
       from: 'wing.it.hq@gmail.com',
       to: to,
       subject: 'Come fly with me! ;)',
-      html: `<h3>Hi there,</h3>
-      <p>You've been invited to an event on Wing.<br>You can review and join here: http://stormy-escarpment-39913.herokuapp.com/trip_home?id=${tripid}<p><br>
+      html: `<h3>Hi there,</h3><p>${organiser.charAt(0).toUpperCase()} has invited you to an event on Wing.
+      <br>Check it out at: http://stormy-escarpment-39913.herokuapp.com/trip_home?id=${tripid}<p><br>
       <p><i>Wing Team</i></p>`
     }
   };
 
- sendMail(to, tripid) {
-   this.setMailOptions(to, tripid);
+ sendMail(to, tripid, organiser) {
+   this.setMailOptions(to, tripid, organiser);
     this.transporter.sendMail(this.mailOptions, function(error, info){
       if (error) {
         console.log(error);
@@ -36,3 +36,4 @@ class SendMail {
 }
 
 module.exports = SendMail;
+//
