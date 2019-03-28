@@ -1,7 +1,6 @@
 const tripsModel = require("../models/lib/trips.js");
 
 exports.saveTripToDB = async (req, res) => {
-    console.log("in trip controller")
     let tripId = await tripsModel.saveToDB(req.body.tripName, req.body.description, req.cookies.user);
     await tripsModel.addUserToTrip(tripId.id, req.cookies.user);
     res.send(tripId)
