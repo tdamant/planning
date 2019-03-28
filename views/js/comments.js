@@ -11,6 +11,7 @@ $(document).ready(async function() {
         saveComment(comment, announcement);
         location.reload()
     });
+
      $('#commentButton2').on("click", function(event) {
          event.preventDefault();
         let comment = $("#comment2").val();
