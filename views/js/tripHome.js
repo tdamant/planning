@@ -73,4 +73,6 @@ $(document).ready(async () => {
     $('#stageCreator').show("fast");
   });
 
+  console.log(organiserId)
+
 });
