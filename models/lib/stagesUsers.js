@@ -34,6 +34,10 @@ class StagesUsers {
         await connection.pool.query(`DELETE FROM stages_users WHERE stage_id = ${stageId} AND user_id = ${userId}`)
     };
 
+    static async findUsersOnStage(stageId){
+        let result = await connection.pool.query(`SELECT user_id FROM stages_users WHERE stage_id = ${stageId}`);
+            return result.rows
+        }
 }
 
 module.exports = StagesUsers;

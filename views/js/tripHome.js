@@ -32,7 +32,6 @@ $(document).ready(async () => {
   };
 
   let data = await getData();
-
   makePolls(data);
   showToDos(data);
   loadOrganiserPriveledges();

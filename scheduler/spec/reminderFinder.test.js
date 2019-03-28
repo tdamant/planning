@@ -15,7 +15,7 @@ describe("Text", function() {
     var tomorrowDate = `0${tomorrow.getMonth()+1}-${tomorrow.getDate()}-${tomorrow.getFullYear()}`;
 
     beforeAll( async function() {
-        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users RESTART IDENTITY");
+        await connection.pool.query("TRUNCATE TABLE stages, trips, users, trips_users, stages_users, comments, votes, polls RESTART IDENTITY");
         await User.addUser("Tom", "D", "t@d", 111, "tom");
         await User.addUser("Isa", "I", "isa@isa", 222, "isa");
         await User.addUser("Cat", "Cat", "cat@cat", 333, "cat");
