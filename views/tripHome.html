@@ -52,6 +52,7 @@
                 <h3>Your To-Do list</h3>
                 <p id="stages-list" ></p> <br>
                 <button style="display: none" id="addStage"> <i class="fas fa-pencil-alt"></i></button>
+
               </div>
             </div>
             <div class="column">
@@ -80,21 +81,27 @@
           </div>
 
 
+          <div id="stageCreator" class="container card different" style="display: none;background-color:#ffcc00;">
 
-
-        <div id="stageCreator" class="container card" style="display: none;background-color:#ffcc00;">
-
-          <h3>What's this task called (e.g. Book flights): </h3>
-          <input type="text" id="stageName">
-          <h3>What's the message that you want us to send the guests. Include as much or as little detail as you like:</h3>
-          <input type="text" id="stageContent">
-          <h3>What's the deadline:</h3>
-          <input type="date" id="stageDueDate"> <!-- This will need to be a date input -->
+            <h3>Add a task for the guests: </h3>
+            <p>Everyone will receive texts reminders as the deadline approaches.</p>
+            <h3>What's the task called: </h3>
+            <input type="text" id="stageName" placeholder="Eg. Book flights">
+            <h3>What's the text message reminder that you want us to send the guests:</h3>
+            <input type="text" id="stageContent">
+            <h3>When do you want everyone to do this by:</h3>
+            <input type="date" id="stageDueDate"> <!-- This will need to be a date input -->
+            <button id="saveStage">Save Reminder</button>
+            <div class="small-button">
+              <button id="closeStageCreator">Close</button>
+            </div>
+          </div>
+          
           <button id="saveStage">Save Reminder</button>
           <div class="small-button">
             <button id="closeStageCreator">Close</button>
           </div>
-        </div>
+        </div> -->
 
         <div class="sidenav" id="sidenav">
           <h2>Group chatter</h2>
