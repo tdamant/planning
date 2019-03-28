@@ -7,15 +7,17 @@ $(document).ready(async function() {
     $('#commentButton1').on("click", function(event) {
         event.preventDefault();
         let comment = $("#comment1").val();
-        saveComment(comment, true);
+        let cleanComment = cleanStringForDb(comment)
+        saveComment(cleanComment, true);
         location.reload()
     });
 
      $('#commentButton2').on("click", function(event) {
          event.preventDefault();
         let comment = $("#comment2").val();
+        let cleanComment = cleanStringForDb(comment)
         let announcement = $("#announcement2").is(':checked');
-        saveComment(comment, announcement);
+        saveComment(cleanComment, announcement);
         location.reload()
     });
 
@@ -79,7 +81,8 @@ $(document).ready(async function() {
 
         await asyncForEach(comments.other, async(comment) => {
             let userData = await $.get(`/users/${comment.user_id}`);
-            $("#comment-list").append(`${comment.comment} --- ${userData.first_name}<br>`)
+            let cleanComment = cleanDbString(comment.comment);
+            $("#comment-list").append(`${cleanComment} --- ${userData.first_name}<br>`)
         });
 
         await asyncForEach(comments.important, async(comment) => {
@@ -87,7 +90,8 @@ $(document).ready(async function() {
             let month = comment.date.toString().substring(5, 7);
             let day = comment.date.toString().substring(8, 10);
             let time = comment.date.toString().substring(11,16);
-            $("#important-comment-list").append(`${comment.comment} --- ${time} ${day}-${month}-${year} <br>`)
+            let cleanComment = cleanDbString(comment.comment);
+            $("#important-comment-list").append(`${cleanComment} --- ${time} ${day}-${month}-${year} <br>`)
         });
     };
 
